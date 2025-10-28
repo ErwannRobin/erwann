@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 
 export const Footer = () => {
   const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+    { icon: Github, href: "https://github.com/ErwannRobin", label: "GitHub" },
+    { icon: Twitter, href: "https://twitter.com/diwann", label: "Twitter" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/erwannrobin/", label: "LinkedIn" },
+    { icon: Mail, href: "mailto:contact@phone-verif.com", label: "Email" },
   ];
 
   return (
@@ -23,12 +23,7 @@ export const Footer = () => {
                 asChild
                 className="rounded-full hover:text-primary hover:bg-primary/10 transition-all"
               >
-                <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                >
+                <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}>
                   <social.icon className="h-5 w-5" />
                 </a>
               </Button>
