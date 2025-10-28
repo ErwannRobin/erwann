@@ -2,15 +2,17 @@ import { Hero } from "@/components/Hero";
 import { ProjectCard, Project } from "@/components/ProjectCard";
 import { Footer } from "@/components/Footer";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import bttfLogo from "@/assets/bttf-logo.jpg";
+import emojiSearchHero from "@/assets/emoji-search-hero.png";
 
 // Project data - easily extensible for future projects
 const projects: Project[] = [{
-  title: "Back to the Future",
-  description: "A nostalgic journey through time with an interactive experience.",
-  longDescription: "An immersive web experience that takes you back to the iconic Back to the Future universe. Features interactive elements, timeline navigation, and beautifully crafted animations that bring the DeLorean time machine to life.",
+  title: "Back to the Future Logo Generator",
+  description: "Generate stunning logos in the iconic Back to the Future movie style.",
+  longDescription: "Create amazing logos with the legendary Back to the Future aesthetic. Transform any text into the iconic yellow and orange movie-style logo with lightning effects and retro sci-fi vibes. Perfect for bringing that 1985 time-travel magic to your projects.",
   url: "https://bttf.lovable.app",
-  image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&auto=format&fit=crop&q=80",
-  tags: ["Interactive", "Animation", "Nostalgia"]
+  image: bttfLogo,
+  tags: ["Logo Generator", "Design", "Retro"]
 }, {
   title: "LogLint",
   description: "Smart log analysis and linting tool for developers.",
@@ -20,11 +22,11 @@ const projects: Project[] = [{
   tags: ["Developer Tools", "Analysis", "Productivity"]
 }, {
   title: "Phone Verification",
-  description: "Seamless phone number verification service.",
-  longDescription: "A reliable and secure phone verification system that makes user authentication simple and trustworthy. Features SMS verification, international number support, and developer-friendly API integration for modern applications.",
+  description: "Revolutionary WhatsApp reverse verification - costless and secure.",
+  longDescription: "A groundbreaking phone verification system using WhatsApp reverse verification technology. Completely costless and highly secure, this innovative approach eliminates SMS costs while providing robust authentication. Perfect for modern applications that need reliable phone verification without the hefty price tag.",
   url: "https://phone-verif.com",
   image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80",
-  tags: ["Security", "Authentication", "API"]
+  tags: ["WhatsApp", "Security", "Authentication"]
 }, {
   title: "Background Eraser",
   description: "AI-powered background removal tool with precision.",
@@ -37,8 +39,15 @@ const projects: Project[] = [{
   description: "Find the perfect emoji instantly with smart search.",
   longDescription: "Never struggle to find the right emoji again. This intelligent search tool helps you discover and copy emojis quickly with keyword search, category filtering, and recent history tracking. Perfect for content creators and anyone who loves expressive communication.",
   url: "https://emoji-search.lovable.app",
-  image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=800&auto=format&fit=crop&q=80",
+  image: emojiSearchHero,
   tags: ["Utility", "Search", "Fun"]
+}, {
+  title: "Lovable Tools Portfolio",
+  description: "This very portfolio showcasing all my Lovable creations.",
+  longDescription: "A modern, elegant portfolio website built with Lovable to showcase all the tools and projects I've created. Features a clean design, smooth animations, dark/light mode support, and is easily extensible for future projects. Built with React, TypeScript, and Tailwind CSS.",
+  url: window.location.href,
+  image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
+  tags: ["Portfolio", "React", "Lovable"]
 }];
 const Index = () => {
   return <div className="min-h-screen bg-gradient-to-b from-background via-background to-secondary/20">
