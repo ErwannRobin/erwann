@@ -1,10 +1,10 @@
 import heroBg from "@/assets/hero-bg.jpg";
 export const Hero = () => {
-  return <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden">
-      {/* Background with gradient overlay */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background z-10" />
-        <img src={heroBg} alt="Hero background" className="w-full h-full object-cover opacity-30" />
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Fixed fullscreen background */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background/50 to-background/80 z-10" />
+        <img src={heroBg} alt="Hero background" className="w-full h-full object-cover" />
       </div>
 
       {/* Content */}

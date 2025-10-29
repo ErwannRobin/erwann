@@ -22,17 +22,17 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
   return (
     <Card 
-      className="group overflow-hidden transition-all duration-300 hover:shadow-glow hover:-translate-y-1 animate-slide-up border-border/50 bg-card/50 backdrop-blur-sm"
+      className="group overflow-hidden transition-all duration-500 hover:shadow-glow hover:-translate-y-2 animate-slide-up border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-xl shadow-[var(--glass-shadow)]"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       {/* Image */}
-      <div className="relative overflow-hidden aspect-video bg-muted">
+      <div className="relative overflow-hidden aspect-video bg-muted/30 backdrop-blur-sm">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-primary/10 opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
       </div>
 
       <CardHeader>
@@ -58,7 +58,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2.5 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary"
+              className="px-2.5 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary border border-primary/30 backdrop-blur-sm"
             >
               {tag}
             </span>
