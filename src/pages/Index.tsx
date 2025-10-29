@@ -58,7 +58,7 @@ const Index = () => {
       {/* Projects Grid */}
       <section className="container mx-auto px-4 py-16 relative z-10">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Projects</h2>
+          
           <p className="text-muted-foreground max-w-2xl mx-auto">
             A collection of tools and experiences built with passion and attention to detail
           </p>
