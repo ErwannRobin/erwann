@@ -9,9 +9,9 @@ export const Hero = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 z-20 text-center animate-fade-in">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent leading-tight">Lovable Tools
+        <h1 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent leading-tight">Lovable Tools
       </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light">Crafting delightful experiences with Lovable</p>
+        <p className="text-base md:text-lg text-foreground/80 max-w-2xl mx-auto font-light">Crafting delightful experiences with Lovable</p>
       </div>
 
       {/* Decorative gradient orbs */}

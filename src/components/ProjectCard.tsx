@@ -22,8 +22,13 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
   return (
     <Card 
-      className="group overflow-hidden transition-all duration-500 hover:shadow-glow hover:-translate-y-2 animate-slide-up border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-xl shadow-[var(--glass-shadow)]"
-      style={{ animationDelay: `${index * 100}ms` }}
+      className="group overflow-hidden transition-all duration-500 hover:shadow-glow hover:-translate-y-2 animate-slide-up bg-[var(--glass-bg)] backdrop-blur-xl shadow-[var(--glass-shadow)] relative border-2 border-transparent"
+      style={{ 
+        animationDelay: `${index * 100}ms`,
+        backgroundImage: 'var(--glass-border)',
+        backgroundOrigin: 'border-box',
+        backgroundClip: 'padding-box, border-box'
+      }}
     >
       {/* Image */}
       <div className="relative overflow-hidden aspect-video bg-muted/30 backdrop-blur-sm">
@@ -37,7 +42,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
       <CardHeader>
         <div className="flex items-start justify-between gap-2">
-          <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
+          <CardTitle className="text-xl font-semibold text-foreground">{project.title}</CardTitle>
           <Button
             variant="ghost"
             size="icon"
@@ -49,7 +54,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
             </a>
           </Button>
         </div>
-        <CardDescription className="text-sm">{project.description}</CardDescription>
+        <CardDescription className="text-sm text-foreground/70">{project.description}</CardDescription>
       </CardHeader>
 
       <CardContent>
@@ -72,7 +77,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
               isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
             }`}
           >
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-foreground/60 leading-relaxed">
               {project.longDescription}
             </p>
           </div>
