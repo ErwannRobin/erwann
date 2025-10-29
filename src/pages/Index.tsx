@@ -3,6 +3,8 @@ import { ProjectCard, Project } from "@/components/ProjectCard";
 import { Footer } from "@/components/Footer";
 import bttfLogo from "@/assets/bttf-logo.jpg";
 import emojiSearchHero from "@/assets/emoji-search-hero.png";
+import bgEraserDemo from "@/assets/bg-eraser-demo.png";
+import portfolioScreenshot from "@/assets/portfolio-screenshot.png";
 
 // Project data - easily extensible for future projects
 const projects: Project[] = [{
@@ -31,7 +33,7 @@ const projects: Project[] = [{
   description: "AI-powered background removal tool with precision.",
   longDescription: "Remove backgrounds from images instantly with cutting-edge AI technology. Perfect for product photos, profile pictures, and creative projects. Features batch processing, high-resolution exports, and intelligent edge detection.",
   url: "https://bg-eraser.lovable.app",
-  image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80",
+  image: bgEraserDemo,
   tags: ["AI", "Image Processing", "Design"]
 }, {
   title: "Emoji Search",
@@ -45,7 +47,7 @@ const projects: Project[] = [{
   description: "This very portfolio showcasing all my Lovable creations.",
   longDescription: "A modern, elegant portfolio website built with Lovable to showcase all the tools and projects I've created. Features a clean design, smooth animations, dark/light mode support, and is easily extensible for future projects. Built with React, TypeScript, and Tailwind CSS.",
   url: window.location.href,
-  image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
+  image: portfolioScreenshot,
   tags: ["Portfolio", "React", "Lovable"]
 }];
 const Index = () => {
