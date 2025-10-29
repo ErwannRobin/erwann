@@ -22,23 +22,20 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
   return (
     <Card 
-      className="group overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:[transform:perspective(1000px)_rotateX(5deg)_rotateY(-5deg)] animate-slide-up bg-[var(--glass-bg)] backdrop-blur-xl shadow-[var(--glass-shadow)] relative hover:shadow-[0_0_80px_hsl(262_83%_58%_/_0.8),0_0_40px_hsl(280_70%_65%_/_0.6),0_0_20px_hsl(320_70%_60%_/_0.4)]"
+      className="group overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:[transform:perspective(1000px)_rotateX(5deg)_rotateY(-5deg)] animate-slide-up backdrop-blur-md border-primary/30 hover:border-primary/60 hover:shadow-[0_0_80px_hsl(262_83%_58%_/_0.8),0_0_40px_hsl(280_70%_65%_/_0.6),0_0_20px_hsl(320_70%_60%_/_0.4)]"
       style={{ 
         animationDelay: `${index * 100}ms`,
-        backgroundImage: 'linear-gradient(135deg, hsl(262 83% 58% / 0.4) 0%, hsl(280 70% 65% / 0.4) 50%, hsl(320 70% 60% / 0.4) 100%)',
-        backgroundOrigin: 'border-box',
-        backgroundClip: 'padding-box, border-box',
-        border: '3px solid transparent'
+        background: 'rgba(15, 15, 25, 0.4)'
       }}
     >
       {/* Image */}
-      <div className="relative overflow-hidden aspect-video bg-muted/30 backdrop-blur-sm">
+      <div className="relative overflow-hidden aspect-video bg-background/40">
         <img
           src={project.image}
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-primary/10 opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
       </div>
 
       <CardHeader>
