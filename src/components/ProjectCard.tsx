@@ -22,7 +22,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
   return (
     <Card 
-      className="group overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:[transform:perspective(1000px)_rotateX(5deg)_rotateY(-5deg)] animate-slide-up backdrop-blur-md border-primary/30 hover:border-primary/60 hover:shadow-[0_0_80px_hsl(262_83%_58%_/_0.8),0_0_40px_hsl(280_70%_65%_/_0.6),0_0_20px_hsl(320_70%_60%_/_0.4)]"
+      className="group overflow-hidden rounded-xl transition-all duration-500 hover:-translate-y-2 hover:[transform:perspective(1000px)_rotateX(5deg)_rotateY(-5deg)] animate-slide-up backdrop-blur-md border-primary/30 hover:border-primary/60 hover:shadow-[0_0_80px_hsl(262_83%_58%_/_0.8),0_0_40px_hsl(280_70%_65%_/_0.6),0_0_20px_hsl(320_70%_60%_/_0.4)]"
       style={{ 
         animationDelay: `${index * 100}ms`,
         background: 'rgba(15, 15, 25, 0.4)'
@@ -86,8 +86,8 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
             onClick={() => setIsExpanded(!isExpanded)}
             className={`w-full transition-colors ${
               isExpanded 
-                ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
-                : 'text-primary hover:text-primary/80'
+                ? 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-white' 
+                : 'text-primary hover:text-white hover:bg-primary/20'
             }`}
           >
             {isExpanded ? (

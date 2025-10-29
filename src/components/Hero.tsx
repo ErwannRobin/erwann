@@ -11,6 +11,7 @@ export const Hero = () => {
   }, []);
 
   const opacity = Math.max(0, 1 - scrollY / 400);
+  const scale = Math.max(0.5, 1 - scrollY / 800);
   const isSticky = scrollY < 500;
 
   return (
@@ -29,8 +30,8 @@ export const Hero = () => {
       <section className={`${isSticky ? 'sticky top-0' : 'relative'} min-h-[50vh] flex items-center justify-center overflow-hidden py-20 z-10 transition-all duration-300`}>
         {/* Content */}
         <div 
-          className="container mx-auto px-4 z-20 text-center animate-fade-in transition-opacity duration-300"
-          style={{ opacity }}
+          className="container mx-auto px-4 z-20 text-center animate-fade-in transition-all duration-300"
+          style={{ opacity, transform: `scale(${scale})` }}
         >
           <h1 className="text-3xl mb-3 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text leading-tight text-purple-50 font-bold md:text-6xl">
             Erwann's projects
