@@ -1,6 +1,6 @@
 import heroBg from "@/assets/hero-bg.jpg";
 export const Hero = () => {
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden py-20">
       {/* Fixed fullscreen background */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background/50 to-background/80 z-10" />

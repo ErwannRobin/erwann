@@ -1,7 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { ProjectCard, Project } from "@/components/ProjectCard";
 import { Footer } from "@/components/Footer";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import bttfLogo from "@/assets/bttf-logo.jpg";
 import emojiSearchHero from "@/assets/emoji-search-hero.png";
 
@@ -51,8 +50,6 @@ const projects: Project[] = [{
 }];
 const Index = () => {
   return <div className="min-h-screen relative">
-      <ThemeToggle />
-      
       <Hero />
 
       {/* Projects Grid */}

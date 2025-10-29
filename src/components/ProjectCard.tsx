@@ -22,13 +22,13 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
   return (
     <Card 
-      className="group overflow-hidden transition-all duration-500 hover:shadow-glow hover:-translate-y-2 hover:[transform:perspective(1000px)_rotateX(5deg)_rotateY(-5deg)] animate-slide-up bg-[var(--glass-bg)] backdrop-blur-xl shadow-[var(--glass-shadow)] relative"
+      className="group overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:[transform:perspective(1000px)_rotateX(5deg)_rotateY(-5deg)] animate-slide-up bg-[var(--glass-bg)] backdrop-blur-xl shadow-[var(--glass-shadow)] relative hover:shadow-[0_0_80px_hsl(262_83%_58%_/_0.8),0_0_40px_hsl(280_70%_65%_/_0.6),0_0_20px_hsl(320_70%_60%_/_0.4)]"
       style={{ 
         animationDelay: `${index * 100}ms`,
-        backgroundImage: 'linear-gradient(135deg, hsl(262 83% 58% / 0.3) 0%, hsl(280 70% 65% / 0.3) 50%, hsl(320 70% 60% / 0.3) 100%)',
+        backgroundImage: 'linear-gradient(135deg, hsl(262 83% 58% / 0.4) 0%, hsl(280 70% 65% / 0.4) 50%, hsl(320 70% 60% / 0.4) 100%)',
         backgroundOrigin: 'border-box',
         backgroundClip: 'padding-box, border-box',
-        border: '2px solid transparent'
+        border: '3px solid transparent'
       }}
     >
       {/* Image */}
