@@ -5,6 +5,7 @@ import bttfLogo from "@/assets/bttf-logo.jpg";
 import emojiSearchHero from "@/assets/emoji-search-hero.png";
 import bgEraserDemo from "@/assets/bg-eraser-demo.png";
 import portfolioScreenshot from "@/assets/portfolio-screenshot.png";
+import digitalWarScreenshot from "@/assets/digital-war-screenshot.png";
 
 // Project data - easily extensible for future projects
 const projects: Project[] = [{
@@ -42,6 +43,13 @@ const projects: Project[] = [{
   url: "https://emoji-search.lovable.app",
   image: emojiSearchHero,
   tags: ["Utility", "Search", "Fun"]
+}, {
+  title: "Digital War",
+  description: "Strategic number battle game with tactical grid-based gameplay.",
+  longDescription: "An engaging strategic board game where two players battle for control of the grid. Place your numbers strategically, capture opponent tiles, and dominate the battlefield. Features include undo moves, customizable grid sizes, and an action log to track the flow of battle. Test your tactical thinking in this addictive number-based strategy game.",
+  url: "https://digital-war.lovable.app",
+  image: digitalWarScreenshot,
+  tags: ["Game", "Strategy", "Fun"]
 }, {
   title: "Lovable Tools Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
