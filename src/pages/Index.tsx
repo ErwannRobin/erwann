@@ -6,6 +6,7 @@ import emojiSearchHero from "@/assets/emoji-search-hero.png";
 import bgEraserDemo from "@/assets/bg-eraser-demo.png";
 import portfolioScreenshot from "@/assets/portfolio-screenshot.png";
 import digitalWarScreenshot from "@/assets/digital-war-screenshot.png";
+import scoresheetScreenshot from "@/assets/scoresheet-screenshot.png";
 
 // Project data - easily extensible for future projects
 const projects: Project[] = [{
@@ -50,6 +51,13 @@ const projects: Project[] = [{
   url: "https://digital-war.lovable.app",
   image: digitalWarScreenshot,
   tags: ["Game", "Strategy", "Fun"]
+}, {
+  title: "ScoreKeeper",
+  description: "Track scores for any game with flexible rules and multiple players.",
+  longDescription: "A versatile score tracking app perfect for board games, card games, or any competitive activity. Add unlimited players, choose between highest or lowest wins rules, set target scores or fixed rounds, and keep a complete history of your game nights. Clean, intuitive interface makes score keeping effortless.",
+  url: "https://scoresheet.lovable.app",
+  image: scoresheetScreenshot,
+  tags: ["Game", "Utility", "Tracker"]
 }, {
   title: "Lovable Tools Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
