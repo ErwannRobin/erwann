@@ -7,6 +7,8 @@ import bgEraserDemo from "@/assets/bg-eraser-demo.png";
 import portfolioScreenshot from "@/assets/portfolio-screenshot.png";
 import digitalWarScreenshot from "@/assets/digital-war-screenshot.png";
 import scoresheetScreenshot from "@/assets/scoresheet-screenshot.png";
+import souvenirsScreenshot from "@/assets/souvenirs-screenshot.png";
+import wordbombScreenshot from "@/assets/wordbomb-screenshot.png";
 
 // Project data - easily extensible for future projects
 const projects: Project[] = [{
@@ -51,6 +53,20 @@ const projects: Project[] = [{
   url: "https://digital-war.lovable.app",
   image: digitalWarScreenshot,
   tags: ["Game", "Strategy", "Fun"]
+}, {
+  title: "BombWord",
+  description: "Explosive multiplayer word party game - type fast or get blasted!",
+  longDescription: "A thrilling real-time multiplayer word game where speed is everything. Create or join private rooms with up to 16 players, choose from multiple languages, and race against the clock to type words before the bomb explodes. Features training mode for solo practice and explosive fun for parties and game nights.",
+  url: "https://wordbomb.lovable.app",
+  image: wordbombScreenshot,
+  tags: ["Game", "Multiplayer", "Word"]
+}, {
+  title: "Life Journal",
+  description: "Personal journaling app to capture and cherish life moments.",
+  longDescription: "A beautiful life journaling application to document your memories, thoughts, and experiences. Features secure authentication with email/password or WhatsApp login, dark/light theme support, and a clean intuitive interface. Perfect for keeping a personal diary of your life's precious moments.",
+  url: "https://souvenirs.lovable.app",
+  image: souvenirsScreenshot,
+  tags: ["Journal", "Personal", "Memories"]
 }, {
   title: "ScoreKeeper",
   description: "Track scores for any game with flexible rules and multiple players.",
