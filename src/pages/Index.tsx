@@ -9,6 +9,7 @@ import digitalWarScreenshot from "@/assets/digital-war-screenshot.png";
 import scoresheetScreenshot from "@/assets/scoresheet-screenshot.png";
 import souvenirsScreenshot from "@/assets/souvenirs-screenshot.png";
 import wordbombScreenshot from "@/assets/wordbomb-screenshot.png";
+import waquizzScreenshot from "@/assets/waquizz-screenshot.png";
 
 // Project data - easily extensible for future projects
 const projects: Project[] = [{
@@ -53,6 +54,13 @@ const projects: Project[] = [{
   url: "https://digital-war.lovable.app",
   image: digitalWarScreenshot,
   tags: ["Game", "Strategy", "Fun"]
+}, {
+  title: "WhatsQuiz",
+  description: "Real-time multiplayer quiz game controlled through WhatsApp.",
+  longDescription: "A fun and innovative multiplayer quiz platform where players answer questions via WhatsApp in real-time. Host or join games with friends, play solo with customizable difficulty and categories, and enjoy live scores with instant feedback. Features WhatsApp integration for seamless gameplay and easy setup in seconds.",
+  url: "https://waquizz.lovable.app",
+  image: waquizzScreenshot,
+  tags: ["Game", "Quiz", "WhatsApp"]
 }, {
   title: "BombWord",
   description: "Explosive multiplayer word party game - type fast or get blasted!",
