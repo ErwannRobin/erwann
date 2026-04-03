@@ -10,6 +10,7 @@ import scoresheetScreenshot from "@/assets/scoresheet-screenshot.png";
 import souvenirsScreenshot from "@/assets/souvenirs-screenshot.png";
 import wordbombScreenshot from "@/assets/wordbomb-screenshot.png";
 import waquizzScreenshot from "@/assets/waquizz-screenshot.png";
+import pokerPlanningScreenshot from "@/assets/poker-planning-screenshot.png";
 
 // Project data - easily extensible for future projects
 const projects: Project[] = [{
@@ -82,6 +83,13 @@ const projects: Project[] = [{
   url: "https://scoresheet.lovable.app",
   image: scoresheetScreenshot,
   tags: ["Game", "Utility", "Tracker"]
+}, {
+  title: "Planning Poker",
+  description: "Free real-time Planning Poker tool for agile teams.",
+  longDescription: "A free, real-time Planning Poker tool for agile teams. No sign-up required — just create a session and start estimating. Features hidden votes, instant reveal, multiple card decks, and seamless team collaboration via shareable links.",
+  url: "https://poker-planning.lovable.app",
+  image: pokerPlanningScreenshot,
+  tags: ["Agile", "Team", "Productivity"]
 }, {
   title: "Lovable Tools Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
