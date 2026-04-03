@@ -10,6 +10,7 @@ import scoresheetScreenshot from "@/assets/scoresheet-screenshot.png";
 import souvenirsScreenshot from "@/assets/souvenirs-screenshot.png";
 import wordbombScreenshot from "@/assets/wordbomb-screenshot.png";
 import waquizzScreenshot from "@/assets/waquizz-screenshot.png";
+import pokerPlanningScreenshot from "@/assets/poker-planning-screenshot.png";
 
 // Project data - easily extensible for future projects
 const projects: Project[] = [{
