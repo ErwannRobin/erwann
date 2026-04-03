@@ -84,6 +84,13 @@ const projects: Project[] = [{
   image: scoresheetScreenshot,
   tags: ["Game", "Utility", "Tracker"]
 }, {
+  title: "Planning Poker",
+  description: "Free real-time Planning Poker tool for agile teams.",
+  longDescription: "A free, real-time Planning Poker tool for agile teams. No sign-up required — just create a session and start estimating. Features hidden votes, instant reveal, multiple card decks, and seamless team collaboration via shareable links.",
+  url: "https://poker-planning.lovable.app",
+  image: pokerPlanningScreenshot,
+  tags: ["Agile", "Team", "Productivity"]
+}, {
   title: "Lovable Tools Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
   longDescription: "A modern, elegant portfolio website built with Lovable to showcase all the tools and projects I've created. Features a clean design, smooth animations, dark/light mode support, and is easily extensible for future projects. Built with React, TypeScript, and Tailwind CSS.",
