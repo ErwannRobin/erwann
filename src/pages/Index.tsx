@@ -30,7 +30,7 @@ const projects: Project[] = [{
   url: "https://loglint.lovable.app",
   image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80",
   tags: ["Developer Tools", "Analysis", "Productivity"],
-  categories: ["Dev", "Tools", "SaaS"]
+  categories: ["Dev", "Tools"]
 }, {
   title: "Phone Verification",
   description: "Revolutionary WhatsApp reverse verification - costless and secure.",
@@ -46,7 +46,7 @@ const projects: Project[] = [{
   url: "https://bg-eraser.lovable.app",
   image: bgEraserDemo,
   tags: ["AI", "Image Processing", "Design"],
-  categories: ["Tools", "Design", "SaaS"]
+  categories: ["Tools", "Design"]
 }, {
   title: "Emoji Search",
   description: "Find the perfect emoji instantly with smart search.",
@@ -70,7 +70,7 @@ const projects: Project[] = [{
   url: "https://waquizz.lovable.app",
   image: waquizzScreenshot,
   tags: ["Game", "Quiz", "WhatsApp"],
-  categories: ["Games", "Fun", "SaaS"]
+  categories: ["Games", "Fun"]
 }, {
   title: "BombWord",
   description: "Explosive multiplayer word party game - type fast or get blasted!",
@@ -86,7 +86,7 @@ const projects: Project[] = [{
   url: "https://souvenirs.lovable.app",
   image: souvenirsScreenshot,
   tags: ["Journal", "Personal", "Memories"],
-  categories: ["SaaS", "Tools"]
+  categories: ["Tools"]
 }, {
   title: "ScoreKeeper",
   description: "Track scores for any game with flexible rules and multiple players.",
@@ -102,7 +102,7 @@ const projects: Project[] = [{
   url: "https://poker-planning.lovable.app",
   image: pokerPlanningScreenshot,
   tags: ["Agile", "Team", "Productivity"],
-  categories: ["Dev", "Tools", "SaaS"]
+  categories: ["Dev", "Tools"]
 }, {
   title: "GlowGrid",
   description: "Daily minimalist puzzle — light up the grid in as few moves as possible.",
