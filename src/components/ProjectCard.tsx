@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 
+import type { Category } from "./CategoryFilter";
+
 export interface Project {
   title: string;
   description: string;
@@ -10,6 +12,7 @@ export interface Project {
   url: string;
   image: string;
   tags: string[];
+  categories: Exclude<Category, "All">[];
 }
 
 interface ProjectCardProps {
