@@ -107,7 +107,7 @@ const projects: Project[] = [{
   title: "GlowGrid",
   description: "Daily minimalist puzzle — light up the grid in as few moves as possible.",
   longDescription: "A sleek daily logic puzzle inspired by the classic Lights Out. Tap a tile to toggle it and its neighbours, and try to light up the entire grid in the fewest moves. Includes a daily challenge, streak tracking, hints, replays and shareable results. Beautiful glowing UI with a calm, focused vibe.",
-  url: "https://glow-grid.netlify.app",
+  url: "https://glow-grid.vercel.app",
   image: glowgridScreenshot,
   tags: ["Puzzle", "Daily", "Game"],
   categories: ["Games", "Fun"]
