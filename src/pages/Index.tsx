@@ -17,6 +17,7 @@ import wordbombScreenshot from "@/assets/wordbomb-screenshot.png";
 import waquizzScreenshot from "@/assets/waquizz-screenshot.png";
 import pokerPlanningScreenshot from "@/assets/poker-planning-screenshot.png";
 import glowgridScreenshot from "@/assets/glowgrid-screenshot.png";
+import voxalScreenshot from "@/assets/voxal-screenshot.png";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
