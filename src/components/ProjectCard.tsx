@@ -13,6 +13,7 @@ export interface Project {
   image: string;
   tags: string[];
   categories: Exclude<Category, "All">[];
+  date: string;
 }
 
 interface ProjectCardProps {
