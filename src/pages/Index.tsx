@@ -166,10 +166,17 @@ const Index = () => {
     ? projects
     : projects.filter(p => p.categories.includes(activeCategory as Exclude<Category, "All">));
 
-  const timelineProjects = useMemo(
-    () => [...filtered].reverse(),
-    [filtered]
-  );
+  const timelineProjects = useMemo(() => {
+    const monthOrder: Record<string, number> = {
+      Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+      Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
+    };
+    const parseDate = (d: string) => {
+      const [m, y] = d.split(" ");
+      return (parseInt(y, 10) * 12 + (monthOrder[m] ?? 0));
+    };
+    return [...filtered].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+  }, [filtered]);
 
   return <div className="min-h-screen relative">
       <Hero />
