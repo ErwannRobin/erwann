@@ -2,7 +2,10 @@ import { useMemo, useState } from "react";
 import { Hero } from "@/components/Hero";
 import { ProjectCard, Project } from "@/components/ProjectCard";
 import { CategoryFilter, Category } from "@/components/CategoryFilter";
+import { Timeline } from "@/components/Timeline";
 import { Footer } from "@/components/Footer";
+import { LayoutGrid, Clock } from "lucide-react";
+import { cn } from "@/lib/utils";
 import bttfLogo from "@/assets/bttf-logo.jpg";
 import emojiSearchHero from "@/assets/emoji-search-hero.png";
 import bgEraserDemo from "@/assets/bg-eraser-demo.png";
@@ -22,7 +25,8 @@ const projects: Project[] = [{
   url: "https://bttf.lovable.app",
   image: bttfLogo,
   tags: ["Logo Generator", "Design", "Retro"],
-  categories: ["Design", "Fun", "Tools"]
+  categories: ["Design", "Fun", "Tools"],
+  date: "Jun 2025"
 }, {
   title: "LogLint",
   description: "Smart log analysis and linting tool for developers.",
@@ -30,7 +34,8 @@ const projects: Project[] = [{
   url: "https://loglint.lovable.app",
   image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80",
   tags: ["Developer Tools", "Analysis", "Productivity"],
-  categories: ["Dev", "Tools"]
+  categories: ["Dev", "Tools"],
+  date: "Jul 2025"
 }, {
   title: "Phone Verification",
   description: "Revolutionary WhatsApp reverse verification - costless and secure.",
@@ -38,7 +43,8 @@ const projects: Project[] = [{
   url: "https://phone-verif.com",
   image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80",
   tags: ["WhatsApp", "Security", "Authentication"],
-  categories: ["SaaS", "Dev", "Tools"]
+  categories: ["SaaS", "Dev", "Tools"],
+  date: "Aug 2025"
 }, {
   title: "Background Eraser",
   description: "AI-powered background removal tool with precision.",
@@ -46,7 +52,8 @@ const projects: Project[] = [{
   url: "https://bg-eraser.lovable.app",
   image: bgEraserDemo,
   tags: ["AI", "Image Processing", "Design"],
-  categories: ["Tools", "Design"]
+  categories: ["Tools", "Design"],
+  date: "Sep 2025"
 }, {
   title: "Emoji Search",
   description: "Find the perfect emoji instantly with smart search.",
@@ -54,7 +61,8 @@ const projects: Project[] = [{
   url: "https://emoji-search.lovable.app",
   image: emojiSearchHero,
   tags: ["Utility", "Search", "Fun"],
-  categories: ["Tools", "Fun"]
+  categories: ["Tools", "Fun"],
+  date: "Oct 2025"
 }, {
   title: "Digital War",
   description: "Strategic number battle game with tactical grid-based gameplay.",
@@ -62,7 +70,8 @@ const projects: Project[] = [{
   url: "https://digital-war.lovable.app",
   image: digitalWarScreenshot,
   tags: ["Game", "Strategy", "Fun"],
-  categories: ["Games", "Fun"]
+  categories: ["Games", "Fun"],
+  date: "Nov 2025"
 }, {
   title: "WhatsQuiz",
   description: "Real-time multiplayer quiz game controlled through WhatsApp.",
@@ -70,7 +79,8 @@ const projects: Project[] = [{
   url: "https://waquizz.lovable.app",
   image: waquizzScreenshot,
   tags: ["Game", "Quiz", "WhatsApp"],
-  categories: ["Games", "Fun"]
+  categories: ["Games", "Fun"],
+  date: "Dec 2025"
 }, {
   title: "BombWord",
   description: "Explosive multiplayer word party game - type fast or get blasted!",
@@ -78,7 +88,8 @@ const projects: Project[] = [{
   url: "https://wordbomb.lovable.app",
   image: wordbombScreenshot,
   tags: ["Game", "Multiplayer", "Word"],
-  categories: ["Games", "Fun"]
+  categories: ["Games", "Fun"],
+  date: "Jan 2026"
 }, {
   title: "Life Journal",
   description: "Personal journaling app to capture and cherish life moments.",
@@ -86,7 +97,8 @@ const projects: Project[] = [{
   url: "https://souvenirs.lovable.app",
   image: souvenirsScreenshot,
   tags: ["Journal", "Personal", "Memories"],
-  categories: ["Tools"]
+  categories: ["Tools"],
+  date: "Feb 2026"
 }, {
   title: "ScoreKeeper",
   description: "Track scores for any game with flexible rules and multiple players.",
@@ -94,7 +106,8 @@ const projects: Project[] = [{
   url: "https://scoresheet.lovable.app",
   image: scoresheetScreenshot,
   tags: ["Game", "Utility", "Tracker"],
-  categories: ["Tools", "Games"]
+  categories: ["Tools", "Games"],
+  date: "Mar 2026"
 }, {
   title: "Planning Poker",
   description: "Free real-time Planning Poker tool for agile teams.",
@@ -102,7 +115,8 @@ const projects: Project[] = [{
   url: "https://poker-planning.lovable.app",
   image: pokerPlanningScreenshot,
   tags: ["Agile", "Team", "Productivity"],
-  categories: ["Dev", "Tools"]
+  categories: ["Dev", "Tools"],
+  date: "Apr 2026"
 }, {
   title: "GlowGrid",
   description: "Daily minimalist puzzle — light up the grid in as few moves as possible.",
@@ -110,7 +124,8 @@ const projects: Project[] = [{
   url: "https://glow-grid.vercel.app",
   image: glowgridScreenshot,
   tags: ["Puzzle", "Daily", "Game"],
-  categories: ["Games", "Fun"]
+  categories: ["Games", "Fun"],
+  date: "May 2026"
 }, {
   title: "Lovable Tools Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
@@ -118,13 +133,17 @@ const projects: Project[] = [{
   url: window.location.href,
   image: portfolioScreenshot,
   tags: ["Portfolio", "React", "Lovable"],
-  categories: ["Dev", "Design"]
+  categories: ["Dev", "Design"],
+  date: "May 2026"
 }];
 
 const CATEGORIES: Category[] = ["All", "SaaS", "Games", "Tools", "Dev", "Fun", "Design"];
 
+type ViewMode = "grid" | "timeline";
+
 const Index = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
+  const [view, setView] = useState<ViewMode>("grid");
 
   const counts = useMemo(() => {
     return CATEGORIES.reduce((acc, cat) => {
@@ -137,6 +156,11 @@ const Index = () => {
     ? projects
     : projects.filter(p => p.categories.includes(activeCategory as Exclude<Category, "All">));
 
+  const timelineProjects = useMemo(
+    () => [...filtered].reverse(),
+    [filtered]
+  );
+
   return <div className="min-h-screen relative">
       <Hero />
 
@@ -148,12 +172,45 @@ const Index = () => {
           counts={counts}
         />
 
-        <div
-          key={activeCategory}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
-        >
-          {filtered.map((project, index) => <ProjectCard key={project.url} project={project} index={index} />)}
+        {/* View toggle */}
+        <div className="flex justify-center mb-10 animate-fade-in">
+          <div className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-background/40 backdrop-blur-md p-1">
+            {([
+              { id: "grid", label: "Grid", Icon: LayoutGrid },
+              { id: "timeline", label: "Timeline", Icon: Clock },
+            ] as const).map(({ id, label, Icon }) => {
+              const isActive = view === id;
+              return (
+                <button
+                  key={id}
+                  onClick={() => setView(id)}
+                  className={cn(
+                    "relative inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-300",
+                    isActive
+                      ? "bg-primary/20 text-primary shadow-[0_0_20px_hsl(262_83%_58%_/_0.5)]"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  <Icon className="h-4 w-4" />
+                  {label}
+                </button>
+              );
+            })}
+          </div>
         </div>
+
+        {view === "grid" ? (
+          <div
+            key={`grid-${activeCategory}`}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto animate-fade-in"
+          >
+            {filtered.map((project, index) => <ProjectCard key={project.url} project={project} index={index} />)}
+          </div>
+        ) : (
+          <div key={`timeline-${activeCategory}`} className="animate-fade-in">
+            <Timeline projects={timelineProjects} />
+          </div>
+        )}
       </section>
 
       <Footer />
