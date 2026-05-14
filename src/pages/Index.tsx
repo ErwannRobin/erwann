@@ -17,6 +17,7 @@ import wordbombScreenshot from "@/assets/wordbomb-screenshot.png";
 import waquizzScreenshot from "@/assets/waquizz-screenshot.png";
 import pokerPlanningScreenshot from "@/assets/poker-planning-screenshot.png";
 import glowgridScreenshot from "@/assets/glowgrid-screenshot.png";
+import voxalScreenshot from "@/assets/voxal-screenshot.png";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -126,6 +127,15 @@ const projects: Project[] = [{
   tags: ["Puzzle", "Daily", "Game"],
   categories: ["Games", "Fun"],
   date: "May 2026"
+}, {
+  title: "Voxal",
+  description: "Lightweight presence layer for teams — see who's online and push-to-talk instantly.",
+  longDescription: "Voxal is a lightweight presence layer for teams. Know who's available, drop into a channel, and push-to-talk — no meetings, no scheduling, no friction. Features real-time presence, push-to-talk voice, and zero-setup room creation with no accounts or downloads required.",
+  url: "https://www.voxal.app",
+  image: voxalScreenshot,
+  tags: ["Voice", "Team", "Real-time"],
+  categories: ["SaaS", "Tools"],
+  date: "Jun 2026"
 }, {
   title: "Lovable Tools Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
