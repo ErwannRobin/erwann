@@ -129,8 +129,8 @@ const projects: Project[] = [{
   date: "May 2026"
 }, {
   title: "Voxal",
-  description: "Lightweight presence layer for teams — see who's online and push-to-talk instantly.",
-  longDescription: "Voxal is a lightweight presence layer for teams. Know who's available, drop into a channel, and push-to-talk — no meetings, no scheduling, no friction. Features real-time presence, push-to-talk voice, and zero-setup room creation with no accounts or downloads required.",
+  description: "Team push-to-talk — walkie-talkie style voice chat, no meetings needed.",
+  longDescription: "A real-time push-to-talk voice communication tool for teams. See who's online, drop into a channel, and talk instantly by holding a key — just like a walkie-talkie. No meetings, no scheduling, zero friction. Create rooms in seconds with no accounts or downloads required.",
   url: "https://www.voxal.app",
   image: voxalScreenshot,
   tags: ["Voice", "Team", "Real-time"],
