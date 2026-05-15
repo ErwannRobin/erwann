@@ -94,11 +94,11 @@ const projects: Project[] = [{
   date: "Jan 2026"
 }, {
   title: "Bookmoji",
-  description: "Find any book by describing it with emojis — AI-powered book search.",
-  longDescription: "Can't remember a book title? Describe it with emojis and let AI find it for you. Bookmoji translates your emoji stories into book searches, making it a fun and intuitive way to rediscover books you've read or find new ones based on mood and theme.",
+  description: "Save and share bookmarks described with emojis — instant visual link recall.",
+  longDescription: "A playful bookmark service where you save links with emoji descriptions instead of titles. Search your bookmarks by emoji, browse a visual grid of your favorite sites, and share collections with friends. No more forgetting why you saved that tab — the emojis tell the whole story at a glance.",
   url: "https://bookmoji.lovable.app",
   image: bookmojiScreenshot,
-  tags: ["Search", "Books", "AI"],
+  tags: ["Bookmarks", "Emoji", "Productivity"],
   categories: ["Tools", "Fun"],
   date: "Jan 2026"
 }, {
