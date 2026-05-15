@@ -18,6 +18,7 @@ import waquizzScreenshot from "@/assets/waquizz-screenshot.png";
 import pokerPlanningScreenshot from "@/assets/poker-planning-screenshot.png";
 import glowgridScreenshot from "@/assets/glowgrid-screenshot.png";
 import voxalScreenshot from "@/assets/voxal-screenshot.png";
+import bookmojiScreenshot from "@/assets/bookmoji-screenshot.png";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -90,6 +91,15 @@ const projects: Project[] = [{
   image: wordbombScreenshot,
   tags: ["Game", "Multiplayer", "Word"],
   categories: ["Games", "Fun"],
+  date: "Jan 2026"
+}, {
+  title: "Bookmoji",
+  description: "Find any book by describing it with emojis — AI-powered book search.",
+  longDescription: "Can't remember a book title? Describe it with emojis and let AI find it for you. Bookmoji translates your emoji stories into book searches, making it a fun and intuitive way to rediscover books you've read or find new ones based on mood and theme.",
+  url: "https://bookmoji.lovable.app",
+  image: bookmojiScreenshot,
+  tags: ["Search", "Books", "AI"],
+  categories: ["Tools", "Fun"],
   date: "Jan 2026"
 }, {
   title: "Life Journal",
