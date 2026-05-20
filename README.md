@@ -1,73 +1,42 @@
-# Welcome to your Lovable project
+# Erwann's Portfolio
 
-## Project info
+A showcase of small web tools and creative experiments — built with Lovable.
 
-**URL**: https://lovable.dev/projects/1dea71cf-cd02-40d3-9cbb-d55d078ecab4
+**Live site:** [erwann.lovable.app](https://erwann.lovable.app)
 
-## How can I edit this code?
+## About
 
-There are several ways of editing your application.
+This portfolio collects the apps and tools I've shipped, from logo generators and AI image utilities to multiplayer games and developer productivity tools. Each project includes a live link, a short description, and the story behind it.
 
-**Use Lovable**
+Browse projects by category or scroll through the timeline to see how the collection has grown over time.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1dea71cf-cd02-40d3-9cbb-d55d078ecab4) and start prompting.
+## Highlights
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Liquid Glass** design — dark mode, glassmorphism, neon accents
+- **Grid & Timeline** views to explore projects by category or by date
+- **Photorealistic miniatures** for each tool, generated as conceptual dioramas
+- Fully responsive, no tracking, no ads
 
-**Use your preferred IDE**
+## Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Vite + React + TypeScript
+- Tailwind CSS with a custom design system
+- shadcn/ui components
+- Built and deployed on [Lovable](https://lovable.dev)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The dev server runs at `http://localhost:8080`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Deployment
 
-**Use GitHub Codespaces**
+The site is published via Lovable at [erwann.lovable.app](https://erwann.lovable.app). Pushes to the main branch are reflected automatically.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## License
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/1dea71cf-cd02-40d3-9cbb-d55d078ecab4) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Content and assets © Erwann. Code is provided as-is for reference and inspiration — feel free to take ideas, not screenshots.
