@@ -148,6 +148,15 @@ const projects: Project[] = [{
   categories: ["SaaS", "Tools"],
   date: "Jun 2026"
 }, {
+  title: "Makefile Games",
+  description: "A collection of terminal games written entirely in GNU Make — just `make` and play.",
+  longDescription: "Ten classic games (Connect 4, Wordle, Minesweeper, Sokoban, Mastermind, Hangman, Tic-Tac-Toe, Quizz, Guess the number, Weather) implemented purely in GNU Make. No compilation, no dependencies — clone the repo, run `make`, and pick a game from the interactive menu. A fun exploration of how far you can push a build system.",
+  url: "https://github.com/ErwannRobin/makefile-game",
+  image: makefileGameScreenshot,
+  tags: ["Terminal", "Make", "Games"],
+  categories: ["Games", "Dev", "Fun"],
+  date: "Jun 2026"
+}, {
   title: "Lovable Tools Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
   longDescription: "A modern, elegant portfolio website built with Lovable to showcase all the tools and projects I've created. Features a clean design, smooth animations, dark/light mode support, and is easily extensible for future projects. Built with React, TypeScript, and Tailwind CSS.",
