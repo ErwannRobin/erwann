@@ -19,6 +19,7 @@ import pokerPlanningScreenshot from "@/assets/poker-planning-screenshot.png";
 import glowgridScreenshot from "@/assets/glowgrid-screenshot.png";
 import voxalScreenshot from "@/assets/voxal-screenshot.png";
 import bookmojiScreenshot from "@/assets/bookmoji-screenshot.png";
+import makefileGameScreenshot from "@/assets/makefile-game-screenshot.png";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -145,6 +146,15 @@ const projects: Project[] = [{
   image: voxalScreenshot,
   tags: ["Voice", "Team", "Real-time"],
   categories: ["SaaS", "Tools"],
+  date: "Jun 2026"
+}, {
+  title: "Makefile Games",
+  description: "A collection of terminal games written entirely in GNU Make — just `make` and play.",
+  longDescription: "Ten classic games (Connect 4, Wordle, Minesweeper, Sokoban, Mastermind, Hangman, Tic-Tac-Toe, Quizz, Guess the number, Weather) implemented purely in GNU Make. No compilation, no dependencies — clone the repo, run `make`, and pick a game from the interactive menu. A fun exploration of how far you can push a build system.",
+  url: "https://github.com/ErwannRobin/makefile-game",
+  image: makefileGameScreenshot,
+  tags: ["Terminal", "Make", "Games"],
+  categories: ["Games", "Dev", "Fun"],
   date: "Jun 2026"
 }, {
   title: "Lovable Tools Portfolio",
