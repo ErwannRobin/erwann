@@ -20,6 +20,7 @@ import glowgridScreenshot from "@/assets/glowgrid-screenshot.png";
 import voxalScreenshot from "@/assets/voxal-screenshot.png";
 import bookmojiScreenshot from "@/assets/bookmoji-screenshot.png";
 import makefileGameScreenshot from "@/assets/makefile-game-screenshot.png";
+import mapmindQuestScreenshot from "@/assets/mapmind-quest-screenshot.png";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -156,6 +157,15 @@ const projects: Project[] = [{
   tags: ["Terminal", "Make", "Games"],
   categories: ["Games", "Dev", "Fun"],
   date: "Jun 2026"
+}, {
+  title: "MapMind Quest",
+  description: "Explore the world, unlock continents, and conquer daily geography challenges.",
+  longDescription: "A captivating geography adventure game where you travel across the globe, unlock continents level by level, and complete daily quests to earn rewards. Test your knowledge of countries, capitals, and landmarks in a beautifully animated world map with a charming explorer companion.",
+  url: "https://mapmind-quest.lovable.app",
+  image: mapmindQuestScreenshot,
+  tags: ["Game", "Geography", "Adventure"],
+  categories: ["Games", "Fun"],
+  date: "Jul 2026"
 }, {
   title: "Lovable Tools Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
