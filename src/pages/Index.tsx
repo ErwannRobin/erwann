@@ -22,6 +22,7 @@ import bookmojiScreenshot from "@/assets/bookmoji-screenshot.png";
 import makefileGameScreenshot from "@/assets/makefile-game-screenshot.png";
 import mapmindQuestScreenshot from "@/assets/mapmind-quest-screenshot.png";
 import awaleScreenshot from "@/assets/awale-screenshot.jpg";
+import gyrollScreenshot from "@/assets/gyroll-screenshot.png";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -176,6 +177,15 @@ const projects: Project[] = [{
   tags: ["Game", "Strategy", "Board"],
   categories: ["Games", "Fun"],
   date: "Aug 2026"
+}, {
+  title: "Gyroll",
+  description: "Endless 3D marble run you steer by tilting your phone — how far can you go?",
+  longDescription: "A sleek endless 3D marble runner where you steer a gleaming ball down a neon city track by tilting your phone. Chase distance, collect star power for speed boosts, and survive the daily run — fall and you restart at the last checkpoint. Simple to pick up, impossible to put down.",
+  url: "https://gyroll.erwann.app",
+  image: gyrollScreenshot,
+  tags: ["Game", "3D", "Endless Runner"],
+  categories: ["Games", "Fun"],
+  date: "Sep 2026"
 }, {
   title: "Lovable Tools Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
