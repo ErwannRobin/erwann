@@ -21,6 +21,7 @@ import voxalScreenshot from "@/assets/voxal-screenshot.png";
 import bookmojiScreenshot from "@/assets/bookmoji-screenshot.png";
 import makefileGameScreenshot from "@/assets/makefile-game-screenshot.png";
 import mapmindQuestScreenshot from "@/assets/mapmind-quest-screenshot.png";
+import awaleScreenshot from "@/assets/awale-screenshot.jpg";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -166,6 +167,15 @@ const projects: Project[] = [{
   tags: ["Game", "Geography", "Adventure"],
   categories: ["Games", "Fun"],
   date: "Jul 2026"
+}, {
+  title: "Awalé",
+  description: "The classic African seed-sowing strategy game — play online, vs AI, or with friends.",
+  longDescription: "A polished digital version of Awalé, the centuries-old African seed-sowing board game of the oware family. Play quick matches at your level, face opponents online, challenge an AI with adjustable difficulty, or pass & play with a friend. Includes interactive tutorials to learn the rules, puzzle challenges to sharpen your tactics, and an ELO-based ranking system that grows with you.",
+  url: "https://awale.erwann.app",
+  image: awaleScreenshot,
+  tags: ["Game", "Strategy", "Board"],
+  categories: ["Games", "Fun"],
+  date: "Aug 2026"
 }, {
   title: "Lovable Tools Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
