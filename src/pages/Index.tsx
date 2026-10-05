@@ -23,6 +23,7 @@ import makefileGameScreenshot from "@/assets/makefile-game-screenshot.png";
 import mapmindQuestScreenshot from "@/assets/mapmind-quest-screenshot.png";
 import awaleScreenshot from "@/assets/awale-screenshot.jpg";
 import gyrollScreenshot from "@/assets/gyroll-screenshot.png";
+import trampoVisionScreenshot from "@/assets/trampo-vision-screenshot.png";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -186,6 +187,15 @@ const projects: Project[] = [{
   tags: ["Game", "3D", "Endless Runner"],
   categories: ["Games", "Fun"],
   date: "Sep 2026"
+}, {
+  title: "TrampoVision",
+  description: "Film a trampoline set and get every skill named, scored and coached.",
+  longDescription: "Point a camera at a trampoline set and TrampoVision does the judging: it names each skill, works out its difficulty, proposes an execution score and tells you what to fix. Everything runs in your browser — the video never leaves your device. Perfect for coaches and athletes who want instant, objective feedback on every bounce.",
+  url: "https://trampo-vision.erwann.app",
+  image: trampoVisionScreenshot,
+  tags: ["AI", "Video Analysis", "Sports"],
+  categories: ["Tools", "Fun"],
+  date: "Oct 2026"
 }, {
   title: "Lovable Tools Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
