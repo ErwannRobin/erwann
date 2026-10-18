@@ -70,16 +70,28 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
       <CardHeader className="editorial-card-header">
         <div className="flex items-start justify-between gap-2">
           <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
-          <Button
-            variant="ghost"
-            size="icon"
-            asChild
-            className="hidden md:inline-flex h-8 w-8 shrink-0 hover:text-primary transition-colors"
-          >
-            <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}`}>
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </Button>
+          <div className="flex items-center gap-1 shrink-0">
+            <Button
+              variant="ghost"
+              size="icon"
+              asChild
+              className="hidden md:inline-flex h-8 w-8 hover:text-primary transition-colors"
+            >
+              <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}`}>
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </Button>
+            <button
+              type="button"
+              onClick={() => setIsExpanded(!isExpanded)}
+              aria-expanded={isExpanded}
+              aria-controls={`project-detail-${index}`}
+              aria-label={isExpanded ? "Show less" : "Read more"}
+              className="editorial-arrow-toggle inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-primary"
+            >
+              <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
+            </button>
+          </div>
         </div>
         <CardDescription className="text-sm">{project.description}</CardDescription>
       </CardHeader>
