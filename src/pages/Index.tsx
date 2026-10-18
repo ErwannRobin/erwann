@@ -4,6 +4,7 @@ import { ProjectCard, Project } from "@/components/ProjectCard";
 import { CategoryFilter, Category } from "@/components/CategoryFilter";
 import { Timeline } from "@/components/Timeline";
 import { Footer } from "@/components/Footer";
+import { CursorGlow } from "@/components/CursorGlow";
 import { LayoutGrid, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import bttfLogo from "@/assets/bttf-logo.jpg";
@@ -263,6 +264,7 @@ const Index = () => {
   }, [filtered]);
 
   return <div className="min-h-screen relative">
+      <CursorGlow />
       <Hero />
 
       <section className="container mx-auto px-4 py-16 relative z-10">
