@@ -1,5 +1,6 @@
 import { Sparkles, Gamepad2, Wrench, Code2, PartyPopper, Briefcase, LayoutGrid } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export type Category = "All" | "SaaS" | "Games" | "Tools" | "Dev" | "Fun" | "Design";
 
@@ -22,17 +23,19 @@ interface CategoryFilterProps {
 
 export const CategoryFilter = ({ categories, active, onChange, counts }: CategoryFilterProps) => {
   return (
-    <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-3 mb-10 animate-fade-in overflow-x-auto md:overflow-visible px-4 md:px-0 -mx-4 md:mx-0 py-1 md:py-0 snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <div className="editorial-filters flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-3 mb-4 md:mb-10 animate-fade-in overflow-x-auto md:overflow-visible px-4 md:px-0 -mx-4 md:mx-0 py-1 md:py-0 snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {categories.map((cat, i) => {
         const Icon = categoryIcons[cat];
         const isActive = active === cat;
         return (
-          <button
+          <Button
+            variant="ghost"
             key={cat}
             onClick={() => onChange(cat)}
+            aria-pressed={isActive}
             style={{ animationDelay: `${i * 60}ms` }}
             className={cn(
-              "group relative inline-flex shrink-0 snap-start items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium",
+              "editorial-filter group relative inline-flex shrink-0 snap-start items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium",
               "backdrop-blur-md transition-all duration-300 animate-slide-up overflow-hidden",
               "hover:-translate-y-0.5 hover:scale-105",
               isActive
@@ -42,7 +45,7 @@ export const CategoryFilter = ({ categories, active, onChange, counts }: Categor
           >
             <span
               className={cn(
-                "absolute inset-0 -z-10 bg-gradient-to-r from-primary/30 via-purple-500/20 to-pink-500/30 opacity-0 transition-opacity duration-300",
+                "filter-wash absolute inset-0 -z-10 opacity-0 transition-opacity duration-300",
                 isActive ? "opacity-100" : "group-hover:opacity-60"
               )}
             />
@@ -56,7 +59,7 @@ export const CategoryFilter = ({ categories, active, onChange, counts }: Categor
             >
               {counts[cat]}
             </span>
-          </button>
+          </Button>
         );
       })}
     </div>

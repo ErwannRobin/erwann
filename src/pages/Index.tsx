@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { CursorGlow } from "@/components/CursorGlow";
 import { LayoutGrid, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import bttfLogo from "@/assets/bttf-logo.jpg";
 import emojiSearchHero from "@/assets/emoji-search-hero.png";
 import bgEraserDemo from "@/assets/bg-eraser-demo.png";
@@ -267,7 +268,7 @@ const Index = () => {
       <CursorGlow />
       <Hero />
 
-      <section className="container mx-auto px-4 py-16 relative z-10">
+      <section className="editorial-projects container mx-auto px-4 py-16 relative z-10">
         <CategoryFilter
           categories={CATEGORIES}
           active={activeCategory}
@@ -276,7 +277,8 @@ const Index = () => {
         />
 
         {/* View toggle */}
-        <div className="flex justify-center mb-10 animate-fade-in">
+        <div className="flex items-center justify-between md:justify-center mb-6 md:mb-10 animate-fade-in">
+          <span className="text-xs text-muted-foreground md:hidden">{String(filtered.length).padStart(2, "0")} projects / {activeCategory === "All" ? "The collection" : activeCategory}</span>
           <div className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-background/40 backdrop-blur-md p-1">
             {([
               { id: "grid", label: "Grid", Icon: LayoutGrid },
@@ -284,19 +286,22 @@ const Index = () => {
             ] as const).map(({ id, label, Icon }) => {
               const isActive = view === id;
               return (
-                <button
+                <Button
+                  variant="ghost"
                   key={id}
                   onClick={() => setView(id)}
+                  aria-pressed={isActive}
+                  aria-label={label}
                   className={cn(
-                    "relative inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-300",
+                    "relative inline-flex items-center gap-2 rounded-full px-3 md:px-4 py-1.5 text-sm font-medium transition-all duration-300",
                     isActive
                       ? "bg-primary/20 text-primary shadow-[0_0_20px_hsl(262_83%_58%_/_0.5)]"
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   <Icon className="h-4 w-4" />
-                  {label}
-                </button>
+                  <span className="hidden md:inline">{label}</span>
+                </Button>
               );
             })}
           </div>
@@ -305,7 +310,7 @@ const Index = () => {
         {view === "grid" ? (
           <div
             key={`grid-${activeCategory}`}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto animate-fade-in"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-6 max-w-7xl mx-auto animate-fade-in"
           >
             {filtered.map((project, index) => <ProjectCard key={project.url} project={project} index={index} />)}
           </div>

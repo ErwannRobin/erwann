@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import { ExternalLink, ChevronDown, ChevronUp, ArrowUpRight } from "lucide-react";
 
 import type { Category } from "./CategoryFilter";
 
@@ -39,31 +39,39 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
     <Card 
       onPointerMove={onMove}
       onPointerLeave={() => setTilt(null)}
-      className="card-spotlight relative group overflow-hidden rounded-xl transition-[transform,box-shadow,border-color] duration-300 ease-out animate-slide-up backdrop-blur-md border-primary/30 hover:border-primary/60 hover:shadow-[0_0_80px_hsl(262_83%_58%_/_0.8),0_0_40px_hsl(280_70%_65%_/_0.6),0_0_20px_hsl(320_70%_60%_/_0.4)]"
+      className="editorial-project card-spotlight relative group overflow-hidden rounded-xl transition-[transform,box-shadow,border-color] duration-300 ease-out animate-slide-up backdrop-blur-md border-primary/30 hover:border-primary/60"
       style={{ 
         animationDelay: `${(index % 3) * 100}ms`,
-        background: 'rgba(15, 15, 25, 0.4)',
         transform: tilt ? `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-8px) scale(1.02)` : undefined,
       }}
     >
+      <div className="mb-3 flex items-center justify-between text-xs text-muted-foreground md:hidden">
+        <span className="flex items-center gap-2"><span className="text-primary">{String(index + 1).padStart(2, "0")}</span><span className="h-px w-5 bg-border" />{project.categories[0]}</span>
+        <span>{project.date}</span>
+      </div>
       {/* Image */}
-      <div className="relative overflow-hidden aspect-video bg-background/40">
+      <div className="editorial-artwork relative overflow-hidden aspect-video bg-background/40">
         <img
           src={project.image}
           alt={project.title}
+          loading={index < 2 ? "eager" : "lazy"}
+          decoding="async"
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+        <Button variant="secondary" size="icon" asChild className="absolute right-3 bottom-3 h-11 w-11 rounded-full border border-foreground/20 bg-background/60 text-foreground backdrop-blur-xl md:hidden">
+          <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title}`}><ArrowUpRight className="h-5 w-5" /></a>
+        </Button>
       </div>
 
-      <CardHeader>
+      <CardHeader className="editorial-card-header">
         <div className="flex items-start justify-between gap-2">
           <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
           <Button
             variant="ghost"
             size="icon"
             asChild
-            className="h-8 w-8 shrink-0 hover:text-primary transition-colors"
+            className="hidden md:inline-flex h-8 w-8 shrink-0 hover:text-primary transition-colors"
           >
             <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}`}>
               <ExternalLink className="h-4 w-4" />
@@ -73,9 +81,9 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
         <CardDescription className="text-sm">{project.description}</CardDescription>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="editorial-card-content">
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="editorial-tags flex flex-wrap gap-2 mb-4">
           {project.tags.map((tag) => (
             <span
               key={tag}
@@ -88,7 +96,8 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
         {/* Expandable section */}
         <div className="space-y-3">
-          <div
+          <div id={`project-detail-${index}`}
+            aria-hidden={!isExpanded}
             className={`overflow-hidden transition-all duration-300 ${
               isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
             }`}
@@ -102,10 +111,12 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
             variant="ghost"
             size="sm"
             onClick={() => setIsExpanded(!isExpanded)}
-            className={`w-full transition-colors ${
+            aria-expanded={isExpanded}
+            aria-controls={`project-detail-${index}`}
+            className={`editorial-read-more w-full transition-colors ${
               isExpanded 
-                ? 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-white' 
-                : 'text-primary hover:text-white hover:bg-primary/20'
+                ? 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground' 
+                : 'text-primary hover:text-primary-foreground hover:bg-primary/20'
             }`}
           >
             {isExpanded ? (
