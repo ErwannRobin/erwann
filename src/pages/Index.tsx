@@ -25,6 +25,7 @@ import awaleScreenshot from "@/assets/awale-screenshot.jpg";
 import gyrollScreenshot from "@/assets/gyroll-screenshot.png";
 import trampoVisionScreenshot from "@/assets/trampo-vision-screenshot.png";
 import carlanderScreenshot from "@/assets/carlander-screenshot.png";
+import kidDrawScreenshot from "@/assets/kid-draw-screenshot.png";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -205,6 +206,15 @@ const projects: Project[] = [{
     image: carlanderScreenshot,
     tags: ["Game", "3D", "Stunt"],
     categories: ["Games", "Fun"],
+    date: "Oct 2026"
+  }, {
+    title: "Kid Draw",
+    description: "A blank sheet, fat crayon colours and stickers for toddlers to draw with their fingers.",
+    longDescription: "A finger-first drawing sheet made for very small hands: a full-screen white canvas, ten chunky colour swatches and a tray of emoji stickers to stamp anywhere. No menus to learn, no wrong way to draw — everything happens by touch, so the first masterpiece takes about two seconds. Built as a calm, ad-free space little ones can hand back to you already finished.",
+    url: "https://kid-draw.lovable.app",
+    image: kidDrawScreenshot,
+    tags: ["Drawing", "Kids", "Touch"],
+    categories: ["Fun", "Design"],
     date: "Oct 2026"
   }, {
     title: "Lovable Tools Portfolio",
