@@ -87,7 +87,7 @@ All colors MUST be HSL.
       z-index: 11;
       background: var(--editorial-surface);
     }
-    .mobile-editorial-hero { min-height: 0; padding: 24px 0 28px; }
+    .mobile-editorial-hero.mobile-editorial-hero { min-height: 0; padding: 24px 0 28px; }
     .mobile-editorial-hero > div { text-align: left; padding-inline: 20px; }
     .mobile-editorial-hero .hero-title {
       font-size: 56px;
@@ -100,13 +100,13 @@ All colors MUST be HSL.
       margin-bottom: 16px;
     }
     .mobile-editorial-hero p { margin: 0; font-weight: 400; }
-    .editorial-projects { padding: 0 20px 40px; }
+    .editorial-projects.editorial-projects { padding: 0 20px 40px; }
     .editorial-filters { margin-inline: -20px; padding-inline: 20px; }
     .editorial-filter { min-height: 44px; background: transparent; border-color: hsl(var(--border)); box-shadow: none; color: hsl(var(--muted-foreground)); }
     .editorial-filter[aria-pressed="true"] { background: hsl(var(--foreground)); color: hsl(var(--background)); border-color: hsl(var(--foreground)); }
     .editorial-filter[aria-pressed="true"] > span:last-child { background: hsl(var(--background) / 0.1); color: hsl(var(--background)); }
     .editorial-filter .filter-wash { display: none; }
-    .editorial-project { border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; overflow: visible; }
+    .editorial-project.editorial-project { border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; overflow: visible; }
     .editorial-project::before { display: none; }
     .editorial-artwork { border: 1px solid hsl(var(--foreground) / 0.12); border-radius: 8px; }
     .editorial-card-header { padding: 18px 0 12px; }
