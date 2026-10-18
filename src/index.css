@@ -109,10 +109,10 @@ All colors MUST be HSL.
     .editorial-project.editorial-project { border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; overflow: visible; }
     .editorial-project::before { display: none; }
     .editorial-artwork { border: 1px solid hsl(var(--foreground) / 0.12); border-radius: 8px; }
-    .editorial-card-header { padding: 18px 0 12px; }
+    .editorial-card-header.editorial-card-header { padding: 18px 0 12px; }
     .editorial-card-header h3 { font-size: 22px; line-height: 1.25; }
     .editorial-card-header p { color: hsl(var(--muted-foreground)); line-height: 1.6; }
-    .editorial-card-content { padding: 0 0 20px; border-bottom: 1px solid hsl(var(--border)); }
+    .editorial-card-content.editorial-card-content { padding: 0 0 20px; border-bottom: 1px solid hsl(var(--border)); }
     .editorial-tags { gap: 0; margin-bottom: 8px; }
     .editorial-tags span { padding: 0; border: 0; background: transparent; color: hsl(var(--primary)); backdrop-filter: none; }
     .editorial-tags span + span::before { content: "/"; padding-inline: 9px; color: hsl(var(--muted-foreground)); }
