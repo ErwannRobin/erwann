@@ -1,15 +1,32 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { Component, lazy, Suspense, useEffect, useState, type ReactNode } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroScene = lazy(() => import("./HeroScene"));
+
+/**
+ * The 3D scene is a lazily loaded chunk. If that chunk fails to arrive (a stale
+ * or missing module after a dev-server restart), the rest of the page — title,
+ * tagline and project cards — must still render instead of blanking out.
+ */
+class SceneBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  render() {
+    return this.state.failed ? null : this.props.children;
+  }
+}
 
 export const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const opacity = Math.max(0, 1 - scrollY / 500);
@@ -26,13 +43,22 @@ export const Hero = () => {
       </div>
 
       {/* Cinematic 3D scene */}
-      <div className="fixed inset-x-0 top-0 h-[75vh] z-[1] pointer-events-none transition-opacity duration-300" style={{ opacity: sceneOpacity }}>
-        <Suspense fallback={null}>
-          <HeroScene />
-        </Suspense>
+      <div
+        className="fixed inset-x-0 top-0 h-[75vh] z-[1] pointer-events-none transition-opacity duration-300"
+        style={{ opacity: sceneOpacity }}
+      >
+        <SceneBoundary>
+          <Suspense fallback={null}>
+            <HeroScene />
+          </Suspense>
+        </SceneBoundary>
       </div>
 
-      <section className={`${isSticky ? 'sticky top-0' : 'relative'} min-h-[50vh] flex items-center justify-center overflow-hidden py-20 z-10 transition-all duration-300`}>
+      <section
+        className={`${
+          isSticky ? "sticky top-0" : "relative"
+        } min-h-[50vh] flex items-center justify-center overflow-hidden py-20 z-10 transition-all duration-300`}
+      >
         <div
           className="container mx-auto px-4 z-20 text-center animate-fade-in transition-all duration-500 ease-out"
           style={{ opacity, transform: `scale(${scale})` }}
@@ -41,7 +67,7 @@ export const Hero = () => {
             Erwann's projects
           </h1>
           <p className="text-base text-foreground/80 max-w-2xl mx-auto font-light md:text-2xl drop-shadow-[0_2px_12px_hsl(var(--background))]">
-            Crafting delightful experiences with Lovable
+            Crafting delightful experiences
           </p>
         </div>
       </section>
