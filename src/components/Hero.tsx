@@ -22,17 +22,30 @@ class SceneBoundary extends Component<{ children: ReactNode }, { failed: boolean
 
 export const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [isMobile, setIsMobile] = useState(
+    () => window.matchMedia("(max-width: 767px)").matches
+  );
 
   useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const onChange = () => setIsMobile(mq.matches);
+    mq.addEventListener("change", onChange);
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      mq.removeEventListener("change", onChange);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  const opacity = Math.max(0, 1 - scrollY / 500);
-  const scale = Math.max(0.6, 1 - scrollY / 1200);
-  const sceneOpacity = Math.max(0.25, 1 - scrollY / 700);
-  const isSticky = scrollY < 500;
+  // On phones the content follows the hero much sooner, so the title must
+  // bow out faster and must not stay pinned over the category pills.
+  const fadeDistance = isMobile ? 240 : 500;
+  const scaleFloor = isMobile ? 0.8 : 0.6;
+  const opacity = Math.max(0, 1 - scrollY / fadeDistance);
+  const scale = Math.max(scaleFloor, 1 - scrollY / (fadeDistance * 2.4));
+  const sceneOpacity = Math.max(0, 1 - scrollY / (isMobile ? 320 : 700));
+  const isSticky = !isMobile && scrollY < 500;
 
   return (
     <>
@@ -44,7 +57,7 @@ export const Hero = () => {
 
       {/* Cinematic 3D scene */}
       <div
-        className="fixed inset-x-0 top-0 h-[75vh] z-[1] pointer-events-none transition-opacity duration-300"
+        className="fixed inset-x-0 top-0 h-[55vh] md:h-[75vh] z-[1] pointer-events-none transition-opacity duration-300"
         style={{ opacity: sceneOpacity }}
       >
         <SceneBoundary>
