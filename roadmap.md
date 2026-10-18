@@ -6,4 +6,4 @@
 # Project visual references
 - [x] Remove the floating header collectibles and their navigation.
 - [x] Use native emojis for card signatures and category filters.
-- [ ] Verify filtering, details, and phone/desktop layouts.
+- [x] Verify filtering, details, and phone/desktop layouts.
