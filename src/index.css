@@ -152,3 +152,28 @@ All colors MUST be HSL.
     .editorial-project, .editorial-artwork img { transition: none; }
   }
 }
+
+.tilt-light {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(ellipse 55% 40% at var(--tilt-x, 50%) var(--tilt-y, -10%), hsl(var(--primary) / 0.35), transparent 70%),
+    radial-gradient(ellipse 30% 25% at var(--tilt-x, 50%) var(--tilt-y, -10%), hsl(0 0% 100% / 0.18), transparent 70%);
+}
+.tilt-light::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: var(--tilt-x, 50%);
+  width: 60vw;
+  height: 80vh;
+  transform: translateX(-50%) rotate(var(--tilt-rot, 0deg));
+  transform-origin: top center;
+  background: linear-gradient(to bottom, hsl(var(--primary) / 0.22), transparent 80%);
+  clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
+  filter: blur(30px);
+}
+@media (prefers-reduced-motion: reduce) { .tilt-light::after { transform: translateX(-50%); } }

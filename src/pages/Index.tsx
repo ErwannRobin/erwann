@@ -5,6 +5,7 @@ import { CategoryFilter, Category } from "@/components/CategoryFilter";
 import { Timeline } from "@/components/Timeline";
 import { Footer } from "@/components/Footer";
 import { CursorGlow } from "@/components/CursorGlow";
+import { TiltLight } from "@/components/TiltLight";
 import { LayoutGrid, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -266,6 +267,7 @@ const Index = () => {
 
   return <div className="min-h-screen relative">
       <CursorGlow />
+      <TiltLight />
       <Hero />
 
       <section className="editorial-projects container mx-auto px-4 py-16 relative z-10">
