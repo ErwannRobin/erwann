@@ -49,6 +49,8 @@ All colors MUST be HSL.
     --glass-bg: hsl(240 10% 10% / 0.4);
     --glass-border: hsl(0 0% 100% / 0.15);
     --glass-shadow: 0 8px 32px 0 hsl(0 0% 0% / 0.4);
+    --editorial-surface: hsl(var(--background) / 0.82);
+    --filter-wash: linear-gradient(110deg, hsl(var(--primary) / 0.3), hsl(320 70% 65% / 0.22));
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -72,6 +74,51 @@ All colors MUST be HSL.
 }
 
 @layer components {
+  .filter-wash { background: var(--filter-wash); }
+  .editorial-project { background: var(--glass-bg); }
+  @media (hover: hover) and (min-width: 768px) {
+    .editorial-project:hover { box-shadow: var(--shadow-glow); }
+  }
+  @media (max-width: 767px) {
+    .portfolio-backdrop::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 11;
+      background: var(--editorial-surface);
+    }
+    .mobile-editorial-hero { min-height: 0; padding: 24px 0 28px; }
+    .mobile-editorial-hero > div { text-align: left; padding-inline: 20px; }
+    .mobile-editorial-hero .hero-title {
+      font-size: 56px;
+      line-height: 1.03;
+      letter-spacing: 0;
+      color: hsl(var(--foreground));
+      background: none;
+      filter: none;
+      animation: none;
+      margin-bottom: 16px;
+    }
+    .mobile-editorial-hero p { margin: 0; font-weight: 400; }
+    .editorial-projects { padding: 0 20px 40px; }
+    .editorial-filters { margin-inline: -20px; padding-inline: 20px; }
+    .editorial-filter { min-height: 44px; background: transparent; border-color: hsl(var(--border)); box-shadow: none; color: hsl(var(--muted-foreground)); }
+    .editorial-filter[aria-pressed="true"] { background: hsl(var(--foreground)); color: hsl(var(--background)); border-color: hsl(var(--foreground)); }
+    .editorial-filter[aria-pressed="true"] > span:last-child { background: hsl(var(--background) / 0.1); color: hsl(var(--background)); }
+    .editorial-filter .filter-wash { display: none; }
+    .editorial-project { border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; overflow: visible; }
+    .editorial-project::before { display: none; }
+    .editorial-artwork { border: 1px solid hsl(var(--foreground) / 0.12); border-radius: 8px; }
+    .editorial-card-header { padding: 18px 0 12px; }
+    .editorial-card-header h3 { font-size: 22px; line-height: 1.25; }
+    .editorial-card-header p { color: hsl(var(--muted-foreground)); line-height: 1.6; }
+    .editorial-card-content { padding: 0 0 20px; border-bottom: 1px solid hsl(var(--border)); }
+    .editorial-tags { gap: 0; margin-bottom: 8px; }
+    .editorial-tags span { padding: 0; border: 0; background: transparent; color: hsl(var(--primary)); backdrop-filter: none; }
+    .editorial-tags span + span::before { content: "/"; padding-inline: 9px; color: hsl(var(--muted-foreground)); }
+    .editorial-read-more { width: auto; min-height: 44px; justify-content: flex-start; padding-inline: 0; color: hsl(var(--foreground)); background: transparent; }
+    .editorial-read-more:hover { background: transparent; color: hsl(var(--primary)); }
+  }
   .hero-title {
     background: linear-gradient(110deg, hsl(0 0% 100%) 20%, hsl(280 90% 80%) 40%, hsl(200 95% 75%) 50%, hsl(0 0% 100%) 65%);
     background-size: 250% 100%;
@@ -99,5 +146,7 @@ All colors MUST be HSL.
   .card-spotlight:hover::before { opacity: 1; }
   @media (prefers-reduced-motion: reduce) {
     .hero-title { animation: none; }
+    .animate-slide-up, .animate-fade-in { animation: none; }
+    .editorial-project, .editorial-artwork img { transition: none; }
   }
 }
