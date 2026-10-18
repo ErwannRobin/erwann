@@ -1,17 +1,16 @@
-import { Sparkles, Gamepad2, Wrench, Code2, PartyPopper, Briefcase, LayoutGrid } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 export type Category = "All" | "SaaS" | "Games" | "Tools" | "Dev" | "Fun" | "Design";
 
-const categoryIcons: Record<Category, React.ComponentType<{ className?: string }>> = {
-  All: LayoutGrid,
-  SaaS: Briefcase,
-  Games: Gamepad2,
-  Tools: Wrench,
-  Dev: Code2,
-  Fun: PartyPopper,
-  Design: Sparkles,
+const categoryEmojis: Record<Category, string> = {
+  All: "🌟",
+  SaaS: "💼",
+  Games: "🎮",
+  Tools: "🛠️",
+  Dev: "💻",
+  Fun: "🎉",
+  Design: "🎨",
 };
 
 interface CategoryFilterProps {
@@ -25,7 +24,6 @@ export const CategoryFilter = ({ categories, active, onChange, counts }: Categor
   return (
     <div className="editorial-filters flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-3 mb-4 md:mb-10 animate-fade-in overflow-x-auto md:overflow-visible px-4 md:px-0 -mx-4 md:mx-0 py-1 md:py-0 snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {categories.map((cat, i) => {
-        const Icon = categoryIcons[cat];
         const isActive = active === cat;
         return (
           <Button
@@ -49,7 +47,7 @@ export const CategoryFilter = ({ categories, active, onChange, counts }: Categor
                 isActive ? "opacity-100" : "group-hover:opacity-60"
               )}
             />
-            <Icon className={cn("h-4 w-4 transition-transform duration-300", isActive && "scale-110")} />
+            <span aria-hidden="true" className={cn("inline-flex h-5 w-5 items-center justify-center text-base leading-none transition-transform duration-300", isActive && "scale-110")}>{categoryEmojis[cat]}</span>
             <span>{cat}</span>
             <span
               className={cn(
