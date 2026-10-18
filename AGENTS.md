@@ -4,3 +4,5 @@
 - Keep manifest theme and background colors aligned with the global background token so installed launches match the portfolio.
 - The 3D hero scene is lazy-loaded behind Suspense and non-interactive (pointer-events none), so the page text and cards render instantly and stay clickable.
 - Mobile gallery presentation uses scoped styles on the shared filters and project cards; the shared lazy-loaded hero scene uses its lighter phone graphics budget to retain mobile animation without duplicating project data.
+- Project collectibles use an accessible DOM overlay separate from the decorative canvas; selection resets filters and the view before scrolling to stable title-derived card anchors, so hidden projects remain reachable.
+- ProjectSignature centralizes decorative card motifs and anchor generation, keeping project-specific visual references consistent without duplicating project records.

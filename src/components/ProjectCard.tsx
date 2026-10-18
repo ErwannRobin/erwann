@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, ChevronDown, ChevronUp, ArrowUpRight } from "lucide-react";
 
 import type { Category } from "./CategoryFilter";
+import { ProjectSignature, projectAnchor } from "./ProjectSignature";
 
 export interface Project {
   title: string;
@@ -37,6 +38,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
   return (
     <Card 
+      id={projectAnchor(project.title)}
       onPointerMove={onMove}
       onPointerLeave={() => setTilt(null)}
       className="editorial-project card-spotlight relative group overflow-hidden rounded-xl transition-[transform,box-shadow,border-color] duration-300 ease-out animate-slide-up backdrop-blur-md border-primary/30 hover:border-primary/60"
@@ -51,6 +53,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
       </div>
       {/* Image */}
       <div className="editorial-artwork relative overflow-hidden aspect-video bg-background/40">
+        <ProjectSignature title={project.title} />
         <img
           src={project.image}
           alt={project.title}
