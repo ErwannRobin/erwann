@@ -22,7 +22,7 @@ interface CategoryFilterProps {
 
 export const CategoryFilter = ({ categories, active, onChange, counts }: CategoryFilterProps) => {
   return (
-    <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 animate-fade-in">
+    <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-3 mb-10 animate-fade-in overflow-x-auto md:overflow-visible px-4 md:px-0 -mx-4 md:mx-0 py-1 md:py-0 snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {categories.map((cat, i) => {
         const Icon = categoryIcons[cat];
         const isActive = active === cat;
@@ -32,7 +32,7 @@ export const CategoryFilter = ({ categories, active, onChange, counts }: Categor
             onClick={() => onChange(cat)}
             style={{ animationDelay: `${i * 60}ms` }}
             className={cn(
-              "group relative inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium",
+              "group relative inline-flex shrink-0 snap-start items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium",
               "backdrop-blur-md transition-all duration-300 animate-slide-up overflow-hidden",
               "hover:-translate-y-0.5 hover:scale-105",
               isActive
