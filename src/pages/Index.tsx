@@ -245,7 +245,11 @@ const Index = () => {
       const [m, y] = d.split(" ");
       return (parseInt(y, 10) * 12 + (monthOrder[m] ?? 0));
     };
-    return [...filtered].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+    // Same-month projects keep their array order: later in the array = more recent.
+    return filtered
+      .map((project, index) => ({ project, index }))
+      .sort((a, b) => parseDate(b.project.date) - parseDate(a.project.date) || b.index - a.index)
+      .map(({ project }) => project);
   }, [filtered]);
 
   return <div className="min-h-screen relative">
