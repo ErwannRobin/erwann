@@ -80,19 +80,18 @@ All colors MUST be HSL.
 
 @layer components {
   .project-orbit { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: min(520px, 100%); height: 130px; pointer-events: none; }
-  .orbit-slot { position: absolute; animation: collectible-float 9s ease-in-out infinite; }
+  .orbit-slot { position: absolute; }
   .orbit-marble { left: 5%; top: 5%; }
   .orbit-seeds { right: 5%; top: 5%; animation-delay: -2s; }
   .orbit-car { left: 22%; bottom: 0; animation-delay: -4s; }
   .orbit-bookmark { right: 22%; bottom: 0; animation-delay: -6s; }
   .orbit-collectible.orbit-collectible { position: relative; width: 64px; height: 64px; padding: 0; pointer-events: auto; background: transparent; border-radius: 50%; transition: transform 200ms; }
   .orbit-collectible:hover { transform: scale(1.15); }
-  .collectible-sprite { display: block; position: relative; width: 100%; height: 100%; overflow: hidden; filter: drop-shadow(var(--collectible-shadow)); }
-  .collectible-sprite img { position: absolute; width: 200%; height: 200%; max-width: none; object-fit: fill; }
-  .sprite-marble img { left: 0; top: 0; }
-  .sprite-seeds img { left: -100%; top: 0; }
-  .sprite-car img { left: 0; top: -100%; }
-  .sprite-bookmark img { left: -100%; top: -100%; }
+  .collectible-sprite { display: block; position: relative; width: 100%; height: 100%; filter: drop-shadow(var(--collectible-shadow)); animation: collectible-float 9s ease-in-out infinite; pointer-events: none; }
+  .collectible-sprite img { width: 100%; height: 100%; object-fit: contain; }
+  .sprite-seeds { animation-delay: -2s; }
+  .sprite-car { animation-delay: -4s; }
+  .sprite-bookmark { animation-delay: -6s; }
   .collectible-label { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); opacity: 0; font-size: 11px; padding: 3px 6px; border-radius: 4px; background: hsl(var(--background) / 0.9); color: hsl(var(--foreground)); transition: opacity 200ms; pointer-events: none; }
   .orbit-collectible:hover .collectible-label, .orbit-collectible:focus-visible .collectible-label { opacity: 1; }
   .project-signature { position: absolute; left: 12px; top: 12px; z-index: 3; height: 36px; min-width: 36px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; padding: 6px 8px; border: 1px solid hsl(var(--foreground) / 0.15); border-radius: 8px; background: hsl(var(--background) / 0.7); color: hsl(var(--signature-cyan)); backdrop-filter: blur(12px); font-size: 18px; font-weight: 600; font-family: monospace; pointer-events: none; }
@@ -126,7 +125,7 @@ All colors MUST be HSL.
       background: var(--editorial-surface);
     }
     .mobile-editorial-hero.mobile-editorial-hero { min-height: 42vh; padding: 48px 0; }
-    .mobile-editorial-hero > div { text-align: center; padding-inline: 20px; }
+    .mobile-editorial-hero > .container { text-align: center; padding-inline: 20px; }
     .project-orbit { height: 110px; bottom: 4px; }
     .orbit-collectible.orbit-collectible { width: 52px; height: 52px; }
     .orbit-car { left: 17%; }
@@ -176,7 +175,7 @@ All colors MUST be HSL.
   }
   .card-spotlight:hover::before { opacity: 1; }
   @media (prefers-reduced-motion: reduce) {
-    .orbit-slot, .signature-wave i, .group:hover .signature-bounce, .project-arrival { animation: none; }
+    .collectible-sprite, .signature-wave i, .group:hover .signature-bounce, .project-arrival { animation: none; }
     .hero-title { animation: none; }
     .animate-slide-up, .animate-fade-in { animation: none; }
     .editorial-project, .editorial-artwork img { transition: none; }
