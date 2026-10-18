@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, ChevronDown, ChevronUp, ArrowUpRight } from "lucide-react";
+import { ExternalLink, ChevronDown, ArrowUpRight } from "lucide-react";
 
 import type { Category } from "./CategoryFilter";
 import { ProjectSignature, projectAnchor } from "./ProjectSignature";
@@ -70,16 +70,28 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
       <CardHeader className="editorial-card-header">
         <div className="flex items-start justify-between gap-2">
           <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
-          <Button
-            variant="ghost"
-            size="icon"
-            asChild
-            className="hidden md:inline-flex h-8 w-8 shrink-0 hover:text-primary transition-colors"
-          >
-            <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}`}>
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </Button>
+          <div className="flex items-center gap-1 shrink-0">
+            <Button
+              variant="ghost"
+              size="icon"
+              asChild
+              className="hidden md:inline-flex h-8 w-8 hover:text-primary transition-colors"
+            >
+              <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}`}>
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </Button>
+            <button
+              type="button"
+              onClick={() => setIsExpanded(!isExpanded)}
+              aria-expanded={isExpanded}
+              aria-controls={`project-detail-${index}`}
+              aria-label={isExpanded ? "Show less" : "Read more"}
+              className="editorial-arrow-toggle inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-primary"
+            >
+              <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
+            </button>
+          </div>
         </div>
         <CardDescription className="text-sm">{project.description}</CardDescription>
       </CardHeader>
@@ -98,40 +110,16 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
         </div>
 
         {/* Expandable section */}
-        <div className="space-y-3">
-          <div id={`project-detail-${index}`}
-            aria-hidden={!isExpanded}
-            className={`overflow-hidden transition-all duration-300 ${
-              isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-            }`}
-          >
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {project.longDescription}
-            </p>
-          </div>
-
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setIsExpanded(!isExpanded)}
-            aria-expanded={isExpanded}
-            aria-controls={`project-detail-${index}`}
-            className={`editorial-read-more w-full transition-colors ${
-              isExpanded 
-                ? 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground' 
-                : 'text-primary hover:text-primary-foreground hover:bg-primary/20'
-            }`}
-          >
-            {isExpanded ? (
-              <>
-                Show less <ChevronUp className="ml-2 h-4 w-4" />
-              </>
-            ) : (
-              <>
-                Read more <ChevronDown className="ml-2 h-4 w-4" />
-              </>
-            )}
-          </Button>
+        <div
+          id={`project-detail-${index}`}
+          aria-hidden={!isExpanded}
+          className={`overflow-hidden transition-all duration-300 ${
+            isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            {project.longDescription}
+          </p>
         </div>
       </CardContent>
     </Card>
