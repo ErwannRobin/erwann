@@ -41,7 +41,7 @@ export const Hero = () => {
             Erwann's projects
           </h1>
           <p className="text-base text-foreground/80 max-w-2xl mx-auto font-light md:text-2xl drop-shadow-[0_2px_12px_hsl(var(--background))]">
-            Crafting delightful experiences with Lovable
+            Crafting delightful experiences
           </p>
         </div>
       </section>
