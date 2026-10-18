@@ -5,3 +5,4 @@
 - The 3D hero scene is lazy-loaded behind Suspense and non-interactive (pointer-events none), so the page text and cards render instantly and stay clickable.
 - Mobile gallery presentation uses scoped styles on the shared filters and project cards; the shared lazy-loaded hero scene uses its lighter phone graphics budget to retain mobile animation without duplicating project data.
 - ProjectSignature centralizes native emoji references and stable card anchor generation, keeping project visuals consistent without duplicating project records.
+- Emoji decorations use system color fonts with a bundled color-emoji fallback so platforms without emoji fonts still render the references.
