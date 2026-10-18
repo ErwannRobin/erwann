@@ -24,6 +24,7 @@ import mapmindQuestScreenshot from "@/assets/mapmind-quest-screenshot.png";
 import awaleScreenshot from "@/assets/awale-screenshot.jpg";
 import gyrollScreenshot from "@/assets/gyroll-screenshot.png";
 import trampoVisionScreenshot from "@/assets/trampo-vision-screenshot.png";
+import carlanderScreenshot from "@/assets/carlander-screenshot.png";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -195,9 +196,18 @@ const projects: Project[] = [{
   image: trampoVisionScreenshot,
   tags: ["AI", "Video Analysis", "Sports"],
   categories: ["Tools", "Fun"],
-  date: "Oct 2026"
-}, {
-  title: "Lovable Tools Portfolio",
+    date: "Oct 2026"
+  }, {
+    title: "Roadster Flight",
+    description: "Launch a rocket-assisted roadster off monumental ramps above the clouds — then land it perfectly.",
+    longDescription: "A cinematic 3D stunt game where you launch a rocket-assisted roadster off monumental ramps above the clouds, then fight gravity to bring it back down for a perfect landing. Drag to line up your approach, feel the boost, and nail the touchdown across three levels of increasing ambition.",
+    url: "https://carlander.vercel.app",
+    image: carlanderScreenshot,
+    tags: ["Game", "3D", "Stunt"],
+    categories: ["Games", "Fun"],
+    date: "Oct 2026"
+  }, {
+    title: "Lovable Tools Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
   longDescription: "A modern, elegant portfolio website built with Lovable to showcase all the tools and projects I've created. Features a clean design, smooth animations, dark/light mode support, and is easily extensible for future projects. Built with React, TypeScript, and Tailwind CSS.",
   url: window.location.href,
