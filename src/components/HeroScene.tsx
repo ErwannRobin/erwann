@@ -15,7 +15,7 @@ const Orb = () => {
     const k = 1 - Math.exp(-4 * dt);
     g.rotation.y += (state.pointer.x * 0.6 - g.rotation.y) * k + dt * 0.15;
     g.rotation.x += (-state.pointer.y * 0.4 - g.rotation.x) * k;
-    g.position.y += (scroll * 2.2 - g.position.y) * k;
+    g.position.y += (scroll * 2.2 - 0.5 - g.position.y) * k;
     const s = 1 - scroll * 0.35;
     g.position.z = -1.5;
     g.scale.setScalar(s);
