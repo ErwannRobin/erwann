@@ -190,6 +190,15 @@ const projects: Project[] = [{
   categories: ["Games", "Fun"],
   date: "Sep 2026"
 }, {
+  title: "Kid Draw",
+  description: "A blank sheet, fat crayon colours and stickers for toddlers to draw with their fingers.",
+  longDescription: "A finger-first drawing sheet made for very small hands: a full-screen white canvas, ten chunky colour swatches and a tray of emoji stickers to stamp anywhere. No menus to learn, no wrong way to draw — everything happens by touch, so the first masterpiece takes about two seconds. Built as a calm, ad-free space little ones can hand back to you already finished.",
+  url: "https://kid-draw.lovable.app",
+  image: kidDrawScreenshot,
+  tags: ["Drawing", "Kids", "Touch"],
+  categories: ["Fun", "Design"],
+  date: "Oct 2026"
+}, {
   title: "TrampoVision",
   description: "Film a trampoline set and get every skill named, scored and coached.",
   longDescription: "Point a camera at a trampoline set and TrampoVision does the judging: it names each skill, works out its difficulty, proposes an execution score and tells you what to fix. Everything runs in your browser — the video never leaves your device. Perfect for coaches and athletes who want instant, objective feedback on every bounce.",
@@ -206,15 +215,6 @@ const projects: Project[] = [{
     image: carlanderScreenshot,
     tags: ["Game", "3D", "Stunt"],
     categories: ["Games", "Fun"],
-    date: "Oct 2026"
-  }, {
-    title: "Kid Draw",
-    description: "A blank sheet, fat crayon colours and stickers for toddlers to draw with their fingers.",
-    longDescription: "A finger-first drawing sheet made for very small hands: a full-screen white canvas, ten chunky colour swatches and a tray of emoji stickers to stamp anywhere. No menus to learn, no wrong way to draw — everything happens by touch, so the first masterpiece takes about two seconds. Built as a calm, ad-free space little ones can hand back to you already finished.",
-    url: "https://kid-draw.lovable.app",
-    image: kidDrawScreenshot,
-    tags: ["Drawing", "Kids", "Touch"],
-    categories: ["Fun", "Design"],
     date: "Oct 2026"
   }, {
     title: "Lovable Tools Portfolio",
