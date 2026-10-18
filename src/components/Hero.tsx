@@ -60,11 +60,11 @@ export const Hero = () => {
         className="fixed inset-x-0 top-0 h-[55vh] md:h-[75vh] z-[1] pointer-events-none transition-opacity duration-300"
         style={{ opacity: sceneOpacity }}
       >
-        {!isMobile && <SceneBoundary>
+        <SceneBoundary>
           <Suspense fallback={null}>
             <HeroScene />
           </Suspense>
-        </SceneBoundary>}
+        </SceneBoundary>
       </div>
 
       <section
@@ -76,12 +76,8 @@ export const Hero = () => {
           className="container mx-auto px-4 z-20 text-center animate-fade-in transition-all duration-500 ease-out"
           style={{ opacity, transform: `scale(${scale})` }}
         >
-          <div className="mb-5 flex items-center justify-between text-xs text-muted-foreground md:hidden">
-            <span className="text-foreground">ER / Portfolio</span>
-            <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />Independent creations</span>
-          </div>
           <h1 className="hero-title text-4xl mb-3 leading-tight font-extrabold md:text-7xl">
-            <span className="block md:inline">Erwann's</span>{" "}<span className="block md:inline">projects<span className="text-primary md:hidden">.</span></span>
+            Erwann's projects
           </h1>
           <p className="text-sm text-foreground/80 max-w-2xl mx-auto font-light md:text-2xl drop-shadow-[0_2px_12px_hsl(var(--background))]">
             Crafting delightful experiences
