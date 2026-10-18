@@ -24,6 +24,7 @@ import mapmindQuestScreenshot from "@/assets/mapmind-quest-screenshot.png";
 import awaleScreenshot from "@/assets/awale-screenshot.jpg";
 import gyrollScreenshot from "@/assets/gyroll-screenshot.png";
 import trampoVisionScreenshot from "@/assets/trampo-vision-screenshot.png";
+import carlanderScreenshot from "@/assets/carlander-screenshot.png";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
