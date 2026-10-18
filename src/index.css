@@ -87,19 +87,8 @@ All colors MUST be HSL.
       z-index: 11;
       background: var(--editorial-surface);
     }
-    .mobile-editorial-hero.mobile-editorial-hero { min-height: 0; padding: 24px 0 28px; }
-    .mobile-editorial-hero > div { text-align: left; padding-inline: 20px; }
-    .mobile-editorial-hero .hero-title {
-      font-size: 56px;
-      line-height: 1.03;
-      letter-spacing: 0;
-      color: hsl(var(--foreground));
-      background: none;
-      filter: none;
-      animation: none;
-      margin-bottom: 16px;
-    }
-    .mobile-editorial-hero p { margin: 0; font-weight: 400; }
+    .mobile-editorial-hero.mobile-editorial-hero { min-height: 42vh; padding: 48px 0; }
+    .mobile-editorial-hero > div { text-align: center; padding-inline: 20px; }
     .editorial-projects.editorial-projects { padding: 0 20px 40px; }
     .editorial-filters { margin-inline: -20px; padding-inline: 20px; }
     .editorial-filter { min-height: 44px; background: transparent; border-color: hsl(var(--border)); box-shadow: none; color: hsl(var(--muted-foreground)); }
