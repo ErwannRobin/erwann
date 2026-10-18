@@ -78,7 +78,6 @@ All colors MUST be HSL.
   }
 }
 
-@layer components {
   .project-orbit { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: min(520px, 100%); height: 130px; pointer-events: none; }
   .orbit-slot { position: absolute; }
   .orbit-marble { left: 5%; top: 5%; }
@@ -111,6 +110,7 @@ All colors MUST be HSL.
   @keyframes signature-wave { to { transform: scaleY(0.4); } }
   @keyframes signature-bounce { to { transform: translateY(-5px); } }
   @keyframes project-arrival { 0%, 30% { outline: 2px solid hsl(var(--signature-cyan)); outline-offset: 6px; } 100% { outline: 2px solid transparent; outline-offset: 12px; } }
+@layer components {
   .filter-wash { background: var(--filter-wash); }
   .editorial-project { background: var(--glass-bg); }
   @media (hover: hover) and (min-width: 768px) {
