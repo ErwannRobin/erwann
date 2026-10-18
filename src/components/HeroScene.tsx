@@ -17,6 +17,7 @@ const Orb = () => {
     g.rotation.x += (-state.pointer.y * 0.4 - g.rotation.x) * k;
     g.position.y += (scroll * 2.2 - g.position.y) * k;
     const s = 1 - scroll * 0.35;
+    g.position.z = -1.5;
     g.scale.setScalar(s);
     if (ring.current) ring.current.rotation.z += dt * 0.4;
   });
@@ -25,23 +26,23 @@ const Orb = () => {
     <group ref={group}>
       <Float speed={2} rotationIntensity={0.6} floatIntensity={1.2}>
         <mesh>
-          <icosahedronGeometry args={[1.35, 24]} />
+          <icosahedronGeometry args={[0.9, 24]} />
           <MeshDistortMaterial
-            color="#8b5cf6"
+            color="#a78bfa"
             emissive="#3b0a78"
-            emissiveIntensity={0.6}
+            emissiveIntensity={1.1}
             roughness={0.08}
-            metalness={0.9}
+            metalness={0.35}
             distort={0.42}
             speed={2.2}
           />
         </mesh>
         <mesh ref={ring} rotation={[Math.PI / 2.4, 0, 0]}>
-          <torusGeometry args={[2.2, 0.025, 16, 160]} />
+          <torusGeometry args={[1.6, 0.02, 16, 160]} />
           <meshBasicMaterial color="#e879f9" toneMapped={false} />
         </mesh>
         <mesh rotation={[Math.PI / 1.7, 0.5, 0]}>
-          <torusGeometry args={[2.6, 0.012, 16, 160]} />
+          <torusGeometry args={[1.9, 0.01, 16, 160]} />
           <meshBasicMaterial color="#60a5fa" toneMapped={false} />
         </mesh>
       </Float>
@@ -50,7 +51,7 @@ const Orb = () => {
 };
 
 const HeroScene = () => (
-  <Canvas dpr={[1, 1.75]} camera={{ position: [0, 0, 6], fov: 45 }} gl={{ antialias: true, alpha: true }}>
+  <Canvas dpr={[1, 1.75]} camera={{ position: [0, 0, 7], fov: 45 }} gl={{ antialias: true, alpha: true }}>
     <ambientLight intensity={0.4} />
     <pointLight position={[4, 3, 4]} intensity={60} color="#c084fc" />
     <pointLight position={[-4, -2, 3]} intensity={40} color="#38bdf8" />
