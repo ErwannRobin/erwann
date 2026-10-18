@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Hero } from "@/components/Hero";
 import { ProjectCard, Project } from "@/components/ProjectCard";
 import { CategoryFilter, Category } from "@/components/CategoryFilter";
@@ -8,6 +8,7 @@ import { CursorGlow } from "@/components/CursorGlow";
 import { LayoutGrid, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { projectAnchor } from "@/components/ProjectSignature";
 import bttfLogo from "@/assets/bttf-logo.jpg";
 import emojiSearchHero from "@/assets/emoji-search-hero.png";
 import bgEraserDemo from "@/assets/bg-eraser-demo.png";
@@ -236,6 +237,28 @@ type ViewMode = "grid" | "timeline";
 const Index = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
   const [view, setView] = useState<ViewMode>("grid");
+  const [pendingProject, setPendingProject] = useState<string | null>(null);
+
+  const selectProject = (title: string) => {
+    setActiveCategory("All");
+    setView("grid");
+    setPendingProject(title);
+  };
+
+  useEffect(() => {
+    if (!pendingProject) return;
+    const frame = requestAnimationFrame(() => {
+      const target = document.getElementById(projectAnchor(pendingProject));
+      if (!target) return;
+      target.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "center" });
+      const link = target.querySelector<HTMLAnchorElement>("a");
+      link?.focus({ preventScroll: true });
+      target.classList.remove("project-arrival");
+      requestAnimationFrame(() => target.classList.add("project-arrival"));
+      setPendingProject(null);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [pendingProject, activeCategory, view]);
 
   const counts = useMemo(() => {
     return CATEGORIES.reduce((acc, cat) => {
@@ -266,7 +289,7 @@ const Index = () => {
 
   return <div className="min-h-screen relative">
       <CursorGlow />
-      <Hero />
+      <Hero onProjectSelect={selectProject} />
 
       <section className="editorial-projects container mx-auto px-4 py-16 relative z-10">
         <CategoryFilter

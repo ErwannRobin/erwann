@@ -1,5 +1,6 @@
 import { Component, lazy, Suspense, useEffect, useState, type ReactNode } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
+import { ProjectOrbit } from "./ProjectOrbit";
 
 const HeroScene = lazy(() => import("./HeroScene"));
 
@@ -20,7 +21,7 @@ class SceneBoundary extends Component<{ children: ReactNode }, { failed: boolean
   }
 }
 
-export const Hero = () => {
+export const Hero = ({ onProjectSelect }: { onProjectSelect: (title: string) => void }) => {
   const [scrollY, setScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(
     () => window.matchMedia("(max-width: 767px)").matches
@@ -83,6 +84,7 @@ export const Hero = () => {
             Crafting delightful experiences
           </p>
         </div>
+        <ProjectOrbit onSelect={onProjectSelect} />
       </section>
     </>
   );

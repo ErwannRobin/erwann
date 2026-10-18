@@ -51,6 +51,11 @@ All colors MUST be HSL.
     --glass-shadow: 0 8px 32px 0 hsl(0 0% 0% / 0.4);
     --editorial-surface: hsl(var(--background) / 0.82);
     --filter-wash: linear-gradient(110deg, hsl(var(--primary) / 0.3), hsl(320 70% 65% / 0.22));
+    --signature-cyan: 190 90% 70%;
+    --signature-pink: 325 90% 72%;
+    --signature-gold: 42 90% 65%;
+    --signature-gradient: linear-gradient(120deg, hsl(var(--signature-cyan)), hsl(var(--signature-pink)), hsl(var(--signature-gold)));
+    --collectible-shadow: 0 6px 14px hsl(var(--background) / 0.7);
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -73,6 +78,38 @@ All colors MUST be HSL.
   }
 }
 
+  .project-orbit { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: min(520px, 100%); height: 130px; pointer-events: none; }
+  .orbit-slot { position: absolute; }
+  .orbit-marble { left: 5%; top: 5%; }
+  .orbit-seeds { right: 5%; top: 5%; animation-delay: -2s; }
+  .orbit-car { left: 22%; bottom: 0; animation-delay: -4s; }
+  .orbit-bookmark { right: 22%; bottom: 0; animation-delay: -6s; }
+  .orbit-collectible.orbit-collectible { position: relative; width: 64px; height: 64px; padding: 0; pointer-events: auto; background: transparent; border-radius: 50%; transition: transform 200ms; }
+  .orbit-collectible:hover { transform: scale(1.15); }
+  .collectible-sprite { display: block; position: relative; width: 100%; height: 100%; filter: drop-shadow(var(--collectible-shadow)); animation: collectible-float 9s ease-in-out infinite; pointer-events: none; }
+  .collectible-sprite img { width: 100%; height: 100%; object-fit: contain; }
+  .sprite-seeds { animation-delay: -2s; }
+  .sprite-car { animation-delay: -4s; }
+  .sprite-bookmark { animation-delay: -6s; }
+  .collectible-label { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); opacity: 0; font-size: 11px; padding: 3px 6px; border-radius: 4px; background: hsl(var(--background) / 0.9); color: hsl(var(--foreground)); transition: opacity 200ms; pointer-events: none; }
+  .orbit-collectible:hover .collectible-label, .orbit-collectible:focus-visible .collectible-label { opacity: 1; }
+  .project-signature { position: absolute; left: 12px; top: 12px; z-index: 3; height: 36px; min-width: 36px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; padding: 6px 8px; border: 1px solid hsl(var(--foreground) / 0.15); border-radius: 8px; background: hsl(var(--background) / 0.7); color: hsl(var(--signature-cyan)); backdrop-filter: blur(12px); font-size: 18px; font-weight: 600; font-family: monospace; pointer-events: none; }
+  .signature-wave i { width: 3px; height: 7px; background: hsl(var(--signature-cyan)); border-radius: 2px; animation: signature-wave 1.2s ease-in-out infinite alternate; }
+  .signature-wave i:nth-child(2n) { height: 20px; animation-delay: -0.4s; }
+  .signature-wave i:nth-child(3n) { height: 14px; animation-delay: -0.8s; }
+  .signature-grid { display: grid; grid-template-columns: repeat(3, 6px); gap: 3px; }
+  .signature-grid i { width: 6px; height: 6px; border-radius: 1px; background: hsl(var(--primary)); }
+  .signature-grid i:nth-child(2n) { background: hsl(var(--signature-cyan)); }
+  .signature-seeds i { width: 8px; height: 14px; border-radius: 50%; transform: rotate(25deg); background: hsl(var(--signature-gold)); }
+  .signature-marble::after { content: ""; width: 22px; height: 22px; border-radius: 50%; background: var(--signature-gradient); box-shadow: inset -3px -3px 5px hsl(var(--background) / 0.5); }
+  .signature-crayon { color: hsl(var(--signature-pink)); font-size: 30px; }
+  .signature-checker { background: repeating-conic-gradient(hsl(var(--muted)) 0% 25%, hsl(var(--background)) 0% 50%) 50% / 10px 10px; }
+  .group:hover .signature-bounce { animation: signature-bounce 700ms ease-in-out infinite alternate; }
+  .project-arrival { animation: project-arrival 1.5s ease-out; }
+  @keyframes collectible-float { 0%, 100% { transform: translate(0, 0) rotate(-5deg); } 50% { transform: translate(8px, -10px) rotate(6deg); } }
+  @keyframes signature-wave { to { transform: scaleY(0.4); } }
+  @keyframes signature-bounce { to { transform: translateY(-5px); } }
+  @keyframes project-arrival { 0%, 30% { outline: 2px solid hsl(var(--signature-cyan)); outline-offset: 6px; } 100% { outline: 2px solid transparent; outline-offset: 12px; } }
 @layer components {
   .filter-wash { background: var(--filter-wash); }
   .editorial-project { background: var(--glass-bg); }
@@ -88,7 +125,11 @@ All colors MUST be HSL.
       background: var(--editorial-surface);
     }
     .mobile-editorial-hero.mobile-editorial-hero { min-height: 42vh; padding: 48px 0; }
-    .mobile-editorial-hero > div { text-align: center; padding-inline: 20px; }
+    .mobile-editorial-hero > .container { text-align: center; padding-inline: 20px; }
+    .project-orbit { height: 110px; bottom: 4px; }
+    .orbit-collectible.orbit-collectible { width: 52px; height: 52px; }
+    .orbit-car { left: 17%; }
+    .orbit-bookmark { right: 17%; }
     .editorial-projects.editorial-projects { padding: 0 20px 40px; }
     .editorial-filters { margin-inline: -20px; padding-inline: 20px; }
     .editorial-filter { min-height: 44px; background: transparent; border-color: hsl(var(--border)); box-shadow: none; color: hsl(var(--muted-foreground)); }
@@ -134,6 +175,7 @@ All colors MUST be HSL.
   }
   .card-spotlight:hover::before { opacity: 1; }
   @media (prefers-reduced-motion: reduce) {
+    .collectible-sprite, .signature-wave i, .group:hover .signature-bounce, .project-arrival { animation: none; }
     .hero-title { animation: none; }
     .animate-slide-up, .animate-fade-in { animation: none; }
     .editorial-project, .editorial-artwork img { transition: none; }
