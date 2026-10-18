@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, ChevronDown, ChevronUp, ArrowUpRight } from "lucide-react";
+import { ExternalLink, ChevronDown, ArrowUpRight } from "lucide-react";
 
 import type { Category } from "./CategoryFilter";
 import { ProjectSignature, projectAnchor } from "./ProjectSignature";
@@ -110,40 +110,16 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
         </div>
 
         {/* Expandable section */}
-        <div className="space-y-3">
-          <div id={`project-detail-${index}`}
-            aria-hidden={!isExpanded}
-            className={`overflow-hidden transition-all duration-300 ${
-              isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-            }`}
-          >
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {project.longDescription}
-            </p>
-          </div>
-
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setIsExpanded(!isExpanded)}
-            aria-expanded={isExpanded}
-            aria-controls={`project-detail-${index}`}
-            className={`editorial-read-more w-full transition-colors ${
-              isExpanded 
-                ? 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground' 
-                : 'text-primary hover:text-primary-foreground hover:bg-primary/20'
-            }`}
-          >
-            {isExpanded ? (
-              <>
-                Show less <ChevronUp className="ml-2 h-4 w-4" />
-              </>
-            ) : (
-              <>
-                Read more <ChevronDown className="ml-2 h-4 w-4" />
-              </>
-            )}
-          </Button>
+        <div
+          id={`project-detail-${index}`}
+          aria-hidden={!isExpanded}
+          className={`overflow-hidden transition-all duration-300 ${
+            isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            {project.longDescription}
+          </p>
         </div>
       </CardContent>
     </Card>
