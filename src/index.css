@@ -191,6 +191,11 @@ All colors MUST be HSL.
 .project-tile.project-tile { width: 100%; height: auto; aspect-ratio: 1; display: flex; flex-direction: column; gap: 18px; padding: 20px 12px; border: 1px solid hsl(var(--foreground) / 0.12); border-radius: 8px; background: var(--tile-highlight), var(--tile-surface); backdrop-filter: blur(16px); white-space: normal; transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease; }
 .project-tile-icon { width: 72px; height: 72px; object-fit: contain; border-radius: 16px; flex-shrink: 0; }
 .project-tile.project-tile { position: relative; isolation: isolate; overflow: hidden; }
+/* Re-declare light tokens on each card so they resolve with the card's own tilt values (vars inside :root tokens freeze at :root). */
+.project-tile, .art-project {
+  --card-light-wash: linear-gradient(var(--card-light-angle, 180deg), hsl(var(--card-light-reflection) / 0.45), hsl(var(--signature-cyan) / 0.2) 38%, transparent 78%);
+  --card-light-spot: radial-gradient(ellipse 95% 75% at var(--card-light-x, 50%) var(--card-light-y, 0%), hsl(var(--card-light-reflection) / 0.95), hsl(var(--signature-cyan) / 0.4) 42%, transparent 80%);
+}
 .project-tile::after, .art-project::after {
   content: "";
   position: absolute;
