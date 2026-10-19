@@ -69,7 +69,7 @@ export const Timeline = ({ projects }: TimelineProps) => {
         <Button variant="outline" size="icon" disabled={!navigation.next} onClick={() => scrollHistory(1)} aria-label="Next projects" title="Next projects"><ArrowRight /></Button>
       </div>
       <div ref={gallery} className="chronological-gallery history-scroll" role="region" aria-label="Chronological projects" tabIndex={0}>
-        <ol className="history-track grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+        <ol className="history-track grid grid-cols-1 gap-5">
           {projects.map((project, index) => <li className="history-entry" key={project.title}>
             <div className="history-marker" aria-hidden="true"><span className="history-date">{project.date}</span><span className="history-dot" /></div>
             <ProjectCard project={project} index={index} />
