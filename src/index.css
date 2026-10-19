@@ -214,6 +214,23 @@ All colors MUST be HSL.
 .chronological-gallery .art-project { aspect-ratio: 4 / 3; cursor: pointer; }
 .chronological-gallery .art-project:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 4px; }
 .chronological-gallery .art-project-artwork { object-fit: contain; transform: scale(var(--artwork-scroll-scale, 1)); transition: transform 160ms ease-out; }
+.history-navigation, .history-marker { display: none; }
+@media (min-width: 1024px) {
+  .history-navigation { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 4px; }
+  .history-scroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--muted) / 0.4); padding: 0 16px 20px; scroll-padding-inline: 16px; }
+  .history-scroll:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 4px; border-radius: 8px; }
+  .history-track { position: relative; display: flex; width: max-content; gap: 48px; padding-inline: 8px; }
+  .history-track::before { content: ""; position: absolute; top: 290px; left: 0; right: 0; height: 2px; background: var(--signature-gradient); box-shadow: 0 0 14px hsl(var(--signature-cyan) / 0.35); }
+  .history-entry { position: relative; flex: 0 0 320px; width: 320px; height: 580px; }
+  .history-entry .art-project { position: absolute; width: 100%; top: 20px; aspect-ratio: 4 / 3; }
+  .history-entry:nth-child(even) .art-project { top: 320px; }
+  .history-entry::before { content: ""; position: absolute; width: 1px; height: 30px; top: 260px; left: 50%; background: hsl(var(--signature-cyan) / 0.55); }
+  .history-entry:nth-child(even)::before { top: 290px; }
+  .history-marker { display: block; position: absolute; top: 290px; left: 50%; z-index: 3; }
+  .history-dot { display: block; position: absolute; width: 10px; height: 10px; border-radius: 50%; transform: translate(-50%, -40%); background: hsl(var(--signature-cyan)); border: 2px solid hsl(var(--background)); box-shadow: 0 0 12px hsl(var(--signature-cyan) / 0.65); }
+  .history-date { position: absolute; top: 14px; left: 0; transform: translateX(-50%); white-space: nowrap; font-size: 12px; font-weight: 600; color: hsl(var(--muted-foreground)); }
+  .history-entry:nth-child(even) .history-date { top: auto; bottom: 14px; }
+}
 .art-project-caption { position: absolute; inset: auto 0 0; max-height: 85%; overflow-y: auto; padding: 18px; background: var(--art-caption-bg); color: hsl(var(--art-caption-text)); backdrop-filter: blur(14px); scrollbar-width: thin; }
 .chronological-gallery .art-project:not([data-expanded="true"]) .art-project-meta { display: none; }
 .chronological-gallery .art-project-subtitle { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; transition: grid-template-rows 240ms ease, opacity 240ms ease, visibility 240ms; }
