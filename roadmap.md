@@ -20,5 +20,5 @@
 - [x] Verify scrolling, expansion, visit links, and reduced motion.
 
 # Active-card scroll emphasis
-- [ ] Increase artwork zoom and show subtitles only on active or expanded cards.
-- [ ] Verify subtitle reveal and disappearance during scrolling.
+- [x] Increase artwork zoom and show subtitles only on active or expanded cards.
+- [x] Verify subtitle reveal and disappearance during scrolling.
