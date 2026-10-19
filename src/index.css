@@ -66,6 +66,9 @@ All colors MUST be HSL.
     --art-caption-text: 0 0% 100%;
     --tile-surface: hsl(var(--card) / 0.62);
     --tile-highlight: linear-gradient(145deg, hsl(var(--foreground) / 0.08), hsl(var(--primary) / 0.05));
+    --card-light-reflection: 0 0% 100%;
+    --card-light-wash: linear-gradient(var(--card-light-angle, 180deg), hsl(var(--card-light-reflection) / 0.22), hsl(var(--signature-cyan) / 0.08) 38%, transparent 72%);
+    --card-light-spot: radial-gradient(ellipse 85% 65% at var(--card-light-x, 50%) 0%, hsl(var(--card-light-reflection) / 0.7), hsl(var(--signature-cyan) / 0.2) 40%, transparent 75%);
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -187,6 +190,19 @@ All colors MUST be HSL.
 .project-icon-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; perspective: 1200px; }
 .project-tile.project-tile { width: 100%; height: auto; aspect-ratio: 1; display: flex; flex-direction: column; gap: 18px; padding: 20px 12px; border: 1px solid hsl(var(--foreground) / 0.12); border-radius: 8px; background: var(--tile-highlight), var(--tile-surface); backdrop-filter: blur(16px); white-space: normal; transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease; }
 .project-tile-icon { width: 72px; height: 72px; object-fit: contain; border-radius: 16px; flex-shrink: 0; }
+.project-tile.project-tile { position: relative; isolation: isolate; overflow: hidden; }
+.project-tile::after, .art-project::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--card-light-spot), var(--card-light-wash);
+  opacity: var(--card-light-strength, 0.2);
+  mix-blend-mode: screen;
+  box-shadow: inset var(--card-light-edge, 0px) 1px 0 hsl(var(--card-light-reflection) / 0.8);
+}
 .project-tile-name { display: flex; align-items: center; justify-content: center; min-height: 3.75em; max-width: 100%; font-size: 14px; line-height: 1.25; text-align: center; overflow-wrap: anywhere; }
 .art-project { position: relative; isolation: isolate; border: 1px solid hsl(var(--foreground) / 0.15); border-radius: 8px; overflow: hidden; aspect-ratio: 1; background: hsl(var(--card)); transition: box-shadow 300ms ease, border-color 300ms ease; }
 .art-project-image { position: absolute; inset: 0; }
