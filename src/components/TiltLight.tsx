@@ -43,11 +43,11 @@ export const TiltLight = () => {
         const dx = sourceX - (rect.left + rect.width / 2);
         const dy = Math.max(80, rect.top + rect.height / 2 - sourceY);
         const direction = dx / Math.hypot(dx, dy);
-        const intensity = Math.max(0.1, 0.4 - Math.hypot(dx, dy) / (window.innerHeight * 3));
-        surface.style.setProperty("--card-light-x", `${50 + direction * 48}%`);
+        const intensity = Math.max(0.35, 0.95 - Math.hypot(dx, dy) / (window.innerHeight * 2.2));
+        surface.style.setProperty("--card-light-x", `${50 + direction * 55}%`);
         surface.style.setProperty("--card-light-angle", `${180 + Math.atan2(dx, dy) * 180 / Math.PI}deg`);
         surface.style.setProperty("--card-light-strength", `${intensity}`);
-        surface.style.setProperty("--card-light-edge", `${direction * -2}px`);
+        surface.style.setProperty("--card-light-edge", `${direction * -4}px`);
       }
       raf = requestAnimationFrame(tick);
     };
