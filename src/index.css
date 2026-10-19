@@ -199,9 +199,9 @@ All colors MUST be HSL.
   border-radius: inherit;
   pointer-events: none;
   background: var(--card-light-spot), var(--card-light-wash);
-  opacity: var(--card-light-strength, 0.2);
+  opacity: var(--card-light-strength, 0.35);
   mix-blend-mode: screen;
-  box-shadow: inset var(--card-light-edge, 0px) 1px 0 hsl(var(--card-light-reflection) / 0.8);
+  box-shadow: inset var(--card-light-edge, 0px) 2px 0 hsl(var(--card-light-reflection) / 0.9);
 }
 .project-tile-name { display: flex; align-items: center; justify-content: center; min-height: 3.75em; max-width: 100%; font-size: 14px; line-height: 1.25; text-align: center; overflow-wrap: anywhere; }
 .art-project { position: relative; isolation: isolate; border: 1px solid hsl(var(--foreground) / 0.15); border-radius: 8px; overflow: hidden; aspect-ratio: 1; background: hsl(var(--card)); transition: box-shadow 300ms ease, border-color 300ms ease; }
