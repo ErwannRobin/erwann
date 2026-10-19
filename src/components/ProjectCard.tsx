@@ -28,6 +28,7 @@ export const ProjectCard = ({ project, index, fullView = false }: ProjectCardPro
     <article
       id={fullView ? undefined : projectAnchor(project.title)}
       className={`art-project group ${fullView ? "art-project-full" : ""}`}
+      data-expanded={isExpanded}
       tabIndex={fullView ? undefined : 0}
       aria-label={fullView ? undefined : project.title}
       onClick={event => {
@@ -51,7 +52,7 @@ export const ProjectCard = ({ project, index, fullView = false }: ProjectCardPro
         />
       </div>
       <div className="art-project-caption">
-        <div className="flex items-center gap-2 text-xs opacity-80 mb-2">
+        <div className="art-project-meta flex items-center gap-2 text-xs opacity-80 mb-2">
           <span>{project.date}</span><span aria-hidden="true">/</span><span>{project.categories[0]}</span>
         </div>
         <div className="flex items-start justify-between gap-2">
@@ -65,7 +66,9 @@ export const ProjectCard = ({ project, index, fullView = false }: ProjectCardPro
             </Button>
           </div>
         </div>
-        <p className={`mt-2 text-sm leading-relaxed opacity-90 ${isExpanded || fullView ? "" : "line-clamp-2"}`}>{project.description}</p>
+        <div className="art-project-subtitle"><div>
+          <p className={`mt-2 text-sm leading-relaxed opacity-90 ${isExpanded || fullView ? "" : "line-clamp-2"}`}>{project.description}</p>
+        </div></div>
         <div id={detailId} hidden={!isExpanded && !fullView} className="art-project-details">
           <p className="mt-4 text-sm leading-relaxed opacity-90">{project.longDescription}</p>
           <div className="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs opacity-70">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
