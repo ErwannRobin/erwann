@@ -22,3 +22,7 @@
 # Active-card scroll emphasis
 - [x] Increase artwork zoom and show subtitles only on active or expanded cards.
 - [x] Verify subtitle reveal and disappearance during scrolling.
+
+# Desktop horizontal history
+- [x] Add a scrollable horizontal axis with alternating project cards, retaining the phone gallery.
+- [x] Verify desktop scrolling, card expansion, and phone presentation.
