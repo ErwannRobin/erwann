@@ -215,7 +215,7 @@ All colors MUST be HSL.
 .chronological-gallery .art-project:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 4px; }
 .chronological-gallery .art-project-artwork { object-fit: contain; transform: scale(var(--artwork-scroll-scale, 1)); transition: transform 160ms ease-out; }
 .history-navigation, .history-marker { display: none; }
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px), (max-width: 767px) and (orientation: landscape) {
   .history-track.history-track { position: relative; display: flex; flex-direction: column; gap: 0; padding-block: 8px; }
   .history-track::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%); background: var(--signature-gradient); box-shadow: 0 0 14px hsl(var(--signature-cyan) / 0.35); }
   .history-entry { position: relative; width: calc(50% - 36px); }
