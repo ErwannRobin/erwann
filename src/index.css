@@ -68,7 +68,7 @@ All colors MUST be HSL.
     --tile-highlight: linear-gradient(145deg, hsl(var(--foreground) / 0.08), hsl(var(--primary) / 0.05));
     --card-light-reflection: 0 0% 100%;
     --card-light-wash: linear-gradient(var(--card-light-angle, 180deg), hsl(var(--card-light-reflection) / 0.45), hsl(var(--signature-cyan) / 0.2) 38%, transparent 78%);
-    --card-light-spot: radial-gradient(ellipse 95% 75% at var(--card-light-x, 50%) 0%, hsl(var(--card-light-reflection) / 0.95), hsl(var(--signature-cyan) / 0.4) 42%, transparent 80%);
+    --card-light-spot: radial-gradient(ellipse 95% 75% at var(--card-light-x, 50%) var(--card-light-y, 0%), hsl(var(--card-light-reflection) / 0.95), hsl(var(--signature-cyan) / 0.4) 42%, transparent 80%);
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
