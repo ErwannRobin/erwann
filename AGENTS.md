@@ -7,4 +7,5 @@
 - ProjectSignature supplies stable card anchors; projectIcons maps project titles to locally referenced asset pointers for downloaded app icons, keeping project records shared between views.
 - Emoji decorations use system color fonts with a bundled color-emoji fallback so platforms without emoji fonts still render the references.
 - Grid opens the shared ProjectCard in an accessible Radix dialog; chronological browsing renders the same card inline, preventing descriptions from diverging between views.
+- Timeline owns one passive, frame-batched scroll listener for artwork zoom, leaving the shared dialog card unaffected and respecting reduced motion.
 - TiltLight projects one smoothed screen-space light source onto visible gallery and dialog cards using shared CSS reflection tokens; this keeps highlights aligned with the overhead beam across views.

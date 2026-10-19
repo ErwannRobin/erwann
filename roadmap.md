@@ -13,3 +13,8 @@
 - [x] Replace timeline with concise artwork-overlay cards.
 - [x] Create square icon tiles and a twirling full-project dialog.
 - [x] Verify both views, filtering, and dialog on phone and desktop.
+
+# Chronological card refinements
+- [x] Reduce artwork cropping and align the chevron with the expansion direction.
+- [x] Add scroll-driven image zoom and whole-card detail toggling.
+- [x] Verify scrolling, expansion, visit links, and reduced motion.
