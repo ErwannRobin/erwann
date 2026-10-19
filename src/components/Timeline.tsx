@@ -19,14 +19,15 @@ export const Timeline = ({ projects }: TimelineProps) => {
       const activeY = window.innerHeight * 0.5;
       cards.forEach(card => {
         const rect = card.getBoundingClientRect();
+        const distance = Math.abs(rect.top + rect.height / 2 - activeY);
+        card.dataset.scrollActive = String(rect.bottom > 0 && rect.top < window.innerHeight && distance < rect.height * 0.55);
         if (motion.matches || rect.bottom < 0 || rect.top > window.innerHeight) {
           card.style.setProperty("--artwork-scroll-scale", "1");
           return;
         }
-        const distance = Math.abs(rect.top + rect.height / 2 - activeY);
         const proximity = Math.max(0, 1 - distance / (activeY + rect.height / 2));
         const eased = proximity * proximity * (3 - 2 * proximity);
-        card.style.setProperty("--artwork-scroll-scale", String(1 + eased * 0.06));
+        card.style.setProperty("--artwork-scroll-scale", String(1 + eased * 0.22));
       });
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
