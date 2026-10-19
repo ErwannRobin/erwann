@@ -24,5 +24,5 @@
 - [x] Verify subtitle reveal and disappearance during scrolling.
 
 # Desktop horizontal history
-- [ ] Add a scrollable horizontal axis with alternating project cards, retaining the phone gallery.
-- [ ] Verify desktop scrolling, card expansion, and phone presentation.
+- [x] Add a scrollable horizontal axis with alternating project cards, retaining the phone gallery.
+- [x] Verify desktop scrolling, card expansion, and phone presentation.
