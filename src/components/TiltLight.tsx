@@ -44,9 +44,11 @@ export const TiltLight = () => {
         const dy = Math.max(80, rect.top + rect.height / 2 - sourceY);
         const direction = dx / Math.hypot(dx, dy);
         const intensity = Math.max(0.35, 0.95 - Math.hypot(dx, dy) / (window.innerHeight * 2.2));
-        surface.style.setProperty("--card-light-x", `${50 + direction * 55}%`);
-        surface.style.setProperty("--card-light-y", `${Math.max(-20, Math.min(60, (sourceY - rect.top) / rect.height * 100))}%`);
-        surface.style.setProperty("--card-light-angle", `${180 + Math.atan2(dx, dy) * 180 / Math.PI}deg`);
+        const lx = Math.max(-10, Math.min(110, 50 + cur.x * 75 + direction * 25));
+        const ly = Math.max(-15, Math.min(55, 5 + cur.y * 40));
+        surface.style.setProperty("--card-light-x", `${lx}%`);
+        surface.style.setProperty("--card-light-y", `${ly}%`);
+        surface.style.setProperty("--card-light-angle", `${180 - cur.x * 50 + Math.atan2(dx, dy) * 60 / Math.PI}deg`);
         surface.style.setProperty("--card-light-strength", `${intensity}`);
         surface.style.setProperty("--card-light-edge", `${direction * -4}px`);
       }
