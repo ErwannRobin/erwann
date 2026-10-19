@@ -62,6 +62,10 @@ All colors MUST be HSL.
     --signature-gold: 42 90% 65%;
     --signature-gradient: linear-gradient(120deg, hsl(var(--signature-cyan)), hsl(var(--signature-pink)), hsl(var(--signature-gold)));
     --collectible-shadow: 0 6px 14px hsl(var(--background) / 0.7);
+    --art-caption-bg: hsl(240 10% 4% / 0.78);
+    --art-caption-text: 0 0% 100%;
+    --tile-surface: hsl(var(--card) / 0.62);
+    --tile-highlight: linear-gradient(145deg, hsl(var(--foreground) / 0.08), hsl(var(--primary) / 0.05));
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -177,3 +181,45 @@ All colors MUST be HSL.
   filter: blur(30px);
 }
 @media (prefers-reduced-motion: reduce) { .tilt-light::after { transform: translateX(-50%); } }
+
+/* Project gallery: icon collection and chronological artwork cards. */
+.gallery-toolbar { max-width: 80rem; margin-inline: auto; }
+.project-icon-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; perspective: 1200px; }
+.project-tile.project-tile { width: 100%; height: auto; aspect-ratio: 1; display: flex; flex-direction: column; gap: 18px; padding: 20px 12px; border: 1px solid hsl(var(--foreground) / 0.12); border-radius: 8px; background: var(--tile-highlight), var(--tile-surface); backdrop-filter: blur(16px); white-space: normal; transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease; }
+.project-tile-icon { width: 72px; height: 72px; object-fit: contain; border-radius: 16px; flex-shrink: 0; }
+.project-tile-name { display: flex; align-items: center; justify-content: center; min-height: 3.75em; max-width: 100%; font-size: 14px; line-height: 1.25; text-align: center; overflow-wrap: anywhere; }
+.art-project { position: relative; isolation: isolate; border: 1px solid hsl(var(--foreground) / 0.15); border-radius: 8px; overflow: hidden; aspect-ratio: 1; background: hsl(var(--card)); transition: box-shadow 300ms ease, border-color 300ms ease; }
+.art-project-image { position: absolute; inset: 0; }
+.art-project-caption { position: absolute; inset: auto 0 0; max-height: 85%; overflow-y: auto; padding: 18px; background: var(--art-caption-bg); color: hsl(var(--art-caption-text)); backdrop-filter: blur(14px); scrollbar-width: thin; }
+.art-project-control.art-project-control { width: 40px; height: 40px; margin-top: -8px; color: inherit; border: 1px solid hsl(var(--art-caption-text) / 0.2); border-radius: 50%; background: hsl(var(--background) / 0.2); }
+.art-project-control.art-project-control:hover { background: hsl(var(--art-caption-text) / 0.15); color: inherit; }
+.art-project-details { animation: detail-reveal 220ms ease-out; }
+.project-full-dialog.project-full-dialog { display: block; padding: 0; border-radius: 8px; width: min(680px, calc(100vw - 32px)); max-width: 680px; max-height: calc(100dvh - 48px); overflow-y: auto; border-color: hsl(var(--foreground) / 0.2); background: hsl(var(--background)); transform-style: preserve-3d; }
+.project-full-dialog.project-full-dialog[data-state="open"] { animation: project-twirl 680ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.project-full-dialog.project-full-dialog[data-state="closed"] { animation: project-dismiss 180ms ease-in both; }
+.project-full-dialog > button { z-index: 5; padding: 8px; border-radius: 50%; background: var(--art-caption-bg); color: hsl(var(--art-caption-text)); opacity: 1; }
+.art-project-full { aspect-ratio: auto; border: none; }
+.art-project-full .art-project-image { position: relative; aspect-ratio: 16 / 10; }
+.art-project-full .art-project-caption { position: relative; max-height: none; overflow: visible; padding: 24px; }
+@keyframes project-twirl { from { opacity: 0; transform: translate(-50%, -50%) perspective(1200px) rotateY(-150deg) rotateZ(-8deg) scale(0.55); } to { opacity: 1; transform: translate(-50%, -50%) perspective(1200px) rotateY(0) rotateZ(0) scale(1); } }
+@keyframes project-dismiss { from { opacity: 1; transform: translate(-50%, -50%) scale(1); } to { opacity: 0; transform: translate(-50%, -48%) scale(0.95); } }
+@keyframes detail-reveal { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@media (hover: hover) {
+  .project-tile.project-tile:hover { transform: translateY(-4px) rotateX(5deg) rotateY(-5deg); border-color: hsl(var(--primary) / 0.65); box-shadow: var(--shadow-glow); }
+  .art-project:hover { border-color: hsl(var(--primary) / 0.6); box-shadow: var(--shadow-glow); }
+}
+@media (max-width: 1023px) { .project-icon-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 767px) {
+  .project-icon-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .project-tile.project-tile { gap: 12px; padding: 16px 10px; }
+  .project-tile-icon { width: 56px; height: 56px; border-radius: 12px; }
+  .project-tile-name { font-size: 13px; }
+  .art-project-caption { padding: 16px; }
+  .art-project-full .art-project-caption { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-full-dialog.project-full-dialog[data-state] { animation: none; }
+  .project-tile.project-tile, .art-project, .art-project img { transition: none; }
+  .project-tile.project-tile:hover { transform: none; }
+  .art-project-details { animation: none; }
+}

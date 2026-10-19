@@ -1,10 +1,8 @@
-import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useId, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, ChevronDown, ArrowUpRight } from "lucide-react";
-
+import { ChevronDown, ArrowUpRight } from "lucide-react";
 import type { Category } from "./CategoryFilter";
-import { ProjectSignature, projectAnchor } from "./ProjectSignature";
+import { projectAnchor } from "./ProjectSignature";
 
 export interface Project {
   title: string;
@@ -20,108 +18,44 @@ export interface Project {
 interface ProjectCardProps {
   project: Project;
   index: number;
+  fullView?: boolean;
 }
 
-export const ProjectCard = ({ project, index }: ProjectCardProps) => {
+export const ProjectCard = ({ project, index, fullView = false }: ProjectCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [tilt, setTilt] = useState<{ x: number; y: number } | null>(null);
-
-  const onMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType !== "mouse") return;
-    const r = e.currentTarget.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width;
-    const py = (e.clientY - r.top) / r.height;
-    e.currentTarget.style.setProperty("--mx", `${px * 100}%`);
-    e.currentTarget.style.setProperty("--my", `${py * 100}%`);
-    setTilt({ x: (0.5 - py) * 14, y: (px - 0.5) * 14 });
-  };
-
+  const detailId = useId();
   return (
-    <Card 
-      id={projectAnchor(project.title)}
-      onPointerMove={onMove}
-      onPointerLeave={() => setTilt(null)}
-      className="editorial-project card-spotlight relative group overflow-hidden rounded-xl transition-[transform,box-shadow,border-color] duration-300 ease-out animate-slide-up backdrop-blur-md border-primary/30 hover:border-primary/60"
-      style={{ 
-        animationDelay: `${(index % 3) * 100}ms`,
-        transform: tilt ? `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-8px) scale(1.02)` : undefined,
-      }}
-    >
-      <div className="mb-3 flex items-center justify-between text-xs text-muted-foreground md:hidden">
-        <span className="flex items-center gap-2"><span className="text-primary">{String(index + 1).padStart(2, "0")}</span><span className="h-px w-5 bg-border" />{project.categories[0]}</span>
-        <span>{project.date}</span>
-      </div>
-      {/* Image */}
-      <div className="editorial-artwork relative overflow-hidden aspect-video bg-background/40">
-        <ProjectSignature title={project.title} />
+    <article id={fullView ? undefined : projectAnchor(project.title)} className={`art-project group ${fullView ? "art-project-full" : ""}`}>
+      <div className="art-project-image">
         <img
           src={project.image}
           alt={project.title}
           loading={index < 2 ? "eager" : "lazy"}
           decoding="async"
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
-        <Button variant="secondary" size="icon" asChild className="absolute right-3 bottom-3 h-11 w-11 rounded-full border border-foreground/20 bg-background/60 text-foreground backdrop-blur-xl md:hidden">
-          <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title}`}><ArrowUpRight className="h-5 w-5" /></a>
-        </Button>
       </div>
-
-      <CardHeader className="editorial-card-header">
+      <div className="art-project-caption">
+        <div className="flex items-center gap-2 text-xs opacity-80 mb-2">
+          <span>{project.date}</span><span aria-hidden="true">/</span><span>{project.categories[0]}</span>
+        </div>
         <div className="flex items-start justify-between gap-2">
-          <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
-          <div className="flex items-center gap-1 shrink-0">
-            <Button
-              variant="ghost"
-              size="icon"
-              asChild
-              className="hidden md:inline-flex h-8 w-8 hover:text-primary transition-colors"
-            >
-              <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}`}>
-                <ExternalLink className="h-4 w-4" />
-              </a>
+          <h3 className="min-w-0 text-lg md:text-xl font-semibold leading-tight">{project.title}</h3>
+          <div className="flex shrink-0 gap-1">
+            {!fullView && <Button variant="ghost" size="icon" onClick={() => setIsExpanded(value => !value)} aria-expanded={isExpanded} aria-controls={detailId} aria-label={`${isExpanded ? "Collapse" : "Expand"} ${project.title}`} title={isExpanded ? "Collapse details" : "Expand details"} className="art-project-control">
+              <ChevronDown className={`transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
+            </Button>}
+            <Button variant="ghost" size="icon" asChild className="art-project-control">
+              <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}`} title={`Visit ${project.title}`}><ArrowUpRight /></a>
             </Button>
-            <button
-              type="button"
-              onClick={() => setIsExpanded(!isExpanded)}
-              aria-expanded={isExpanded}
-              aria-controls={`project-detail-${index}`}
-              aria-label={isExpanded ? "Show less" : "Read more"}
-              className="editorial-arrow-toggle inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-primary"
-            >
-              <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
-            </button>
           </div>
         </div>
-        <CardDescription className="text-sm">{project.description}</CardDescription>
-      </CardHeader>
-
-      <CardContent className="editorial-card-content">
-        {/* Tags */}
-        <div className="editorial-tags flex flex-wrap gap-2 mb-4">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-2.5 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary border border-primary/30 backdrop-blur-sm"
-            >
-              {tag}
-            </span>
-          ))}
+        <p className={`mt-2 text-sm leading-relaxed opacity-90 ${isExpanded || fullView ? "" : "line-clamp-2"}`}>{project.description}</p>
+        <div id={detailId} hidden={!isExpanded && !fullView} className="art-project-details">
+          <p className="mt-4 text-sm leading-relaxed opacity-90">{project.longDescription}</p>
+          <div className="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs opacity-70">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
         </div>
-
-        {/* Expandable section */}
-        <div
-          id={`project-detail-${index}`}
-          aria-hidden={!isExpanded}
-          className={`overflow-hidden transition-all duration-300 ${
-            isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            {project.longDescription}
-          </p>
-        </div>
-      </CardContent>
-    </Card>
+      </div>
+    </article>
   );
 };

@@ -7,3 +7,9 @@
 - [x] Remove the floating header collectibles and their navigation.
 - [x] Use native emojis for card signatures and category filters.
 - [x] Verify filtering, details, and phone/desktop layouts.
+
+# Portfolio view redesign
+- [x] Remove card emojis and hide categories behind a filter control.
+- [x] Replace timeline with concise artwork-overlay cards.
+- [x] Create square icon tiles and a twirling full-project dialog.
+- [x] Verify both views, filtering, and dialog on phone and desktop.
