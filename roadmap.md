@@ -26,3 +26,7 @@
 # Desktop horizontal history
 - [x] Add a scrollable horizontal axis with alternating project cards, retaining the phone gallery.
 - [x] Verify desktop scrolling, card expansion, and phone presentation.
+
+# Landscape phone grid
+- [x] Keep the portrait icon size while adding columns on landscape phones.
+- [x] Verify columns, icon size, and title overlap on phone and desktop.
