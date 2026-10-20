@@ -20,14 +20,17 @@ class SceneBoundary extends Component<{ children: ReactNode }, { failed: boolean
   }
 }
 
+/** Phones — including landscape ones, too short to keep the title pinned over the grid. */
+const PHONE_QUERY = "(max-width: 767px), (orientation: landscape) and (max-height: 520px) and (max-width: 1023px)";
+
 export const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(
-    () => window.matchMedia("(max-width: 767px)").matches
+    () => window.matchMedia(PHONE_QUERY).matches
   );
 
   useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
+    const mq = window.matchMedia(PHONE_QUERY);
     const onChange = () => setIsMobile(mq.matches);
     mq.addEventListener("change", onChange);
     const handleScroll = () => setScrollY(window.scrollY);

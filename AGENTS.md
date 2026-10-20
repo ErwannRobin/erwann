@@ -9,3 +9,4 @@
 - Grid opens the shared ProjectCard in an accessible Radix dialog; chronological browsing renders the same card inline, preventing descriptions from diverging between views.
 - Timeline uses a horizontally scrollable alternating axis on desktop and the vertical gallery below desktop; shared frame-batched window/container scroll updates compute artwork emphasis along the active axis without affecting dialog cards or reduced motion.
 - TiltLight projects one smoothed screen-space light source onto visible gallery and dialog cards using shared CSS reflection tokens; this keeps highlights aligned with the overhead beam across views.
+- Short landscape viewports count as phones through one shared media query (hero behaviour and icon tiles alike), so the pinned title never overlaps the translucent tiles and the icon size stays constant as columns grow.
