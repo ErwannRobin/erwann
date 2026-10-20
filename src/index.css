@@ -277,9 +277,11 @@ All colors MUST be HSL.
   .art-project-full .art-project-caption { padding: 20px; }
 }
 /* Landscape phones keep the portrait icon size but gain columns. */
-@media (max-width: 767px) and (orientation: landscape) {
-  .project-icon-grid { grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); }
-  .project-tile.project-tile { aspect-ratio: auto; min-height: 128px; }
+@media (orientation: landscape) and (max-height: 520px) and (max-width: 1023px) {
+  .project-icon-grid { grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 12px; }
+  .project-tile.project-tile { aspect-ratio: auto; min-height: 128px; gap: 12px; padding: 16px 10px; }
+  .project-tile-icon { width: 56px; height: 56px; border-radius: 12px; }
+  .project-tile-name { font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .project-full-dialog.project-full-dialog[data-state] { animation: none; }
