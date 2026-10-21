@@ -49,20 +49,6 @@ export const Hero = () => {
   const compact = Math.min(1, Math.max(0, (scrollY - fadeDistance * 0.6) / 80));
   const sceneOpacity = blob.moved ? 1 : Math.max(0, 1 - scrollY / (isMobile ? 320 : 700));
 
-  return () => {
-      mq.removeEventListener("change", onChange);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  // On phones the content follows the hero much sooner, so the title must
-  // bow out faster and must not stay pinned over the category pills.
-  const fadeDistance = isMobile ? 240 : 500;
-  const scaleFloor = isMobile ? 0.8 : 0.6;
-  const opacity = Math.max(0, 1 - scrollY / fadeDistance);
-  const scale = Math.max(scaleFloor, 1 - scrollY / (fadeDistance * 2.4));
-  const sceneOpacity = Math.max(0, 1 - scrollY / (isMobile ? 320 : 700));
-  const isSticky = !isMobile && scrollY < 500;
 
   return (
     <>
