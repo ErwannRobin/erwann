@@ -107,7 +107,7 @@ All colors MUST be HSL.
       z-index: 11;
       background: var(--editorial-surface);
     }
-    .mobile-editorial-hero.mobile-editorial-hero { min-height: 42vh; padding: 48px 0; }
+    .mobile-editorial-hero.mobile-editorial-hero { min-height: 30vh; padding: 20px 0 32px; }
     .mobile-editorial-hero > .container { text-align: center; padding-inline: 20px; }
     .editorial-projects.editorial-projects { padding: 0 20px 40px; }
     .editorial-filters { margin-inline: -20px; padding-inline: 20px; }
@@ -229,7 +229,7 @@ All colors MUST be HSL.
   .history-date { position: absolute; top: 10px; left: 0; transform: translateX(-50%); white-space: nowrap; font-size: 12px; font-weight: 600; color: hsl(var(--muted-foreground)); }
 }
 @media (min-width: 1024px) {
-  .history-navigation { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 4px; }
+  
   .history-scroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--muted) / 0.4); padding: 0 16px 20px; scroll-padding-inline: 16px; }
   .history-scroll:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 4px; border-radius: 8px; }
   .history-track { position: relative; display: flex; width: max-content; gap: 48px; padding-inline: 8px; }
@@ -298,3 +298,12 @@ All colors MUST be HSL.
 }
 .history-scroll { scrollbar-width: none; }
 .history-scroll::-webkit-scrollbar { display: none; }
+
+/* Draggable blob grab area, kept over the orb by the 3D scene. */
+.blob-handle { position: absolute; left: 0; top: 0; border-radius: 50%; pointer-events: auto; cursor: grab; touch-action: none; -webkit-tap-highlight-color: transparent; }
+.blob-handle:active { cursor: grabbing; }
+.hero-compact { background: linear-gradient(to bottom, hsl(var(--background) / 0.85), hsl(var(--background) / 0.55) 70%, transparent); backdrop-filter: blur(10px); transition: opacity 200ms ease, transform 200ms ease; }
+/* Icons stay above the reflected light for legibility. */
+.project-tile-icon { position: relative; z-index: 3; }
+.history-controls { display: none; }
+@media (min-width: 1024px) { .history-controls { display: inline-flex; gap: 6px; } }

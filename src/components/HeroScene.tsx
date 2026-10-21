@@ -42,7 +42,7 @@ const Orb = () => {
     const k = 1 - Math.exp(-(mood === "dragged" ? 18 : 4) * dt);
     const shake = mood === "dragged" ? 0.07 : mood === "scared" ? 0.035 : 0;
     const tx = blob.offset.x * unitX + Math.sin(t * 61) * shake;
-    const ty = vp.height * 0.24 + scroll * 1.6 - blob.offset.y * unitY + Math.cos(t * 53) * shake;
+    const ty = vp.height * 0.3 + scroll * 1.6 - blob.offset.y * unitY + Math.cos(t * 53) * shake;
     g.position.x += (tx - g.position.x) * k;
     g.position.y += (ty - g.position.y) * k;
     g.position.z = ORB_Z;
