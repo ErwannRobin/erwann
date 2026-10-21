@@ -19,9 +19,11 @@ interface ProjectCardProps {
   project: Project;
   index: number;
   fullView?: boolean;
+  /** When set, activating the card opens its full view instead of expanding inline. */
+  onOpen?: (opener: HTMLElement) => void;
 }
 
-export const ProjectCard = ({ project, index, fullView = false }: ProjectCardProps) => {
+export const ProjectCard = ({ project, index, fullView = false, onOpen }: ProjectCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const detailId = useId();
   return (
@@ -30,16 +32,19 @@ export const ProjectCard = ({ project, index, fullView = false }: ProjectCardPro
       className={`art-project group ${fullView ? "art-project-full" : ""}`}
       data-expanded={isExpanded}
       tabIndex={fullView ? undefined : 0}
-      aria-label={fullView ? undefined : project.title}
+      aria-label={fullView ? undefined : onOpen ? `Open ${project.title}` : project.title}
+      aria-haspopup={onOpen ? "dialog" : undefined}
       onClick={event => {
         if (fullView || !(event.target instanceof Element) || event.target.closest("a, button")) return;
         if (window.getSelection()?.toString()) return;
-        setIsExpanded(value => !value);
+        if (onOpen) onOpen(event.currentTarget);
+        else setIsExpanded(value => !value);
       }}
       onKeyDown={event => {
         if (fullView || event.target !== event.currentTarget || !["Enter", " "].includes(event.key)) return;
         event.preventDefault();
-        setIsExpanded(value => !value);
+        if (onOpen) onOpen(event.currentTarget);
+        else setIsExpanded(value => !value);
       }}
     >
       <div className="art-project-image">
@@ -58,7 +63,7 @@ export const ProjectCard = ({ project, index, fullView = false }: ProjectCardPro
         <div className="flex items-start justify-between gap-2">
           <h3 className="min-w-0 text-lg md:text-xl font-semibold leading-tight">{project.title}</h3>
           <div className="flex shrink-0 gap-1">
-            {!fullView && <Button variant="ghost" size="icon" onClick={() => setIsExpanded(value => !value)} aria-expanded={isExpanded} aria-controls={detailId} aria-label={`${isExpanded ? "Collapse" : "Expand"} ${project.title}`} title={isExpanded ? "Collapse details" : "Expand details"} className="art-project-control">
+            {!fullView && !onOpen && <Button variant="ghost" size="icon" onClick={() => setIsExpanded(value => !value)} aria-expanded={isExpanded} aria-controls={detailId} aria-label={`${isExpanded ? "Collapse" : "Expand"} ${project.title}`} title={isExpanded ? "Collapse details" : "Expand details"} className="art-project-control">
               <ChevronUp className={`transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
             </Button>}
             <Button variant="ghost" size="icon" asChild className="art-project-control">
