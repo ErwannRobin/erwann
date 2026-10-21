@@ -219,7 +219,7 @@ All colors MUST be HSL.
   .history-track.history-track { position: relative; display: flex; flex-direction: column; gap: 0; padding-block: 8px; }
   .history-track::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%); background: var(--signature-gradient); box-shadow: 0 0 14px hsl(var(--signature-cyan) / 0.35); }
   .history-entry { position: relative; width: calc(50% - 36px); }
-  .history-entry + .history-entry { margin-top: -18%; }
+  .history-entry + .history-entry { margin-top: -6%; }
   .history-entry:nth-child(even) { margin-left: auto; }
   .history-entry::before { content: ""; position: absolute; top: 50%; width: 36px; height: 1px; left: 100%; background: hsl(var(--signature-cyan) / 0.55); }
   .history-entry:nth-child(even)::before { left: auto; right: 100%; }
