@@ -18,7 +18,6 @@ const Orb = () => {
   const group = useRef<THREE.Group>(null);
   const spin = useRef<THREE.Group>(null);
   const ring = useRef<THREE.Mesh>(null);
-  const gasp = useRef<THREE.Mesh>(null);
   const scaleRef = useRef(1);
 
   useFrame((state, raw) => {
@@ -59,10 +58,6 @@ const Orb = () => {
     scaleRef.current += (target - scaleRef.current) * (1 - Math.exp(-8 * dt));
     g.scale.setScalar(scaleRef.current);
 
-    if (gasp.current) {
-      gasp.current.visible = mood === "relief";
-      gasp.current.scale.setScalar(0.7 + Math.sin(Math.min(age / 1.2, 1) * Math.PI) * 0.6);
-    }
     // A poke makes it spin away a little, then settle back upright.
     const rotTarget = mood === "scared" ? blob.pokeSpin * Math.exp(-age * 2.5) : 0;
     g.rotation.z += (rotTarget - g.rotation.z) * (1 - Math.exp(-10 * dt));
@@ -97,11 +92,6 @@ const Orb = () => {
             <meshBasicMaterial color="#60a5fa" toneMapped={false} />
           </mesh>
         </group>
-        {/* Translucent relief mouth, only shown while sighing */}
-        <mesh ref={gasp} position={[0, -0.12, 0.96]} visible={false}>
-          <torusGeometry args={[0.1, 0.035, 12, 32]} />
-          <meshBasicMaterial color="#ffffff" transparent opacity={0.45} toneMapped={false} />
-        </mesh>
       </Float>
     </group>
   );
