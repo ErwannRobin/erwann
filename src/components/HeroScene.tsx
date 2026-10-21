@@ -18,9 +18,6 @@ const Orb = () => {
   const group = useRef<THREE.Group>(null);
   const spin = useRef<THREE.Group>(null);
   const ring = useRef<THREE.Mesh>(null);
-  const eyes = useRef<THREE.Group>(null);
-  const smile = useRef<THREE.Mesh>(null);
-  const grin = useRef<THREE.Mesh>(null);
   const gasp = useRef<THREE.Mesh>(null);
   const scaleRef = useRef(1);
 
@@ -58,26 +55,17 @@ const Orb = () => {
     if (mood === "dragged") moodScale = 1 + Math.sin(t * 30) * 0.03;
     if (mood === "relief") moodScale = 1 - Math.sin(Math.min(age / 1.2, 1) * Math.PI) * 0.12;
     if (mood === "scared") moodScale = 0.82;
-    const target = (1 - scroll * 0.35) * (isMobile ? 0.6 : 0.8) * moodScale;
+    const target = (1 - scroll * 0.35) * (isMobile ? 0.42 : 0.55) * moodScale;
     scaleRef.current += (target - scaleRef.current) * (1 - Math.exp(-8 * dt));
     g.scale.setScalar(scaleRef.current);
 
-    if (eyes.current) {
-      const blink = Math.sin(t * 0.9) > 0.985 ? 0.1 : 1;
-      const eyeY = mood === "dragged" ? 0.3 : mood === "relief" ? 0.08 : mood === "scared" ? 1.45 : blink;
-      const eyeX = mood === "scared" ? 1.3 : 1;
-      eyes.current.children.forEach(eye => {
-        eye.scale.y += (eyeY - eye.scale.y) * 0.3;
-        eye.scale.x += (eyeX - eye.scale.x) * 0.3;
-      });
-    }
-    if (smile.current) smile.current.visible = mood === "idle";
-    if (grin.current) grin.current.visible = mood === "dragged";
     if (gasp.current) {
-      gasp.current.visible = mood === "relief" || mood === "scared";
-      const o = mood === "relief" ? 0.7 + Math.sin(Math.min(age / 1.2, 1) * Math.PI) * 0.5 : 0.8;
-      gasp.current.scale.setScalar(o);
+      gasp.current.visible = mood === "relief";
+      gasp.current.scale.setScalar(0.7 + Math.sin(Math.min(age / 1.2, 1) * Math.PI) * 0.6);
     }
+    // A poke makes it spin away a little, then settle back upright.
+    const rotTarget = mood === "scared" ? blob.pokeSpin * Math.exp(-age * 2.5) : 0;
+    g.rotation.z += (rotTarget - g.rotation.z) * (1 - Math.exp(-10 * dt));
     if (ring.current) ring.current.rotation.z += dt * (mood === "dragged" ? 3 : 0.4);
 
     // Keep the DOM grab area centred on the orb.
@@ -109,25 +97,11 @@ const Orb = () => {
             <meshBasicMaterial color="#60a5fa" toneMapped={false} />
           </mesh>
         </group>
-        {/* Face, always turned towards the viewer */}
-        <group position={[0, 0, 1.12]}>
-          <group ref={eyes} position={[0, 0.16, 0]}>
-            <mesh position={[-0.24, 0, 0]}><sphereGeometry args={[0.085, 20, 20]} /><meshBasicMaterial color="#1e0538" /></mesh>
-            <mesh position={[0.24, 0, 0]}><sphereGeometry args={[0.085, 20, 20]} /><meshBasicMaterial color="#1e0538" /></mesh>
-          </group>
-          <mesh ref={smile} position={[0, -0.06, 0]} rotation={[0, 0, Math.PI]}>
-            <torusGeometry args={[0.2, 0.03, 12, 40, Math.PI]} />
-            <meshBasicMaterial color="#1e0538" />
-          </mesh>
-          <mesh ref={grin} position={[0, -0.16, 0]} visible={false}>
-            <boxGeometry args={[0.46, 0.12, 0.04]} />
-            <meshBasicMaterial color="#f5f3ff" />
-          </mesh>
-          <mesh ref={gasp} position={[0, -0.17, 0]} visible={false}>
-            <torusGeometry args={[0.08, 0.03, 12, 32]} />
-            <meshBasicMaterial color="#1e0538" />
-          </mesh>
-        </group>
+        {/* Translucent relief mouth, only shown while sighing */}
+        <mesh ref={gasp} position={[0, -0.12, 0.96]} visible={false}>
+          <torusGeometry args={[0.1, 0.035, 12, 32]} />
+          <meshBasicMaterial color="#ffffff" transparent opacity={0.45} toneMapped={false} />
+        </mesh>
       </Float>
     </group>
   );
