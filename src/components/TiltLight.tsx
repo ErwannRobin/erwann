@@ -47,6 +47,14 @@ export const TiltLight = () => {
       }
     };
 
+    const onPointer = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") return;
+      const x = (e.clientX / window.innerWidth - 0.5) * 2.4;
+      const y = (e.clientY / window.innerHeight) * 1.2 - 0.2;
+      target = { x: Math.max(-1, Math.min(1, x)), y: Math.max(-0.5, Math.min(1, y)) };
+    };
+    window.addEventListener("pointermove", onPointer, { passive: true });
+
     const tick = () => {
       const motion = reducedMotion.matches ? { x: 0, y: 0 } : target;
       cur.x += (motion.x - cur.x) * 0.08;
@@ -89,6 +97,7 @@ export const TiltLight = () => {
     return () => {
       cancelAnimationFrame(raf);
       observer.disconnect();
+      window.removeEventListener("pointermove", onPointer);
       window.removeEventListener("deviceorientation", onOrient);
       window.removeEventListener("orientationchange", readOrientation);
       window.removeEventListener("resize", readOrientation);

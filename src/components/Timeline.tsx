@@ -63,7 +63,7 @@ export const Timeline = ({ projects }: TimelineProps) => {
   };
 
   return (
-    <section className="history-section max-w-7xl mx-auto" aria-label="Project history">
+    <section className="history-section" aria-label="Project history">
       <div className="history-navigation">
         <Button variant="outline" size="icon" disabled={!navigation.previous} onClick={() => scrollHistory(-1)} aria-label="Previous projects" title="Previous projects"><ArrowLeft /></Button>
         <Button variant="outline" size="icon" disabled={!navigation.next} onClick={() => scrollHistory(1)} aria-label="Next projects" title="Next projects"><ArrowRight /></Button>

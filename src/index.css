@@ -291,3 +291,8 @@ All colors MUST be HSL.
   .chronological-gallery .art-project-artwork { transform: none; transition: none; }
   .chronological-gallery .art-project-subtitle { transition: none; }
 }
+
+@media (min-width: 1024px) {
+  .history-section { width: 100vw; max-width: none; margin-left: calc(50% - 50vw); }
+  .history-section .history-scroll { padding-inline: 32px; scroll-padding-inline: 32px; }
+}
