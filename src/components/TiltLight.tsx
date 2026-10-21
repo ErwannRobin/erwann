@@ -85,6 +85,8 @@ export const TiltLight = () => {
       cancelAnimationFrame(raf);
       observer.disconnect();
       window.removeEventListener("deviceorientation", onOrient);
+      window.removeEventListener("orientationchange", readOrientation);
+      window.removeEventListener("resize", readOrientation);
       if (askOnTap) window.removeEventListener("touchend", askOnTap);
       for (const surface of surfaces) {
         for (const property of ["--card-light-x", "--card-light-y", "--card-light-angle", "--card-light-strength", "--card-light-edge"]) {
