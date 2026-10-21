@@ -22,10 +22,24 @@ export const TiltLight = () => {
     const observer = new MutationObserver(collectSurfaces);
     observer.observe(document.body, { childList: true, subtree: true });
 
+    // Device axes (gamma/beta) stay fixed to the phone; rotate them by the
+    // screen orientation so the beam always hangs from the visual top edge.
+    let orientationAngle = 0;
+    const readOrientation = () => {
+      const angle = window.screen?.orientation?.angle ?? (window as unknown as { orientation?: number }).orientation ?? 0;
+      orientationAngle = ((angle % 360) + 360) % 360;
+    };
+    readOrientation();
+    window.addEventListener("orientationchange", readOrientation);
+    window.addEventListener("resize", readOrientation);
+
     const onOrient = (e: DeviceOrientationEvent) => {
-      const g = Math.max(-45, Math.min(45, e.gamma ?? 0)); // left/right
-      const b = Math.max(-30, Math.min(60, (e.beta ?? 30) - 30)); // forward/back
-      target = { x: g / 45, y: b / 60 };
+      const g = Math.max(-45, Math.min(45, e.gamma ?? 0)); // device left/right
+      const b = Math.max(-30, Math.min(60, (e.beta ?? 30) - 30)); // device forward/back
+      const rad = (orientationAngle * Math.PI) / 180;
+      const cos = Math.cos(rad);
+      const sin = Math.sin(rad);
+      target = { x: (g * cos - b * sin) / 45, y: (g * sin + b * cos) / 60 };
     };
 
     const tick = () => {
