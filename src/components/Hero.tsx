@@ -1,5 +1,7 @@
 import { Component, lazy, Suspense, useEffect, useState, type ReactNode } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
+import { BlobHandle } from "./BlobHandle";
+import { blob } from "./blobStore";
 
 const HeroScene = lazy(() => import("./HeroScene"));
 
@@ -41,14 +43,12 @@ export const Hero = () => {
     };
   }, []);
 
-  // On phones the content follows the hero much sooner, so the title must
-  // bow out faster and must not stay pinned over the category pills.
-  const fadeDistance = isMobile ? 240 : 500;
-  const scaleFloor = isMobile ? 0.8 : 0.6;
+  const fadeDistance = isMobile ? 160 : 260;
   const opacity = Math.max(0, 1 - scrollY / fadeDistance);
-  const scale = Math.max(scaleFloor, 1 - scrollY / (fadeDistance * 2.4));
-  const sceneOpacity = Math.max(0, 1 - scrollY / (isMobile ? 320 : 700));
-  const isSticky = !isMobile && scrollY < 500;
+  const scale = Math.max(0.7, 1 - scrollY / (fadeDistance * 2));
+  const compact = Math.min(1, Math.max(0, (scrollY - fadeDistance * 0.6) / 80));
+  const sceneOpacity = blob.moved ? 1 : Math.max(0, 1 - scrollY / (isMobile ? 320 : 700));
+
 
   return (
     <>
@@ -60,7 +60,7 @@ export const Hero = () => {
 
       {/* Cinematic 3D scene */}
       <div
-        className="fixed inset-x-0 top-0 h-[55vh] md:h-[75vh] z-[1] pointer-events-none transition-opacity duration-300"
+        className="fixed inset-0 z-[1] pointer-events-none transition-opacity duration-300"
         style={{ opacity: sceneOpacity }}
       >
         <SceneBoundary>
@@ -70,14 +70,23 @@ export const Hero = () => {
         </SceneBoundary>
       </div>
 
-      <section
-        className={`${
-          isSticky ? "sticky top-0" : "relative"
-        } mobile-editorial-hero min-h-[42vh] md:min-h-[50vh] flex items-center justify-center overflow-hidden py-12 md:py-20 z-10 transition-all duration-300`}
+      <div className="fixed inset-0 z-30 pointer-events-none" style={{ opacity: sceneOpacity, visibility: sceneOpacity > 0.05 ? "visible" : "hidden" }}>
+        <BlobHandle />
+      </div>
+
+      {/* Compact title that stays visible once the page scrolls */}
+      <div
+        className="hero-compact fixed inset-x-0 top-0 z-40 flex justify-center py-2 pointer-events-none"
+        style={{ opacity: compact, transform: `translateY(${(compact - 1) * 12}px)` }}
+        aria-hidden={compact < 0.5}
       >
+        <span className="hero-title text-lg md:text-2xl font-extrabold">Erwann's projects</span>
+      </div>
+
+      <section className="mobile-editorial-hero relative flex justify-center pt-6 pb-10 md:pt-8 md:pb-16 min-h-[30vh] md:min-h-[36vh] z-10">
         <div
-          className="container mx-auto px-4 z-20 text-center animate-fade-in transition-all duration-500 ease-out"
-          style={{ opacity, transform: `scale(${scale})` }}
+          className="container mx-auto px-4 z-20 text-center animate-fade-in"
+          style={{ opacity, transform: `scale(${scale})`, transformOrigin: "top center" }}
         >
           <h1 className="hero-title text-4xl mb-3 leading-tight font-extrabold md:text-7xl">
             Erwann's projects

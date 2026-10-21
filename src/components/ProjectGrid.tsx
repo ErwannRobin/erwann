@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type MutableRefObject } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { ProjectCard, type Project } from "./ProjectCard";
@@ -11,7 +11,7 @@ function ProjectIcon({ project }: { project: Project }) {
 
 export function ProjectGrid({ projects }: { projects: Project[] }) {
   const [selected, setSelected] = useState<Project | null>(null);
-  const opener = useRef<HTMLButtonElement | null>(null);
+  const opener = useRef<HTMLElement | null>(null);
   return <>
     <div className="project-icon-grid max-w-7xl mx-auto">
       {projects.map(project => <Button key={project.title} variant="ghost" className="project-tile" onClick={event => { opener.current = event.currentTarget; setSelected(project); }} aria-label={`Open ${project.title}`} aria-haspopup="dialog">
@@ -19,12 +19,17 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
         <span className="project-tile-name">{project.title}</span>
       </Button>)}
     </div>
-    <Dialog open={selected !== null} onOpenChange={open => { if (!open) setSelected(null); }}>
-      <DialogContent className="project-full-dialog" onCloseAutoFocus={event => { event.preventDefault(); opener.current?.focus(); }}>
-        <DialogTitle className="sr-only">{selected?.title ?? "Project"}</DialogTitle>
-        <DialogDescription className="sr-only">{selected?.description}</DialogDescription>
-        {selected && <ProjectCard key={selected.title} project={selected} index={0} fullView />}
-      </DialogContent>
-    </Dialog>
+    <ProjectDialog project={selected} onClose={() => setSelected(null)} opener={opener} />
   </>;
+}
+
+/** Full project view with the 3D twirl; returns focus to whatever opened it. */
+export function ProjectDialog({ project, onClose, opener }: { project: Project | null; onClose: () => void; opener: MutableRefObject<HTMLElement | null> }) {
+  return <Dialog open={project !== null} onOpenChange={open => { if (!open) onClose(); }}>
+    <DialogContent className="project-full-dialog" onCloseAutoFocus={event => { event.preventDefault(); opener.current?.focus(); }}>
+      <DialogTitle className="sr-only">{project?.title ?? "Project"}</DialogTitle>
+      <DialogDescription className="sr-only">{project?.description}</DialogDescription>
+      {project && <ProjectCard key={project.title} project={project} index={0} fullView />}
+    </DialogContent>
+  </Dialog>;
 }
