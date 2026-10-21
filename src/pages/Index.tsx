@@ -237,7 +237,7 @@ type ViewMode = "grid" | "timeline";
 
 const Index = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
-  const [view, setView] = useState<ViewMode>("grid");
+  const [view, setView] = useState<ViewMode>("timeline");
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   const counts = useMemo(() => {
@@ -274,13 +274,14 @@ const Index = () => {
 
       <section className="editorial-projects container mx-auto px-4 py-16 relative z-10">
         {/* View toggle */}
-        <div className="gallery-toolbar flex flex-wrap items-center justify-between gap-3 mb-5 animate-fade-in">
+        <div className="gallery-toolbar relative flex flex-wrap items-center justify-between gap-3 mb-5 animate-fade-in">
           <div className="flex items-center gap-3">
             <Button variant="outline" onClick={() => setFiltersOpen(value => !value)} aria-expanded={filtersOpen} aria-controls="project-filters" className="gap-2 bg-background/40 backdrop-blur-md">
               <SlidersHorizontal className="h-4 w-4" /><span>{activeCategory === "All" ? "Filter" : activeCategory}</span><ChevronDown className={cn("h-4 w-4 transition-transform", filtersOpen && "rotate-180")} />
             </Button>
             <span className="text-xs text-muted-foreground">{filtered.length} projects</span>
           </div>
+          {view === "timeline" && <div id="history-nav-slot" className="hidden lg:flex lg:absolute lg:left-1/2 lg:-translate-x-1/2" />}
           <div className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-background/40 backdrop-blur-md p-1">
             {([
               { id: "grid", label: "Grid", Icon: LayoutGrid },

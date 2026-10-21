@@ -30,3 +30,8 @@
 # Landscape phone grid
 - [x] Keep the portrait icon size while adding columns on landscape phones.
 - [x] Verify columns, icon size, and title overlap on phone and desktop.
+# Timeline & blob refresh
+- [x] Desktop timeline oldest-left, opens at latest, centered nav with edge buttons in toolbar.
+- [x] Higher title with compact sticky version.
+- [x] Draggable blob with grin/shake, relief sigh, poke fear.
+- [x] No light on grid icons; timeline cards open the dialog; timeline default.
