@@ -30,6 +30,8 @@ import gyrollScreenshot from "@/assets/gyroll-screenshot.jpg";
 import trampoVisionScreenshot from "@/assets/trampo-vision-screenshot.jpg";
 import carlanderScreenshot from "@/assets/carlander-screenshot.jpg";
 import kidDrawScreenshot from "@/assets/kid-draw-screenshot.jpg";
+import loglintScreenshot from "@/assets/loglint-screenshot.jpg";
+import phoneVerifScreenshot from "@/assets/phone-verif-screenshot.jpg";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -45,7 +47,7 @@ const projects: Project[] = [{
   description: "Smart log analysis and linting tool for developers.",
   longDescription: "A powerful tool designed to help developers analyze and lint their log files with ease. LogLint intelligently detects patterns, highlights issues, and provides actionable insights to improve code quality and debugging efficiency.",
   url: "https://loglint.lovable.app",
-  image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80",
+  image: loglintScreenshot,
   tags: ["Developer Tools", "Analysis", "Productivity"],
   categories: ["Dev", "Tools"],
   date: "Jul 2025"
@@ -54,7 +56,7 @@ const projects: Project[] = [{
   description: "Revolutionary WhatsApp reverse verification - costless and secure.",
   longDescription: "A groundbreaking phone verification system using WhatsApp reverse verification technology. Completely costless and highly secure, this innovative approach eliminates SMS costs while providing robust authentication. Perfect for modern applications that need reliable phone verification without the hefty price tag.",
   url: "https://phone-verif.com",
-  image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80",
+  image: phoneVerifScreenshot,
   tags: ["WhatsApp", "Security", "Authentication"],
   categories: ["SaaS", "Dev", "Tools"],
   date: "Aug 2025"
