@@ -11,25 +11,27 @@ import { LayoutGrid, Clock, SlidersHorizontal, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import bttfLogo from "@/assets/bttf-logo.jpg";
-import emojiSearchHero from "@/assets/emoji-search-hero.png";
-import bgEraserDemo from "@/assets/bg-eraser-demo.png";
-import portfolioScreenshot from "@/assets/portfolio-screenshot.png";
-import digitalWarScreenshot from "@/assets/digital-war-screenshot.png";
-import scoresheetScreenshot from "@/assets/scoresheet-screenshot.png";
-import souvenirsScreenshot from "@/assets/souvenirs-screenshot.png";
-import wordbombScreenshot from "@/assets/wordbomb-screenshot.png";
-import waquizzScreenshot from "@/assets/waquizz-screenshot.png";
-import pokerPlanningScreenshot from "@/assets/poker-planning-screenshot.png";
-import glowgridScreenshot from "@/assets/glowgrid-screenshot.png";
-import voxalScreenshot from "@/assets/voxal-screenshot.png";
-import bookmojiScreenshot from "@/assets/bookmoji-screenshot.png";
-import makefileGameScreenshot from "@/assets/makefile-game-screenshot.png";
-import mapmindQuestScreenshot from "@/assets/mapmind-quest-screenshot.png";
+import emojiSearchHero from "@/assets/emoji-search-hero.jpg";
+import bgEraserDemo from "@/assets/bg-eraser-demo.jpg";
+import portfolioScreenshot from "@/assets/portfolio-screenshot.jpg";
+import digitalWarScreenshot from "@/assets/digital-war-screenshot.jpg";
+import scoresheetScreenshot from "@/assets/scoresheet-screenshot.jpg";
+import souvenirsScreenshot from "@/assets/souvenirs-screenshot.jpg";
+import wordbombScreenshot from "@/assets/wordbomb-screenshot.jpg";
+import waquizzScreenshot from "@/assets/waquizz-screenshot.jpg";
+import pokerPlanningScreenshot from "@/assets/poker-planning-screenshot.jpg";
+import glowgridScreenshot from "@/assets/glowgrid-screenshot.jpg";
+import voxalScreenshot from "@/assets/voxal-screenshot.jpg";
+import bookmojiScreenshot from "@/assets/bookmoji-screenshot.jpg";
+import makefileGameScreenshot from "@/assets/makefile-game-screenshot.jpg";
+import mapmindQuestScreenshot from "@/assets/mapmind-quest-screenshot.jpg";
 import awaleScreenshot from "@/assets/awale-screenshot.jpg";
-import gyrollScreenshot from "@/assets/gyroll-screenshot.png";
-import trampoVisionScreenshot from "@/assets/trampo-vision-screenshot.png";
-import carlanderScreenshot from "@/assets/carlander-screenshot.png";
-import kidDrawScreenshot from "@/assets/kid-draw-screenshot.png";
+import gyrollScreenshot from "@/assets/gyroll-screenshot.jpg";
+import trampoVisionScreenshot from "@/assets/trampo-vision-screenshot.jpg";
+import carlanderScreenshot from "@/assets/carlander-screenshot.jpg";
+import kidDrawScreenshot from "@/assets/kid-draw-screenshot.jpg";
+import loglintScreenshot from "@/assets/loglint-screenshot.jpg";
+import phoneVerifScreenshot from "@/assets/phone-verif-screenshot.jpg";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -45,7 +47,7 @@ const projects: Project[] = [{
   description: "Smart log analysis and linting tool for developers.",
   longDescription: "A powerful tool designed to help developers analyze and lint their log files with ease. LogLint intelligently detects patterns, highlights issues, and provides actionable insights to improve code quality and debugging efficiency.",
   url: "https://loglint.lovable.app",
-  image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80",
+  image: loglintScreenshot,
   tags: ["Developer Tools", "Analysis", "Productivity"],
   categories: ["Dev", "Tools"],
   date: "Jul 2025"
@@ -54,7 +56,7 @@ const projects: Project[] = [{
   description: "Revolutionary WhatsApp reverse verification - costless and secure.",
   longDescription: "A groundbreaking phone verification system using WhatsApp reverse verification technology. Completely costless and highly secure, this innovative approach eliminates SMS costs while providing robust authentication. Perfect for modern applications that need reliable phone verification without the hefty price tag.",
   url: "https://phone-verif.com",
-  image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80",
+  image: phoneVerifScreenshot,
   tags: ["WhatsApp", "Security", "Authentication"],
   categories: ["SaaS", "Dev", "Tools"],
   date: "Aug 2025"
