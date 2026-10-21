@@ -7,6 +7,8 @@ export const blob = {
   /** Screen-space offset in px from the orb's resting position. */
   offset: { x: 0, y: 0 },
   moved: false,
+  /** Rotation kick (radians) applied when poked. */
+  pokeSpin: 0,
   /** Handle element that the scene keeps centred on the orb. */
   handle: null as HTMLElement | null,
 };

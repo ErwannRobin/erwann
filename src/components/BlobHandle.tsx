@@ -24,6 +24,13 @@ export const BlobHandle = () => {
     };
     const up = () => {
       if (!start) return;
+      if (!dragging) {
+        // Poked: hop away in a random direction and spin a little.
+        const a = Math.random() * Math.PI * 2;
+        blob.offset = { x: blob.offset.x + Math.cos(a) * 90, y: blob.offset.y + Math.sin(a) * 60 };
+        blob.moved = true;
+        blob.pokeSpin = (Math.random() > 0.5 ? 1 : -1) * 0.6;
+      }
       setMood(dragging ? "relief" : "scared");
       start = null;
       dragging = false;
