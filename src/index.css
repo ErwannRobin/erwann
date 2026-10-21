@@ -215,7 +215,7 @@ All colors MUST be HSL.
 .chronological-gallery .art-project:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 4px; }
 .chronological-gallery .art-project-artwork { object-fit: contain; transform: scale(var(--artwork-scroll-scale, 1)); transition: transform 160ms ease-out; }
 .history-navigation, .history-marker { display: none; }
-@media (min-width: 768px) and (max-width: 1023px), (max-width: 767px) and (orientation: landscape) {
+@media (min-width: 768px) and (max-width: 1023px), (max-width: 767px) and (orientation: landscape), (min-width: 1024px) and (max-aspect-ratio: 1/1) {
   .history-track.history-track { position: relative; display: flex; flex-direction: column; gap: 0; padding-block: 8px; }
   .history-track::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%); background: var(--signature-gradient); box-shadow: 0 0 14px hsl(var(--signature-cyan) / 0.35); }
   .history-entry { position: relative; width: calc(50% - 36px); }
@@ -228,7 +228,7 @@ All colors MUST be HSL.
   .history-dot { display: block; position: absolute; width: 10px; height: 10px; border-radius: 50%; transform: translate(-50%, -50%); background: hsl(var(--signature-cyan)); border: 2px solid hsl(var(--background)); box-shadow: 0 0 12px hsl(var(--signature-cyan) / 0.65); }
   .history-date { position: absolute; top: 10px; left: 0; transform: translateX(-50%); white-space: nowrap; font-size: 12px; font-weight: 600; color: hsl(var(--muted-foreground)); }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (min-aspect-ratio: 1001/1000) {
   
   .history-scroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--muted) / 0.4); padding: 0 16px 20px; scroll-padding-inline: 16px; }
   .history-scroll:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 4px; border-radius: 8px; }
@@ -292,7 +292,7 @@ All colors MUST be HSL.
   .chronological-gallery .art-project-subtitle { transition: none; }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (min-aspect-ratio: 1001/1000) {
   .history-section { width: 100vw; max-width: none; margin-left: calc(50% - 50vw); }
   .history-section .history-scroll { padding-inline: 32px; scroll-padding-inline: 32px; }
 }
@@ -306,4 +306,4 @@ All colors MUST be HSL.
 /* Icons stay above the reflected light for legibility. */
 .project-tile-icon { position: relative; z-index: 3; }
 .history-controls { display: none; }
-@media (min-width: 1024px) { .history-controls { display: inline-flex; gap: 6px; } }
+@media (min-width: 1024px) and (min-aspect-ratio: 1001/1000) { .history-controls { display: inline-flex; gap: 6px; } }

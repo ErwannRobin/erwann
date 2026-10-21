@@ -5,6 +5,9 @@ import { ProjectDialog } from "./ProjectGrid";
 import { Button } from "@/components/ui/button";
 import { ProjectCard, type Project } from "./ProjectCard";
 
+// Horizontal axis only when the window is wider than tall; portrait windows get the vertical axis.
+const HORIZONTAL_QUERY = "(min-width: 1024px) and (min-aspect-ratio: 1001/1000)";
+
 interface TimelineProps {
   projects: Project[];
 }
@@ -14,11 +17,11 @@ export const Timeline = ({ projects }: TimelineProps) => {
   const [navigation, setNavigation] = useState({ previous: false, next: false });
   const [selected, setSelected] = useState<Project | null>(null);
   const opener = useRef<HTMLElement | null>(null);
-  const [desktop, setDesktop] = useState(() => window.matchMedia("(min-width: 1024px)").matches);
+  const [desktop, setDesktop] = useState(() => window.matchMedia(HORIZONTAL_QUERY).matches);
   const [slot, setSlot] = useState<HTMLElement | null>(null);
   useEffect(() => {
     setSlot(document.getElementById("history-nav-slot"));
-    const mq = window.matchMedia("(min-width: 1024px)");
+    const mq = window.matchMedia(HORIZONTAL_QUERY);
     const onChange = () => setDesktop(mq.matches);
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
@@ -34,7 +37,7 @@ export const Timeline = ({ projects }: TimelineProps) => {
     const container = gallery.current;
     if (!container) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const desktop = window.matchMedia("(min-width: 1024px)");
+    const desktop = window.matchMedia(HORIZONTAL_QUERY);
     const cards = Array.from(container.querySelectorAll<HTMLElement>(".art-project"));
     let frame = 0;
     const update = () => {
