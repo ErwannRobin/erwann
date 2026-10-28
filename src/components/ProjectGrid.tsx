@@ -66,7 +66,7 @@ export function ProjectDialog({ project, siblings, onSelect, onClose, opener }: 
     if (next) onSelect(next);
   };
   return <Dialog open={project !== null} onOpenChange={open => { if (!open) onClose(); }}>
-    <DialogContent className="project-full-dialog" onKeyDown={step} onCloseAutoFocus={event => { event.preventDefault(); opener.current?.focus(); }}>
+    <DialogContent className="project-full-dialog focus:outline-none" onKeyDown={step} onOpenAutoFocus={event => { event.preventDefault(); if (event.currentTarget instanceof HTMLElement) event.currentTarget.focus(); }} onCloseAutoFocus={event => { event.preventDefault(); opener.current?.focus(); }}>
       <DialogTitle className="sr-only">{project?.title ?? "Project"}</DialogTitle>
       <DialogDescription className="sr-only">{project?.description}</DialogDescription>
       {project && <ProjectCard key={project.title} project={project} index={0} fullView />}
