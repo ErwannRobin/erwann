@@ -80,12 +80,30 @@ export const Timeline = ({ projects, onOpen }: TimelineProps) => {
     container.scrollTo({ left: end ? container.scrollWidth : 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   };
 
+  // Move the visible focus ring along the cards, keeping the focused one centred.
+  // With nothing focused yet, the first key press lands on the card nearest the centre.
+  const focusCard = (step: number | "first" | "last") => {
+    const container = gallery.current;
+    if (!container) return;
+    const cards = Array.from(container.querySelectorAll<HTMLElement>(".art-project"));
+    if (!cards.length) return;
+    const focused = document.activeElement instanceof HTMLElement ? document.activeElement.closest<HTMLElement>(".art-project") : null;
+    const centre = container.getBoundingClientRect().left + container.clientWidth / 2;
+    const distance = (card: HTMLElement) => { const rect = card.getBoundingClientRect(); return Math.abs(rect.left + rect.width / 2 - centre); };
+    const nearest = cards.reduce((best, card) => distance(card) < distance(best) ? card : best);
+    const current = focused && cards.includes(focused) ? focused : null;
+    const index = step === "first" ? 0 : step === "last" ? cards.length - 1 : current ? cards.indexOf(current) + step : cards.indexOf(nearest);
+    const target = cards[Math.min(cards.length - 1, Math.max(0, index))];
+    target.focus({ preventScroll: true });
+    target.scrollIntoView({ inline: "center", block: "nearest", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  };
+
   // Native scrolling already covers the vertical gallery, so only the horizontal axis needs keys.
   useKeyboardShortcuts(desktop ? {
-    ArrowLeft: () => scrollHistory(-1),
-    ArrowRight: () => scrollHistory(1),
-    Home: () => scrollToEdge(false),
-    End: () => scrollToEdge(true),
+    ArrowLeft: () => focusCard(-1),
+    ArrowRight: () => focusCard(1),
+    Home: () => focusCard("first"),
+    End: () => focusCard("last"),
   } : {});
 
   const controls = <div className="history-controls" role="group" aria-label="Timeline navigation">
