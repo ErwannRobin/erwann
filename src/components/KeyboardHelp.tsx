@@ -9,6 +9,8 @@ const SHORTCUTS: { keys: string[]; label: string }[] = [
   { keys: ["Home", "End"], label: "Oldest / latest project" },
   { keys: ["↑", "↓", "←", "→"], label: "Move between grid icons" },
   { keys: ["Enter"], label: "Open the focused project" },
+  { keys: ["←", "→", "↑", "↓"], label: "Previous / next project while open" },
+  { keys: ["⌘", "K"], label: "Command menu" },
   { keys: ["Esc"], label: "Close dialog or filters" },
   { keys: ["?"], label: "Show this help" },
 ];

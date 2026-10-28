@@ -1,32 +1,22 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ArrowLeft, ArrowRight, ChevronsLeft, ChevronsRight } from "lucide-react";
-import { ProjectDialog } from "./ProjectGrid";
 import { Button } from "@/components/ui/button";
+import { HORIZONTAL_QUERY, useHorizontalTimeline } from "@/hooks/use-horizontal-timeline";
 import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
 import { ProjectCard, type Project } from "./ProjectCard";
 
-// Horizontal axis only when the window is wider than tall; portrait windows get the vertical axis.
-const HORIZONTAL_QUERY = "(min-width: 1024px) and (min-aspect-ratio: 1001/1000)";
-
 interface TimelineProps {
   projects: Project[];
+  onOpen: (project: Project, opener: HTMLElement) => void;
 }
 
-export const Timeline = ({ projects }: TimelineProps) => {
+export const Timeline = ({ projects, onOpen }: TimelineProps) => {
   const gallery = useRef<HTMLDivElement>(null);
   const [navigation, setNavigation] = useState({ previous: false, next: false });
-  const [selected, setSelected] = useState<Project | null>(null);
-  const opener = useRef<HTMLElement | null>(null);
-  const [desktop, setDesktop] = useState(() => window.matchMedia(HORIZONTAL_QUERY).matches);
+  const desktop = useHorizontalTimeline();
   const [slot, setSlot] = useState<HTMLElement | null>(null);
-  useEffect(() => {
-    setSlot(document.getElementById("history-nav-slot"));
-    const mq = window.matchMedia(HORIZONTAL_QUERY);
-    const onChange = () => setDesktop(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
+  useEffect(() => setSlot(document.getElementById("history-nav-slot")), []);
   // Desktop history reads left to right (oldest first) and opens on the most recent end.
   const ordered = desktop ? [...projects].reverse() : projects;
   useLayoutEffect(() => {
@@ -112,11 +102,10 @@ export const Timeline = ({ projects }: TimelineProps) => {
         <ol className="history-track grid grid-cols-1 gap-5">
           {ordered.map((project, index) => <li className="history-entry" key={project.title}>
             <div className="history-marker" aria-hidden="true"><span className="history-date">{project.date}</span><span className="history-dot" /></div>
-            <ProjectCard project={project} index={index} onOpen={el => { opener.current = el; setSelected(project); }} />
+            <ProjectCard project={project} index={index} onOpen={el => onOpen(project, el)} />
           </li>)}
         </ol>
       </div>
-      <ProjectDialog project={selected} onClose={() => setSelected(null)} opener={opener} />
     </section>
   );
 };

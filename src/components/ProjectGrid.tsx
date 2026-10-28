@@ -1,4 +1,4 @@
-import { useRef, useState, type KeyboardEvent, type MutableRefObject } from "react";
+import { useState, type KeyboardEvent, type MutableRefObject } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { ProjectCard, type Project } from "./ProjectCard";
@@ -35,24 +35,32 @@ function moveFocus(event: KeyboardEvent<HTMLElement>) {
   best.focus();
 }
 
-export function ProjectGrid({ projects }: { projects: Project[] }) {
-  const [selected, setSelected] = useState<Project | null>(null);
-  const opener = useRef<HTMLElement | null>(null);
+export function ProjectGrid({ projects, onOpen }: { projects: Project[]; onOpen: (project: Project, opener: HTMLElement) => void }) {
   return <>
     <div className="project-icon-grid max-w-7xl mx-auto" onKeyDown={moveFocus}>
-      {projects.map(project => <Button key={project.title} variant="ghost" className="project-tile" onClick={event => { opener.current = event.currentTarget; setSelected(project); }} aria-label={`Open ${project.title}`} aria-haspopup="dialog">
+      {projects.map(project => <Button key={project.title} variant="ghost" className="project-tile" onClick={event => onOpen(project, event.currentTarget)} aria-label={`Open ${project.title}`} aria-haspopup="dialog">
         <ProjectIcon project={project} />
         <span className="project-tile-name">{project.title}</span>
       </Button>)}
     </div>
-    <ProjectDialog project={selected} onClose={() => setSelected(null)} opener={opener} />
   </>;
 }
 
-/** Full project view with the 3D twirl; returns focus to whatever opened it. */
-export function ProjectDialog({ project, onClose, opener }: { project: Project | null; onClose: () => void; opener: MutableRefObject<HTMLElement | null> }) {
+/**
+ * Full project view with the 3D twirl; returns focus to whatever opened it.
+ * `siblings` is the displayed order: left/up steps back through it, right/down forward.
+ */
+export function ProjectDialog({ project, siblings, onSelect, onClose, opener }: { project: Project | null; siblings: Project[]; onSelect: (project: Project) => void; onClose: () => void; opener: MutableRefObject<HTMLElement | null> }) {
+  const step = (event: KeyboardEvent<HTMLElement>) => {
+    const direction = { ArrowLeft: -1, ArrowUp: -1, ArrowRight: 1, ArrowDown: 1 }[event.key];
+    if (!direction || !project || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    if (event.target instanceof HTMLElement && event.target.closest("input, textarea, select")) return;
+    const next = siblings[siblings.findIndex(item => item.title === project.title) + direction];
+    event.preventDefault();
+    if (next) onSelect(next);
+  };
   return <Dialog open={project !== null} onOpenChange={open => { if (!open) onClose(); }}>
-    <DialogContent className="project-full-dialog" onCloseAutoFocus={event => { event.preventDefault(); opener.current?.focus(); }}>
+    <DialogContent className="project-full-dialog" onKeyDown={step} onCloseAutoFocus={event => { event.preventDefault(); opener.current?.focus(); }}>
       <DialogTitle className="sr-only">{project?.title ?? "Project"}</DialogTitle>
       <DialogDescription className="sr-only">{project?.description}</DialogDescription>
       {project && <ProjectCard key={project.title} project={project} index={0} fullView />}
