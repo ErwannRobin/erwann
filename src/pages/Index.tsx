@@ -5,6 +5,8 @@ import { ProjectGrid } from "@/components/ProjectGrid";
 import { CategoryFilter, Category } from "@/components/CategoryFilter";
 import { Timeline } from "@/components/Timeline";
 import { Footer } from "@/components/Footer";
+import { KeyboardHelp } from "@/components/KeyboardHelp";
+import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
 import { CursorGlow } from "@/components/CursorGlow";
 import { TiltLight } from "@/components/TiltLight";
 import { LayoutGrid, Clock, SlidersHorizontal, ChevronDown } from "lucide-react";
@@ -241,6 +243,7 @@ const Index = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
   const [view, setView] = useState<ViewMode>("timeline");
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
 
   const counts = useMemo(() => {
     return CATEGORIES.reduce((acc, cat) => {
@@ -252,6 +255,15 @@ const Index = () => {
   const filtered = activeCategory === "All"
     ? projects
     : projects.filter(p => p.categories.includes(activeCategory as Exclude<Category, "All">));
+
+  useKeyboardShortcuts({
+    g: () => setView("grid"),
+    t: () => setView("timeline"),
+    f: () => setFiltersOpen(value => !value),
+    "?": () => setHelpOpen(true),
+    Escape: () => setFiltersOpen(false),
+    ...Object.fromEntries(CATEGORIES.map((cat, i) => [String(i + 1), () => setActiveCategory(cat)])),
+  });
 
   const timelineProjects = useMemo(() => {
     const monthOrder: Record<string, number> = {
@@ -270,11 +282,12 @@ const Index = () => {
   }, [filtered]);
 
   return <div className="min-h-screen relative">
+      <a href="#projects" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:text-foreground focus:ring-2 focus:ring-ring">Skip to projects</a>
       <CursorGlow />
       <TiltLight />
       <Hero />
 
-      <section className="editorial-projects container mx-auto px-4 py-16 relative z-10">
+      <section id="projects" tabIndex={-1} className="editorial-projects focus:outline-none container mx-auto px-4 py-16 relative z-10">
         {/* View toggle */}
         <div className="gallery-toolbar relative flex flex-wrap items-center justify-between gap-3 mb-5 animate-fade-in">
           <div className="flex items-center gap-3">
@@ -327,6 +340,7 @@ const Index = () => {
       </section>
 
       <Footer />
+      <KeyboardHelp open={helpOpen} onOpenChange={setHelpOpen} />
     </div>;
 };
 export default Index;

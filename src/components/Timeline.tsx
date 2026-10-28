@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { ArrowLeft, ArrowRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 import { ProjectDialog } from "./ProjectGrid";
 import { Button } from "@/components/ui/button";
+import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
 import { ProjectCard, type Project } from "./ProjectCard";
 
 // Horizontal axis only when the window is wider than tall; portrait windows get the vertical axis.
@@ -88,6 +89,14 @@ export const Timeline = ({ projects }: TimelineProps) => {
     if (!container) return;
     container.scrollTo({ left: end ? container.scrollWidth : 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   };
+
+  // Native scrolling already covers the vertical gallery, so only the horizontal axis needs keys.
+  useKeyboardShortcuts(desktop ? {
+    ArrowLeft: () => scrollHistory(-1),
+    ArrowRight: () => scrollHistory(1),
+    Home: () => scrollToEdge(false),
+    End: () => scrollToEdge(true),
+  } : {});
 
   const controls = <div className="history-controls" role="group" aria-label="Timeline navigation">
     <Button variant="outline" size="icon" disabled={!navigation.previous} onClick={() => scrollToEdge(false)} aria-label="Oldest projects" title="Oldest projects"><ChevronsLeft /></Button>
