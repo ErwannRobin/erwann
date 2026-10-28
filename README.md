@@ -2,7 +2,7 @@
 
 A showcase of small web tools and creative experiments — built with Lovable.
 
-**Live site:** [erwann.lovable.app](https://erwann.lovable.app)
+**Live site:** [erwann.app](https://erwann.app)
 
 ## About
 
@@ -35,7 +35,7 @@ The dev server runs at `http://localhost:8080`.
 
 ## Deployment
 
-The site is published via Lovable at [erwann.lovable.app](https://erwann.lovable.app). Pushes to the main branch are reflected automatically.
+The site is published via Lovable at [erwann.app](https://erwann.app). Pushes to the main branch are reflected automatically.
 
 ## License
 
