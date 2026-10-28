@@ -42,5 +42,5 @@ export const projectIcons: Record<string, string> = {
   "Kid Draw": icon18.url,
   "TrampoVision": icon19.url,
   "Roadster Flight": icon20.url,
-  "Lovable Tools Portfolio": "/icon-192.png",
+  "Lovable Tools Portfolio": `${import.meta.env.BASE_URL}icon-192.png`,
 };
