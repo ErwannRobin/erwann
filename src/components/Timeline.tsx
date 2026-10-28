@@ -1,31 +1,22 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ArrowLeft, ArrowRight, ChevronsLeft, ChevronsRight } from "lucide-react";
-import { ProjectDialog } from "./ProjectGrid";
 import { Button } from "@/components/ui/button";
+import { HORIZONTAL_QUERY, useHorizontalTimeline } from "@/hooks/use-horizontal-timeline";
+import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
 import { ProjectCard, type Project } from "./ProjectCard";
-
-// Horizontal axis only when the window is wider than tall; portrait windows get the vertical axis.
-const HORIZONTAL_QUERY = "(min-width: 1024px) and (min-aspect-ratio: 1001/1000)";
 
 interface TimelineProps {
   projects: Project[];
+  onOpen: (project: Project, opener: HTMLElement) => void;
 }
 
-export const Timeline = ({ projects }: TimelineProps) => {
+export const Timeline = ({ projects, onOpen }: TimelineProps) => {
   const gallery = useRef<HTMLDivElement>(null);
   const [navigation, setNavigation] = useState({ previous: false, next: false });
-  const [selected, setSelected] = useState<Project | null>(null);
-  const opener = useRef<HTMLElement | null>(null);
-  const [desktop, setDesktop] = useState(() => window.matchMedia(HORIZONTAL_QUERY).matches);
+  const desktop = useHorizontalTimeline();
   const [slot, setSlot] = useState<HTMLElement | null>(null);
-  useEffect(() => {
-    setSlot(document.getElementById("history-nav-slot"));
-    const mq = window.matchMedia(HORIZONTAL_QUERY);
-    const onChange = () => setDesktop(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
+  useEffect(() => setSlot(document.getElementById("history-nav-slot")), []);
   // Desktop history reads left to right (oldest first) and opens on the most recent end.
   const ordered = desktop ? [...projects].reverse() : projects;
   useLayoutEffect(() => {
@@ -89,6 +80,32 @@ export const Timeline = ({ projects }: TimelineProps) => {
     container.scrollTo({ left: end ? container.scrollWidth : 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   };
 
+  // Move the visible focus ring along the cards, keeping the focused one centred.
+  // With nothing focused yet, the first key press lands on the card nearest the centre.
+  const focusCard = (step: number | "first" | "last") => {
+    const container = gallery.current;
+    if (!container) return;
+    const cards = Array.from(container.querySelectorAll<HTMLElement>(".art-project"));
+    if (!cards.length) return;
+    const focused = document.activeElement instanceof HTMLElement ? document.activeElement.closest<HTMLElement>(".art-project") : null;
+    const centre = container.getBoundingClientRect().left + container.clientWidth / 2;
+    const distance = (card: HTMLElement) => { const rect = card.getBoundingClientRect(); return Math.abs(rect.left + rect.width / 2 - centre); };
+    const nearest = cards.reduce((best, card) => distance(card) < distance(best) ? card : best);
+    const current = focused && cards.includes(focused) ? focused : null;
+    const index = step === "first" ? 0 : step === "last" ? cards.length - 1 : current ? cards.indexOf(current) + step : cards.indexOf(nearest);
+    const target = cards[Math.min(cards.length - 1, Math.max(0, index))];
+    target.focus({ preventScroll: true });
+    target.scrollIntoView({ inline: "center", block: "nearest", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  };
+
+  // Native scrolling already covers the vertical gallery, so only the horizontal axis needs keys.
+  useKeyboardShortcuts(desktop ? {
+    ArrowLeft: () => focusCard(-1),
+    ArrowRight: () => focusCard(1),
+    Home: () => focusCard("first"),
+    End: () => focusCard("last"),
+  } : {});
+
   const controls = <div className="history-controls" role="group" aria-label="Timeline navigation">
     <Button variant="outline" size="icon" disabled={!navigation.previous} onClick={() => scrollToEdge(false)} aria-label="Oldest projects" title="Oldest projects"><ChevronsLeft /></Button>
     <Button variant="outline" size="icon" disabled={!navigation.previous} onClick={() => scrollHistory(-1)} aria-label="Previous projects" title="Previous projects"><ArrowLeft /></Button>
@@ -103,11 +120,10 @@ export const Timeline = ({ projects }: TimelineProps) => {
         <ol className="history-track grid grid-cols-1 gap-5">
           {ordered.map((project, index) => <li className="history-entry" key={project.title}>
             <div className="history-marker" aria-hidden="true"><span className="history-date">{project.date}</span><span className="history-dot" /></div>
-            <ProjectCard project={project} index={index} onOpen={el => { opener.current = el; setSelected(project); }} />
+            <ProjectCard project={project} index={index} onOpen={el => onOpen(project, el)} />
           </li>)}
         </ol>
       </div>
-      <ProjectDialog project={selected} onClose={() => setSelected(null)} opener={opener} />
     </section>
   );
 };

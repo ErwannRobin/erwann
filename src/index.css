@@ -249,6 +249,7 @@ All colors MUST be HSL.
 .chronological-gallery .art-project-subtitle { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; transition: grid-template-rows 240ms ease, opacity 240ms ease, visibility 240ms; }
 .chronological-gallery .art-project-subtitle > div { overflow: hidden; min-height: 0; }
 .chronological-gallery .art-project[data-scroll-active="true"] .art-project-subtitle,
+.chronological-gallery .art-project:focus-visible .art-project-subtitle,
 .chronological-gallery .art-project[data-expanded="true"] .art-project-subtitle { grid-template-rows: 1fr; opacity: 1; visibility: visible; }
 .art-project-control.art-project-control { width: 40px; height: 40px; margin-top: -8px; color: inherit; border: 1px solid hsl(var(--art-caption-text) / 0.2); border-radius: 50%; background: hsl(var(--background) / 0.2); }
 .art-project-control.art-project-control:hover { background: hsl(var(--art-caption-text) / 0.15); color: inherit; }
