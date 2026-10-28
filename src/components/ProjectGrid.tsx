@@ -48,10 +48,16 @@ export function ProjectGrid({ projects, onOpen }: { projects: Project[]; onOpen:
 
 /**
  * Full project view with the 3D twirl; returns focus to whatever opened it.
- * `siblings` is the displayed order: left/up steps back through it, right/down forward.
+ * `siblings` is the displayed order: left/up steps back through it, right/down forward, Enter visits the app.
  */
 export function ProjectDialog({ project, siblings, onSelect, onClose, opener }: { project: Project | null; siblings: Project[]; onSelect: (project: Project) => void; onClose: () => void; opener: MutableRefObject<HTMLElement | null> }) {
   const step = (event: KeyboardEvent<HTMLElement>) => {
+    // Enter visits the app, unless a link or button has focus and handles it natively.
+    if (event.key === "Enter" && project && !event.repeat && !(event.target instanceof HTMLElement && event.target.closest("a, button"))) {
+      event.preventDefault();
+      window.open(project.url, "_blank", "noopener,noreferrer");
+      return;
+    }
     const direction = { ArrowLeft: -1, ArrowUp: -1, ArrowRight: 1, ArrowDown: 1 }[event.key];
     if (!direction || !project || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     if (event.target instanceof HTMLElement && event.target.closest("input, textarea, select")) return;
