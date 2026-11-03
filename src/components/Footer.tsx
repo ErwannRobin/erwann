@@ -10,7 +10,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="border-t border-border/50 bg-card/30 backdrop-blur-sm mt-20">
+    <footer className="relative z-10 border-t border-border/50 bg-card/30 backdrop-blur-sm mt-20">
       <div className="container mx-auto px-4 py-12">
         <div className="flex flex-col items-center gap-6">
           {/* Social Links */}
