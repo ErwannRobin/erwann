@@ -227,7 +227,7 @@ const projects: Project[] = [{
     categories: ["Games", "Fun"],
     date: "Oct 2026"
   }, {
-    title: "Lovable Tools Portfolio",
+    title: "Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
   longDescription: "A modern, elegant portfolio website built with Lovable to showcase all the tools and projects I've created. Features a clean design, smooth animations, dark/light mode support, and is easily extensible for future projects. Built with React, TypeScript, and Tailwind CSS.",
   url: window.location.href,
