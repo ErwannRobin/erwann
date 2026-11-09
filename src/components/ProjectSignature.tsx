@@ -20,7 +20,7 @@ const signatures: Record<string, string> = {
   "scribili": "🖍️",
   TrampoVision: "🤸",
   "Roadster Flight": "🏎️",
-  "Lovable Tools Portfolio": "✨",
+  "Portfolio": "✨",
 };
 
 export const projectAnchor = (title: string) =>
