@@ -39,7 +39,7 @@ export const projectIcons: Record<string, string> = {
   "MapMind Quest": icon15.url,
   "Awal\u00e9": icon16.url,
   "Gyroll": icon17.url,
-  "Kid Draw": icon18.url,
+  "scribili": icon18.url,
   "TrampoVision": icon19.url,
   "Roadster Flight": icon20.url,
   "Lovable Tools Portfolio": `${import.meta.env.BASE_URL}icon-192.png`,

@@ -200,10 +200,10 @@ const projects: Project[] = [{
   categories: ["Games", "Fun"],
   date: "Sep 2026"
 }, {
-  title: "Kid Draw",
+  title: "scribili",
   description: "A blank sheet, fat crayon colours and stickers for toddlers to draw with their fingers.",
   longDescription: "A finger-first drawing sheet made for very small hands: a full-screen white canvas, ten chunky colour swatches and a tray of emoji stickers to stamp anywhere. No menus to learn, no wrong way to draw — everything happens by touch, so the first masterpiece takes about two seconds. Built as a calm, ad-free space little ones can hand back to you already finished.",
-  url: "https://draw.erwann.app",
+  url: "https://scribi.li",
   image: kidDrawScreenshot,
   tags: ["Drawing", "Kids", "Touch"],
   categories: ["Fun", "Design"],
