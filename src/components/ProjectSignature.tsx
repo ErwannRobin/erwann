@@ -17,7 +17,7 @@ const signatures: Record<string, string> = {
   "MapMind Quest": "🌍",
   Awalé: "🌱",
   Gyroll: "🔮",
-  "Kid Draw": "🖍️",
+  "scribili": "🖍️",
   TrampoVision: "🤸",
   "Roadster Flight": "🏎️",
   "Lovable Tools Portfolio": "✨",
