@@ -19,6 +19,7 @@ import icon17 from "@/assets/project-icons/gyroll.png.asset.json";
 import icon18 from "@/assets/project-icons/kid-draw.png.asset.json";
 import icon19 from "@/assets/project-icons/trampovision.png.asset.json";
 import icon20 from "@/assets/project-icons/roadster-flight.png.asset.json";
+import logosIcon from "@/assets/project-icons/logos.png";
 
 export const projectIcons: Record<string, string> = {
   "Back to the Future Logo Generator": icon0.url,
@@ -42,5 +43,6 @@ export const projectIcons: Record<string, string> = {
   "scribili": icon18.url,
   "TrampoVision": icon19.url,
   "Roadster Flight": icon20.url,
+  "Famous Logo Generators": logosIcon,
   "Portfolio": `${import.meta.env.BASE_URL}icon-192.png`,
 };

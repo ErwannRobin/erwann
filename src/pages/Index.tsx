@@ -36,6 +36,7 @@ import carlanderScreenshot from "@/assets/carlander-screenshot.jpg";
 import kidDrawScreenshot from "@/assets/kid-draw-screenshot.jpg";
 import loglintScreenshot from "@/assets/loglint-screenshot.jpg";
 import phoneVerifScreenshot from "@/assets/phone-verif-screenshot.jpg";
+import logosScreenshot from "@/assets/logos-screenshot.jpg";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -226,6 +227,15 @@ const projects: Project[] = [{
     tags: ["Game", "3D", "Stunt"],
     categories: ["Games", "Fun"],
     date: "Oct 2026"
+  }, {
+    title: "Famous Logo Generators",
+    description: "Type once and see your words in 28 iconic movie, TV, game and brand logo styles.",
+    longDescription: "A free collection of famous logo style generators: type your name, your band or your cat once and preview it in every iconic lettering at the same time. Pick a style to fine-tune colours, backgrounds and animations, then export a PNG, GIF or video. No sign-up, available in 13 languages.",
+    url: "https://logos.erwann.app",
+    image: logosScreenshot,
+    tags: ["Logo Generator", "Design", "Typography"],
+    categories: ["Design", "Fun", "Tools"],
+    date: "Nov 2026"
   }, {
     title: "Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
