@@ -229,7 +229,7 @@ const projects: Project[] = [{
     date: "Oct 2026"
   }, {
     title: "Famous Logo Generators",
-    description: "Type once and see your words in 28 iconic movie, TV, game and brand logo styles.",
+    description: "Type once and see your words in iconic movie, TV, game and brand logo styles.",
     longDescription: "A free collection of famous logo style generators: type your name, your band or your cat once and preview it in every iconic lettering at the same time. Pick a style to fine-tune colours, backgrounds and animations, then export a PNG, GIF or video. No sign-up, available in 13 languages.",
     url: "https://logos.erwann.app",
     image: logosScreenshot,
