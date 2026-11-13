@@ -20,6 +20,7 @@ const signatures: Record<string, string> = {
   "scribili": "🖍️",
   TrampoVision: "🤸",
   "Roadster Flight": "🏎️",
+  "Famous Logo Generators": "🎬",
   "Portfolio": "✨",
 };
 
