@@ -37,5 +37,6 @@
 - [x] No light on grid icons; timeline cards open the dialog; timeline default.
 
 # Claim Your Spot
-- [x] Add the November project with its miniature, tile icon and filters.
+- [x] Add the November project with its miniature and tile icon.
+- [x] Show it under the SaaS and Fun filters.
 - [x] Verify it appears in both views and opens correctly.

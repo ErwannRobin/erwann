@@ -244,7 +244,7 @@ const projects: Project[] = [{
     url: "https://www.claimyourspot.bid",
     image: claimYourSpotScreenshot,
     tags: ["Marketplace", "Advertising", "Hackathon"],
-    categories: ["Tools", "Design"],
+    categories: ["SaaS", "Fun"],
     date: "Nov 2026"
   }, {
     title: "Portfolio",
