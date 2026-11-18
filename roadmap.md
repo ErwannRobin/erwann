@@ -35,3 +35,7 @@
 - [x] Higher title with compact sticky version.
 - [x] Draggable blob with grin/shake, relief sigh, poke fear.
 - [x] No light on grid icons; timeline cards open the dialog; timeline default.
+
+# Claim Your Spot
+- [x] Add the November project with its miniature, tile icon and filters.
+- [x] Verify it appears in both views and opens correctly.

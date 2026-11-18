@@ -21,6 +21,7 @@ const signatures: Record<string, string> = {
   TrampoVision: "🤸",
   "Roadster Flight": "🏎️",
   "Famous Logo Generators": "🎬",
+  "Claim Your Spot": "📰",
   "Portfolio": "✨",
 };
 

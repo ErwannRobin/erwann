@@ -37,6 +37,7 @@ import kidDrawScreenshot from "@/assets/kid-draw-screenshot.jpg";
 import loglintScreenshot from "@/assets/loglint-screenshot.jpg";
 import phoneVerifScreenshot from "@/assets/phone-verif-screenshot.jpg";
 import logosScreenshot from "@/assets/logos-screenshot.jpg";
+import claimYourSpotScreenshot from "@/assets/claim-your-spot-screenshot.jpg";
 
 const projects: Project[] = [{
   title: "Back to the Future Logo Generator",
@@ -235,6 +236,15 @@ const projects: Project[] = [{
     image: logosScreenshot,
     tags: ["Logo Generator", "Design", "Typography"],
     categories: ["Design", "Fun", "Tools"],
+    date: "Nov 2026"
+  }, {
+    title: "Claim Your Spot",
+    description: "One giant advertising page where 500 brands each own a numbered space.",
+    longDescription: "A giant digital advertising page: 500 numbered spaces, one per brand. Buy a spot, rent it out, or receive offers from other brands who want the same square. Built from zero for the Ship or Die $100K Hackathon — if the project wins, the prize pays for a real full-page newspaper ad carrying the first 500 logos. Independent project, not endorsed by the hackathon: the print edition is an ambition, not a guarantee.",
+    url: "https://www.claimyourspot.bid",
+    image: claimYourSpotScreenshot,
+    tags: ["Marketplace", "Advertising", "Hackathon"],
+    categories: ["Tools", "Design"],
     date: "Nov 2026"
   }, {
     title: "Portfolio",
