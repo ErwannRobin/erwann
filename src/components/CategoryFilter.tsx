@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import type { ProjectCategory } from "@/data/projectRecords";
 
-export type Category = "All" | "SaaS" | "Games" | "Tools" | "Dev" | "Fun" | "Design";
+export type Category = "All" | ProjectCategory;
 
 const categoryEmojis: Record<Category, string> = {
   All: "🌟",

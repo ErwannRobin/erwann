@@ -1,19 +1,10 @@
 import { useId, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronUp, ArrowUpRight } from "lucide-react";
-import type { Category } from "./CategoryFilter";
+import type { ProjectRecord } from "@/data/projectRecords";
 import { projectAnchor } from "./ProjectSignature";
 
-export interface Project {
-  title: string;
-  description: string;
-  longDescription: string;
-  url: string;
-  image: string;
-  tags: string[];
-  categories: Exclude<Category, "All">[];
-  date: string;
-}
+export type Project = Omit<ProjectRecord, "screenshot"> & { image: string };
 
 interface ProjectCardProps {
   project: Project;

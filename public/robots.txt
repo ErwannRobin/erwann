@@ -1,16 +1,8 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# Content signals: https://contentsignals.org/
+# search: index and link to pages; ai-input: use pages to answer prompts (RAG, grounding);
+# ai-train: train or fine-tune models.
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 Sitemap: https://erwann.app/sitemap.xml

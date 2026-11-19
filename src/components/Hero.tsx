@@ -22,6 +22,13 @@ class SceneBoundary extends Component<{ children: ReactNode }, { failed: boolean
   }
 }
 
+/**
+ * Automated browsers (headless prerenderers such as Cloudflare's Markdown for
+ * Agents conversion) usually lack a GPU; the software-rendered WebGL scene keeps
+ * them busy past their render timeout, so they get the static backdrop instead.
+ */
+const isAutomated = typeof navigator !== "undefined" && navigator.webdriver === true;
+
 /** Phones — including landscape ones, too short to keep the title pinned over the grid. */
 const PHONE_QUERY = "(max-width: 767px), (orientation: landscape) and (max-height: 520px) and (max-width: 1023px)";
 
@@ -63,15 +70,17 @@ export const Hero = () => {
         className="fixed inset-0 z-[1] pointer-events-none transition-opacity duration-300"
         style={{ opacity: sceneOpacity }}
       >
-        <SceneBoundary>
-          <Suspense fallback={null}>
-            <HeroScene />
-          </Suspense>
-        </SceneBoundary>
+        {!isAutomated && (
+          <SceneBoundary>
+            <Suspense fallback={null}>
+              <HeroScene />
+            </Suspense>
+          </SceneBoundary>
+        )}
       </div>
 
       <div className="fixed inset-0 z-30 pointer-events-none" style={{ opacity: sceneOpacity, visibility: sceneOpacity > 0.05 ? "visible" : "hidden" }}>
-        <BlobHandle />
+        {!isAutomated && <BlobHandle />}
       </div>
 
       {/* Compact title that stays visible once the page scrolls */}
