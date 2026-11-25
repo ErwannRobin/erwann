@@ -225,6 +225,15 @@ export const projectRecords: ProjectRecord[] = [{
     categories: ["SaaS", "Fun"],
     date: "Nov 2026"
   }, {
+    title: "SkitchCraft",
+    description: "Capture, annotate and record your screen — Skitch, reinvented for today.",
+    longDescription: "What Skitch would look like today: a fast screenshot app that also records your screen, for macOS, Windows and Linux. Six annotation tools in Simple mode, one switch that adds the advanced picture commands, live drawing over a recording, and redaction that replaces the pixels instead of hiding them under a shape. In private beta.",
+    url: "https://skitchcraft.erwann.app",
+    screenshot: "skitchcraft-screenshot.jpg",
+    tags: ["Screenshots", "Screen Recording", "Productivity"],
+    categories: ["Tools", "Design"],
+    date: "Nov 2026"
+  }, {
     title: "Portfolio",
   description: "This very portfolio showcasing all my Lovable creations.",
   longDescription: "A modern, elegant portfolio website built with Lovable to showcase all the tools and projects I've created. Features a clean design, smooth animations, dark/light mode support, and is easily extensible for future projects. Built with React, TypeScript, and Tailwind CSS.",

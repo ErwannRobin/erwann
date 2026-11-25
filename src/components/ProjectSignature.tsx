@@ -22,6 +22,7 @@ const signatures: Record<string, string> = {
   "Roadster Flight": "🏎️",
   "Famous Logo Generators": "🎬",
   "Claim Your Spot": "📰",
+  "SkitchCraft": "📸",
   "Portfolio": "✨",
 };
 

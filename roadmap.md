@@ -40,3 +40,8 @@
 - [x] Add the November project with its miniature and tile icon.
 - [x] Show it under the SaaS and Fun filters.
 - [x] Verify it appears in both views and opens correctly.
+
+# SkitchCraft
+- [x] Add the November project with its miniature and tile icon.
+- [ ] Show it under the filters the user picks.
+- [x] Verify it appears in both views and opens correctly.
