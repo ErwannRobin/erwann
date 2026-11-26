@@ -11,4 +11,5 @@
 - TiltLight projects one smoothed screen-space light source onto visible gallery and dialog cards using shared CSS reflection tokens; this keeps highlights aligned with the overhead beam across views.
 - Short landscape viewports count as phones through one shared media query (hero behaviour and icon tiles alike), so the pinned title never overlaps the translucent tiles and the icon size stays constant as columns grow.
 - Project records live in src/data/projectRecords.ts (plain data, no asset imports); src/data/projects.ts attaches screenshots for the UI, and the agentDiscovery Vite plugin derives llms.txt, llms-full.txt, index.md, the Agent Skills index and a visually hidden crawler fallback in #root from the same records, so agent-facing content never drifts from the gallery.
+- Screenshot resolution supports both local JPEGs and CDN asset pointers so uploaded previews stay outside the repository while project records remain plain data.
 - Automated browsers (navigator.webdriver) skip the WebGL hero scene and blob handle so headless prerenderers, such as Cloudflare's Markdown for Agents conversion, finish before their timeout.

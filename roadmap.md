@@ -43,5 +43,6 @@
 
 # SkitchCraft
 - [x] Add the November project with its miniature and tile icon.
-- [ ] Show it under the filters the user picks.
+- [x] Show it under Tools and Design, as selected by the user.
 - [x] Verify it appears in both views and opens correctly.
+- [x] Update the link to skitchcraft.com and replace its preview with the uploaded welcome screen.
