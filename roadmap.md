@@ -46,3 +46,7 @@
 - [x] Show it under Tools and Design, as selected by the user.
 - [x] Verify it appears in both views and opens correctly.
 - [x] Update the link to skitchcraft.com and replace its preview with the uploaded welcome screen.
+
+# Promo video generators
+- [x] Add promo video generator links for Claim Your Spot, Voxal, and Awalé.
+- [x] Show each link in the opened project details and verify its destination.

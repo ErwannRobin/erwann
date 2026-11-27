@@ -1,6 +1,6 @@
 import { useId, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronUp, ArrowUpRight } from "lucide-react";
+import { ChevronUp, ArrowUpRight, Clapperboard } from "lucide-react";
 import type { ProjectRecord } from "@/data/projectRecords";
 import { projectAnchor } from "./ProjectSignature";
 
@@ -67,6 +67,13 @@ export const ProjectCard = ({ project, index, fullView = false, onOpen }: Projec
         </div></div>
         <div id={detailId} hidden={!isExpanded && !fullView} className="art-project-details">
           <p className="mt-4 text-sm leading-relaxed opacity-90">{project.longDescription}</p>
+          {project.promoUrl && <Button variant="outline" asChild className="art-project-promo">
+            <a href={project.promoUrl} target="_blank" rel="noopener noreferrer" aria-label={`Create a promo video for ${project.title} (opens in a new tab)`}>
+              <Clapperboard className="h-4 w-4" />
+              Create a promo video
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </Button>}
           <div className="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs opacity-70">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
         </div>
       </div>

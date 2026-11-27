@@ -254,6 +254,8 @@ All colors MUST be HSL.
 .art-project-control.art-project-control { width: 40px; height: 40px; margin-top: -8px; color: inherit; border: 1px solid hsl(var(--art-caption-text) / 0.2); border-radius: 50%; background: hsl(var(--background) / 0.2); }
 .art-project-control.art-project-control:hover { background: hsl(var(--art-caption-text) / 0.15); color: inherit; }
 .art-project-details { animation: detail-reveal 220ms ease-out; }
+.art-project-promo.art-project-promo { margin-top: 16px; gap: 8px; border-color: hsl(var(--art-caption-text) / 0.25); background: hsl(var(--art-caption-text) / 0.08); color: hsl(var(--art-caption-text)); }
+.art-project-promo.art-project-promo:hover { background: hsl(var(--art-caption-text) / 0.16); color: hsl(var(--art-caption-text)); }
 .project-full-dialog.project-full-dialog { display: block; padding: 0; border-radius: 8px; width: min(680px, calc(100vw - 32px)); max-width: 680px; max-height: calc(100dvh - 48px); overflow-y: auto; border-color: hsl(var(--foreground) / 0.2); background: hsl(var(--background)); transform-style: preserve-3d; }
 .project-full-dialog.project-full-dialog[data-state="open"] { animation: project-twirl 680ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 .project-full-dialog.project-full-dialog[data-state="closed"] { animation: project-dismiss 180ms ease-in both; }

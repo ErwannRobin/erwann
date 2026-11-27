@@ -10,6 +10,8 @@ export interface ProjectRecord {
   description: string;
   longDescription: string;
   url: string;
+  /** Optional promo video generator, linked from the project details. */
+  promoUrl?: string;
   /** File name inside src/assets. */
   screenshot: string;
   tags: string[];
@@ -139,6 +141,7 @@ export const projectRecords: ProjectRecord[] = [{
   description: "Team push-to-talk — walkie-talkie style voice chat, no meetings needed.",
   longDescription: "A real-time push-to-talk voice communication tool for teams. See who's online, drop into a channel, and talk instantly by holding a key — just like a walkie-talkie. No meetings, no scheduling, zero friction. Create rooms in seconds with no accounts or downloads required.",
   url: "https://www.voxal.app",
+  promoUrl: "https://erwannrobin.github.io/Voxal/promo.html",
   screenshot: "voxal-screenshot.jpg",
   tags: ["Voice", "Team", "Real-time"],
   categories: ["SaaS", "Tools"],
@@ -166,6 +169,7 @@ export const projectRecords: ProjectRecord[] = [{
   description: "The classic African seed-sowing strategy game — play online, vs AI, or with friends.",
   longDescription: "A polished digital version of Awalé, the centuries-old African seed-sowing board game of the oware family. Play quick matches at your level, face opponents online, challenge an AI with adjustable difficulty, or pass & play with a friend. Includes interactive tutorials to learn the rules, puzzle challenges to sharpen your tactics, and an ELO-based ranking system that grows with you.",
   url: "https://awale.erwann.app",
+  promoUrl: "https://erwannrobin.github.io/awale-web/promo/",
   screenshot: "awale-screenshot.jpg",
   tags: ["Game", "Strategy", "Board"],
   categories: ["Games", "Fun"],
@@ -220,6 +224,7 @@ export const projectRecords: ProjectRecord[] = [{
     description: "One giant advertising page where 500 brands each own a numbered space.",
     longDescription: "A giant digital advertising page: 500 numbered spaces, one per brand. Buy a spot, rent it out, or receive offers from other brands who want the same square. Built from zero for the Ship or Die $100K Hackathon — if the project wins, the prize pays for a real full-page newspaper ad carrying the first 500 logos. Independent project, not endorsed by the hackathon: the print edition is an ambition, not a guarantee.",
     url: "https://www.claimyourspot.bid",
+    promoUrl: "https://www.claimyourspot.bid/promo",
     screenshot: "claim-your-spot-screenshot.jpg",
     tags: ["Marketplace", "Advertising", "Hackathon"],
     categories: ["SaaS", "Fun"],
